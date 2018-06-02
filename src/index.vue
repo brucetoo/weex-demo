@@ -1,9 +1,9 @@
 <template>
     <list>
         <cell v-for="item in listData.data.content">
-            <slider v-if="item.cardType === '23_63'" class="slider" interval="3000" auto-play="true" >
+            <slider v-if="item.cardType === '23_63'" class="slider" interval="4000" auto-play="true" >
                 <div class="frame" v-for="image in item.exData.content">
-                    <image class="image" resize="cover" :src="image.imageUrl"></image>
+                    <image class="image" resize="cover" :src="image.imageUrl" v-on:click="onBannerClick(image)" ></image>
                 </div>
             </slider>
 
@@ -30,16 +30,16 @@
 
 <style>
     .frame {
-        height: 300px;
+        height: 280px;
     }
     .image {
-        height: 300px;
+        height: 280px;
         border-radius: 10px;
         padding: 20px;
     }
     .slider {
         margin-top: 10px;
-        height: 300px;
+        height: 280px;
         border-radius: 10px;
     }
 </style>
@@ -53,13 +53,24 @@
   import horizontalScrollCard from './components/HorizontalScrollCard'
 
   import data from './data.json'
-
+const native = weex.requireModule('WeexModule')
+const modal = weex.requireModule('modal')
   export default {
     components: {horizontal3Card, horizontal4App, horizontalScrollCard},
     data () {
       return {
         listData: data, // json字符串直接赋值
         download: '下载'
+      }
+    },
+    methods: {
+      onBannerClick: function (image) {
+        modal.toast({
+          message: image.imageUrl,
+          duration: 0.5
+        })
+        native.logger(image)
+        native.onBannerClick(image)
       }
     }
   }

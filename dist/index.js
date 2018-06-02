@@ -2727,10 +2727,10 @@ module.exports = __vue_exports__
 
 module.exports = {
   "frame": {
-    "height": "300"
+    "height": "280"
   },
   "image": {
-    "height": "300",
+    "height": "280",
     "borderRadius": "10",
     "paddingTop": "20",
     "paddingRight": "20",
@@ -2739,7 +2739,7 @@ module.exports = {
   },
   "slider": {
     "marginTop": "10",
-    "height": "300",
+    "height": "280",
     "borderRadius": "10"
   }
 }
@@ -2823,6 +2823,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // eslint-disable-next-line indent
 /* eslint-disable indent,vue/no-shared-component-data */
 
+var native = weex.requireModule('WeexModule');
+var modal = weex.requireModule('modal');
 exports.default = {
   components: { horizontal3Card: _Horizontal3Card2.default, horizontal4App: _Horizontal4App2.default, horizontalScrollCard: _HorizontalScrollCard2.default },
   data: function data() {
@@ -2830,6 +2832,17 @@ exports.default = {
       listData: _data3.default, // json字符串直接赋值
       download: '下载'
     };
+  },
+
+  methods: {
+    onBannerClick: function onBannerClick(image) {
+      modal.toast({
+        message: image.imageUrl,
+        duration: 0.5
+      });
+      native.logger(image);
+      native.onBannerClick(image);
+    }
   }
 };
 
@@ -2894,7 +2907,7 @@ module.exports = {
     "marginLeft": "10"
   },
   "image": {
-    "height": "125",
+    "height": "120",
     "width": "220",
     "borderRadius": "10",
     "marginTop": "10",
@@ -2904,7 +2917,7 @@ module.exports = {
   },
   "text": {
     "textAlign": "center",
-    "height": "34",
+    "height": "40",
     "width": "150",
     "fontSize": "20",
     "fontWeight": "bold",
@@ -2913,7 +2926,7 @@ module.exports = {
     "backgroundColor": "#eeeeee",
     "position": "relative",
     "bottom": "30",
-    "paddingTop": "5",
+    "paddingTop": "8",
     "marginLeft": "50"
   }
 }
@@ -2940,9 +2953,21 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 
+var native = weex.requireModule('WeexModule');
+var modal = weex.requireModule('modal');
 exports.default = {
   name: 'Horizontal3Card',
-  props: ['cards']
+  props: ['cards'],
+  methods: {
+    onH3CardClick: function onH3CardClick(card) {
+      modal.toast({
+        message: card.imageUrl,
+        duration: 0.5
+      });
+      native.onH3CardClick(card);
+      native.logger(card);
+    }
+  }
 };
 
 /***/ }),
@@ -2956,7 +2981,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     return _c('div', {
       staticClass: ["items"]
     }, [_c('div', {
-      staticClass: ["item"]
+      staticClass: ["item"],
+      on: {
+        "click": function($event) {
+          _vm.onH3CardClick(card)
+        }
+      }
     }, [_c('image', {
       staticClass: ["image"],
       attrs: {
@@ -3334,7 +3364,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }, [(item.cardType === '23_63') ? _c('slider', {
       staticClass: ["slider"],
       attrs: {
-        "interval": "3000",
+        "interval": "4000",
         "autoPlay": "true"
       }
     }, _vm._l((item.exData.content), function(image) {
@@ -3345,6 +3375,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         attrs: {
           "resize": "cover",
           "src": image.imageUrl
+        },
+        on: {
+          "click": function($event) {
+            _vm.onBannerClick(image)
+          }
         }
       })])
     })) : _vm._e(), (item.cardType === '23_75') ? _c('div', [_c('horizontal3Card', {
