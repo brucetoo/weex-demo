@@ -12,8 +12,7 @@
             </div>
 
             <div v-if="item.cardType === '23_77'">
-                <horizontal4App :download="download"
-                                :appItem="item.exData.content[0].apps"
+                <horizontal4App :appItem="item.exData.content[0].apps"
                                 :title="item.exData.content[0].name">
                 </horizontal4App>
             </div>
@@ -59,8 +58,7 @@ const modal = weex.requireModule('modal')
     components: {horizontal3Card, horizontal4App, horizontalScrollCard},
     data () {
       return {
-        listData: data, // json字符串直接赋值
-        download: '下载'
+        listData: data // json字符串直接赋值
       }
     },
     methods: {
