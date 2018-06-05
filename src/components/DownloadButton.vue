@@ -1,6 +1,6 @@
 <template>
     <div @appear="onAppear(app)">
-        <text class="download" @click="onDownloadClick(app)">{{download}}</text>
+        <text :class="['download', active ? 'downloadBlue' : '']" @click="onDownloadClick(app)">{{download}}</text>
     </div>
 </template>
 
@@ -13,7 +13,8 @@ export default {
     return {
       download: '.下载.',
       uniqueId: 0,
-      state: -1
+      state: -1,
+      active: false
     }
   },
   created: function () {
@@ -57,13 +58,16 @@ export default {
             case 1:
             case 2:
               self.download = '暂停'
+              self.active = false
               break
             case 3:
             case 5:
               self.download = '继续'
+              self.active = true
               break
             case 4:
               self.download = '安装'
+              self.active = false
               break
           }
         }
@@ -96,6 +100,17 @@ export default {
         margin-bottom: 20px;
         width: 120px;
         background-color: #24c8af;
+        text-align: center;
+    }
+    .downloadBlue {
+        padding: 8px;
+        border-radius: 20px;
+        font-size: 30px;
+        color: #ffffff;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        width: 120px;
+        background-color: #4E91EA;
         text-align: center;
     }
 </style>

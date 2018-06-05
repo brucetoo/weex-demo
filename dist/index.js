@@ -3196,6 +3196,20 @@ module.exports = {
     "width": "120",
     "backgroundColor": "#24c8af",
     "textAlign": "center"
+  },
+  "downloadBlue": {
+    "paddingTop": "8",
+    "paddingRight": "8",
+    "paddingBottom": "8",
+    "paddingLeft": "8",
+    "borderRadius": "20",
+    "fontSize": "30",
+    "color": "#ffffff",
+    "marginTop": "20",
+    "marginBottom": "20",
+    "width": "120",
+    "backgroundColor": "#4E91EA",
+    "textAlign": "center"
   }
 }
 
@@ -3224,7 +3238,8 @@ exports.default = {
     return {
       download: '.下载.',
       uniqueId: 0,
-      state: -1
+      state: -1,
+      active: false
     };
   },
 
@@ -3269,13 +3284,16 @@ exports.default = {
             case 1:
             case 2:
               self.download = '暂停';
+              self.active = false;
               break;
             case 3:
             case 5:
               self.download = '继续';
+              self.active = true;
               break;
             case 4:
               self.download = '安装';
+              self.active = false;
               break;
           }
         }
@@ -3309,7 +3327,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }, [_c('text', {
-    staticClass: ["download"],
+    class: ['download', _vm.active ? 'downloadBlue' : ''],
     on: {
       "click": function($event) {
         _vm.onDownloadClick(_vm.app)
