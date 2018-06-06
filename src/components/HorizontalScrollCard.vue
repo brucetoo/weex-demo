@@ -69,7 +69,7 @@
     }
     .download {
         padding: 5px;
-        border-radius: 20px;
+        border-radius: 30px;
         font-size: 30px;
         color: #ffffff;
         margin-top: 20px;

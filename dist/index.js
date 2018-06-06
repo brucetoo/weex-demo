@@ -2818,6 +2818,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
 
 // eslint-disable-next-line indent
 /* eslint-disable indent,vue/no-shared-component-data */
@@ -2832,6 +2834,35 @@ exports.default = {
     };
   },
 
+  beforeCreate: function beforeCreate() {
+    native.logger('beforeCreate: function');
+  },
+  created: function created() {
+    native.logger('created: function');
+    var globalEvent = weex.requireModule('globalEvent');
+    var self = this;
+    globalEvent.addEventListener('requestEvent', function (map) {
+      native.logger('requestEvent triggered requestUrl:' + map.requestUrl);
+      var stream = weex.requireModule('stream');
+      native.logger('requestEvent triggered requestJson: ' + map.requestJson);
+      stream.fetch({
+        method: 'POST',
+        type: 'json',
+        url: map.requestUrl,
+        body: map.requestJson
+      }, function (ret) {
+        native.logger('request end....' + ret.status + ' ok ? ' + ret.ok);
+        if (!ret.ok) {
+          native.logger(map.requestUrl + ' request failed.........');
+        } else {
+          native.logger(map.requestUrl + ' request success........');
+          self.listData = ret.data;
+        }
+      }, function (response) {
+        // progress...
+      });
+    });
+  },
   methods: {
     onBannerClick: function onBannerClick(image) {
       modal.toast({
@@ -3188,7 +3219,7 @@ module.exports = {
     "paddingRight": "8",
     "paddingBottom": "8",
     "paddingLeft": "8",
-    "borderRadius": "20",
+    "borderRadius": "30",
     "fontSize": "30",
     "color": "#ffffff",
     "marginTop": "20",
@@ -3202,7 +3233,7 @@ module.exports = {
     "paddingRight": "8",
     "paddingBottom": "8",
     "paddingLeft": "8",
-    "borderRadius": "20",
+    "borderRadius": "30",
     "fontSize": "30",
     "color": "#ffffff",
     "marginTop": "20",
@@ -3256,14 +3287,17 @@ exports.default = {
             case 102:
             case 104:
               self.download = '下载';
+              self.active = false;
               break;
             case 103:
             case 152:
             case 119:
               self.download = '更新';
+              self.active = false;
               break;
             case 106:
               self.download = '打开';
+              self.active = false;
               break;
             case 107:
             case 108:
@@ -3271,9 +3305,11 @@ exports.default = {
             case 141:
             case 151:
               self.download = '安装';
+              self.active = false;
               break;
             case 131:
               self.download = '安装中';
+              self.active = false;
               break;
           }
         } else if (func === 'onProgressChanged') {
@@ -3475,7 +3511,7 @@ module.exports = {
     "paddingRight": "5",
     "paddingBottom": "5",
     "paddingLeft": "5",
-    "borderRadius": "20",
+    "borderRadius": "30",
     "fontSize": "30",
     "color": "#ffffff",
     "marginTop": "20",

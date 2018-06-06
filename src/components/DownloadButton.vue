@@ -30,14 +30,17 @@ export default {
             case 102:
             case 104:
               self.download = '下载'
+              self.active = false
               break
             case 103:
             case 152:
             case 119:
               self.download = '更新'
+              self.active = false
               break
             case 106:
               self.download = '打开'
+              self.active = false
               break
             case 107:
             case 108:
@@ -45,9 +48,11 @@ export default {
             case 141:
             case 151:
               self.download = '安装'
+              self.active = false
               break
             case 131:
               self.download = '安装中'
+              self.active = false
               break
           }
         } else if (func === 'onProgressChanged') {
@@ -93,7 +98,7 @@ export default {
 <style scoped>
     .download {
         padding: 8px;
-        border-radius: 20px;
+        border-radius: 30px;
         font-size: 30px;
         color: #ffffff;
         margin-top: 20px;
@@ -104,7 +109,7 @@ export default {
     }
     .downloadBlue {
         padding: 8px;
-        border-radius: 20px;
+        border-radius: 30px;
         font-size: 30px;
         color: #ffffff;
         margin-top: 20px;
