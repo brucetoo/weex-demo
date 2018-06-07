@@ -1,6 +1,6 @@
 <template>
     <list>
-        <cell v-for="item in listData.data.content">
+        <cell v-for="item in listData">
             <slider v-if="item.cardType === '23_63'" class="slider" interval="4000" auto-play="true">
                 <div class="frame" v-for="image in item.exData.content">
                     <image class="image" resize="cover" :src="image.imageUrl" v-on:click="onBannerClick(image)"></image>
@@ -24,6 +24,9 @@
                 </horizontalScrollCard>
             </div>
         </cell>
+        <loading class="loading" @loading="onLoadingMore" :display="isLoading ? 'show' : 'hide'" >
+            <text class="indicator-text">Loading ...</text>
+        </loading>
     </list>
 </template>
 
@@ -43,6 +46,20 @@
         height: 280px;
         border-radius: 10px;
     }
+    .loading {
+        display: -ms-flex;
+        display: -webkit-flex;
+        display: flex;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        -webkit-box-align: center;
+        align-items: center;
+    }
+    .indicator-text {
+        color: #888888;
+        font-size: 42px;
+        text-align: center;
+    }
 </style>
 
 <script>
@@ -53,7 +70,7 @@
   import horizontal4App from './components/Horizontal4App.vue'
   import horizontalScrollCard from './components/HorizontalScrollCard'
 
-  import data from './data.json'
+  import dataDefault from './data.json'
 
   const native = weex.requireModule('WeexModule')
   const modal = weex.requireModule('modal')
@@ -61,7 +78,9 @@
     components: {horizontal3Card, horizontal4App, horizontalScrollCard},
     data () {
       return {
-        listData: data // json字符串直接赋值
+        listData: dataDefault.data.content, // json字符串直接赋值
+        isLoading: false,
+        currentPage: 0
       }
     },
     beforeCreate: function () {
@@ -86,7 +105,7 @@
                 native.logger(map.requestUrl + ' request failed.........')
               } else {
                 native.logger(map.requestUrl + ' request success........')
-                self.listData = ret.data
+                self.listData = ret.data.data.content
               }
             }, function (response) {
              // progress...
@@ -102,7 +121,16 @@
         })
         native.logger(image)
         native.onBannerClick(image)
+      },
+      onLoadingMore () {
+        this.isLoading = true
+        setTimeout(() => {
+          // 模拟假数据..
+          this.listData = this.listData.concat(dataDefault.data.content)
+          this.isLoading = false
+        }, 2000)
       }
+
     }
   }
 

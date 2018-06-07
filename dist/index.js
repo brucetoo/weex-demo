@@ -2741,6 +2741,18 @@ module.exports = {
     "marginTop": "10",
     "height": "280",
     "borderRadius": "10"
+  },
+  "loading": {
+    "display": "flex",
+    "MsFlexAlign": "center",
+    "WebkitAlignItems": "center",
+    "WebkitBoxAlign": "center",
+    "alignItems": "center"
+  },
+  "indicator-text": {
+    "color": "#888888",
+    "fontSize": "42",
+    "textAlign": "center"
   }
 }
 
@@ -2767,12 +2779,29 @@ var _HorizontalScrollCard = __webpack_require__(22);
 
 var _HorizontalScrollCard2 = _interopRequireDefault(_HorizontalScrollCard);
 
-var _data2 = __webpack_require__(26);
+var _data = __webpack_require__(26);
 
-var _data3 = _interopRequireDefault(_data2);
+var _data2 = _interopRequireDefault(_data);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2830,7 +2859,9 @@ exports.default = {
   components: { horizontal3Card: _Horizontal3Card2.default, horizontal4App: _Horizontal4App2.default, horizontalScrollCard: _HorizontalScrollCard2.default },
   data: function data() {
     return {
-      listData: _data3.default // json字符串直接赋值
+      listData: _data2.default.data.content, // json字符串直接赋值
+      isLoading: false,
+      currentPage: 0
     };
   },
 
@@ -2856,7 +2887,7 @@ exports.default = {
           native.logger(map.requestUrl + ' request failed.........');
         } else {
           native.logger(map.requestUrl + ' request success........');
-          self.listData = ret.data;
+          self.listData = ret.data.data.content;
         }
       }, function (response) {
         // progress...
@@ -2871,6 +2902,16 @@ exports.default = {
       });
       native.logger(image);
       native.onBannerClick(image);
+    },
+    onLoadingMore: function onLoadingMore() {
+      var _this = this;
+
+      this.isLoading = true;
+      setTimeout(function () {
+        // 模拟假数据..
+        _this.listData = _this.listData.concat(_data2.default.data.content);
+        _this.isLoading = false;
+      }, 2000);
     }
   }
 };
@@ -3623,7 +3664,7 @@ module.exports = {"data":{"shownApps":[6648837,492643,6671203,7063907,280621,768
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('list', _vm._l((_vm.listData.data.content), function(item) {
+  return _c('list', [_vm._l((_vm.listData), function(item) {
     return _c('cell', {
       appendAsTree: true,
       attrs: {
@@ -3666,7 +3707,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "title": item.exData.content[0].name
       }
     })], 1) : _vm._e()])
-  }))
+  }), _c('loading', {
+    staticClass: ["loading"],
+    attrs: {
+      "display": _vm.isLoading ? 'show' : 'hide'
+    },
+    on: {
+      "loading": _vm.onLoadingMore
+    }
+  }, [_c('text', {
+    staticClass: ["indicator-text"]
+  }, [_vm._v("Loading ...")])])], 2)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
