@@ -3,7 +3,8 @@
         <image :src="bgUrl" resize="cover" class="background"></image>
         <text class="title">{{title}}</text>
         <scroller class="scroller" scroll-direction="horizontal">
-            <div class="scroller-item" v-for="app in appItem">
+            <div class="scroller-item" v-for="app in appItem"
+                 @click="onRecommendClick(app)">
                 <image :src="app.iconUrl" resize="cover" class="icon"></image>
                 <text class="appName">{{app.name}}</text>
                 <text class="download">{{download}}</text>
@@ -13,12 +14,18 @@
 </template>
 
 <script>
+  const native = weex.requireModule('WeexModule')
   export default {
     name: 'HorizontalScrollCard.vue',
     props: ['title', 'bgUrl', 'appItem'],
     data () {
       return {
         download: '下载'
+      }
+    },
+    methods: {
+      onRecommendClick: function (app) {
+        native.onRecommendClick(app)
       }
     }
   }

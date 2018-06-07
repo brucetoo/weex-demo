@@ -3550,7 +3550,9 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
 
+var native = weex.requireModule('WeexModule');
 exports.default = {
   name: 'HorizontalScrollCard.vue',
   props: ['title', 'bgUrl', 'appItem'],
@@ -3558,6 +3560,12 @@ exports.default = {
     return {
       download: '下载'
     };
+  },
+
+  methods: {
+    onRecommendClick: function onRecommendClick(app) {
+      native.onRecommendClick(app);
+    }
   }
 };
 
@@ -3583,7 +3591,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, _vm._l((_vm.appItem), function(app) {
     return _c('div', {
-      staticClass: ["scroller-item"]
+      staticClass: ["scroller-item"],
+      on: {
+        "click": function($event) {
+          _vm.onRecommendClick(app)
+        }
+      }
     }, [_c('image', {
       staticClass: ["icon"],
       attrs: {
