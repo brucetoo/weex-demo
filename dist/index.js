@@ -3105,7 +3105,10 @@ module.exports = {
   "name": {
     "fontSize": "30",
     "color": "#333333",
-    "fontWeight": "bold"
+    "fontWeight": "bold",
+    "lines": 1,
+    "textOverflow": "ellipsis",
+    "maxWidth": "160"
   },
   "size": {
     "fontSize": "22",
@@ -3496,7 +3499,8 @@ module.exports = {
     "textAlign": "center",
     "fontWeight": "bold",
     "lines": 1,
-    "textSize": "12"
+    "textSize": "12",
+    "textOverflow": "ellipsis"
   },
   "icon": {
     "width": "120",

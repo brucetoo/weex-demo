@@ -64,6 +64,9 @@ export default {
         font-size: 30px;
         color: #333333;
         font-weight: bold;
+        lines: 1;
+        text-overflow: ellipsis;
+        max-width: 160px;
     }
 
     .size {

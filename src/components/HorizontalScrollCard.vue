@@ -61,6 +61,7 @@
         font-weight: bold;
         lines: 1;
         text-size: 12px;
+        text-overflow: ellipsis;
     }
     .icon {
         width: 120px;
