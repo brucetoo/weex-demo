@@ -23,18 +23,6 @@
     border-width: 1px;
     border-style: solid;
     border-color: #333;
-
-    /*white-space: nowrap;*/
-    /*vertical-align: middle;*/
-    /*touch-action: manipulation;*/
-    /*cursor: pointer;*/
-    /*-webkit-user-select: none;*/
-    /*background-image: none;*/
-    /*border-image-source: initial;*/
-    /*border-image-slice: initial;*/
-    /*border-image-width: initial;*/
-    /*border-image-outset: initial;*/
-    /*border-image-repeat: initial;*/
   }
 
   .btn-txt {

@@ -1,7 +1,7 @@
 <template>
   <div>
     <panel title="Transform" type="primary">
-      <button value="Rotate" @click.native="rotate" type="primary" size="middle"></button>
+      <button value="Rotate" @click.native="testAnimation" type="primary" size="middle"></button>
       <button value="Scale" @click.native="scale" type="primary" size="middle" style="margin-top:12px;"></button>
       <button value="Translate" @click.native="translate" type="primary" size="middle"
                  style="margin-top:12px;"></button>
@@ -38,11 +38,21 @@
       }
     },
     components: {
-      //引入自定义属性
+      /**
+       * 引入自定义属性 -- 区别于 import ComponentsName for '', 可见 index.vue 文件
+       * 此方式明显简单很多
+       */
       panel: require('./include/panel.vue'),
       button: require('./include/button.vue')
     },
+    created: function () {
+     let event = weex.requireModule('globalEvent')
+      event.addEventListener("event",function (map) {
+
+      })
+    },
     methods: {
+      //换成this.$el('block_id')去获取元素好像没什么鸟用，不过此性能也不好
       anim: function(styles, timingFunction, duration, callback) {
         animation.transition(this.$refs.block, {
           styles: styles,
@@ -50,12 +60,36 @@
           duration: duration
         }, callback);
       },
+      testAnimation: function() {
+        //使用this.$refs获的ref标签效率比 this.$el(id)高
+        animation.transition(this.$refs.block, {
+          styles: {
+            transform: 'rotate(90deg)',
+            transformOrigin: 'left bottom',
+            width: '200px',
+            height: '200px',
+            backgroundColor: 'rgb(217, 83, 79)',
+            opacity: 0.5
+          },
+          timingFunction: 'ease-in',
+          duration: 2000,
+          delay: 0
+        }, function () {
+          //动画成功完后的回调
+        });
+      },
       rotate: function() {
         var self = this;
         self.current_rotate += 90;
         self.anim({
-          transform: 'rotate(' + self.current_rotate + 'deg)'
+          transform: 'rotate(' + self.current_rotate + 'deg)',
+          transformOrigin: 'left bottom',//指定锚点
+          width: '200px',
+          height: '200px',
+          backgroundColor: 'rgb(217, 83, 79)',
+          opacity: 0.5
         }, 'ease-in-out', 500, function() {
+          //动画结束事件
           if (self.current_rotate === 360) {
             self.current_rotate = 0;
           }
@@ -65,7 +99,7 @@
         });
       },
       translate: function() {
-        this.current_translate = this.current_translate ? '' : 'translate(50%, 50%)';
+        this.current_translate = this.current_translate ? '' : 'translate(10%, 10%)';
         this.anim({
           transform: this.current_translate
         }, 'ease-in', 500, function() {

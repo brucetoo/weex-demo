@@ -1,10 +1,15 @@
 <template>
     <list class="list">
-        <cell class="cell" v-for="(item, i) in panels" @click="change(i)">
+        <cell class="cell" v-for="(item, i) in panels" @click="change(i)" :key="item">
             <div class="panel" :style="{height: item.height,width:item.width,backgroundColor:item.bgc,opacity:item.opacity,transform:item.transform}">
                  <text class="text">{{item.label}}</text>
             </div>
-            <div class="panel" :style="{height: item.height,width:item.width,backgroundColor:item.bgc,opacity:item.opacity,transform:item.transform}">
+            <div class="panel" :style="{
+            height: item.height,
+            width:item.width,
+            backgroundColor:item.bgc,
+            opacity:item.opacity,
+            transform:item.transform}">
                  <text class="text">{{item.label}}</text>
             </div>
         </cell>
@@ -76,7 +81,9 @@
                       width:730,
                       bgc:'#69BE96',
                       opacity:1,
-                      right:20})
+                      right:20,
+                      transform: 'translateX(0px)'
+                    })
                 }
                 return ary;
             },

@@ -21,16 +21,16 @@
         paddingLeft: paddingBody*1.5,
         paddingRight: paddingBody*1.5
       }">
-      <slot></slot> //插槽，允许多次插入元素，因为此组件中只有一个地方有slot，因此不用定义id
+      <slot></slot>
     </div>
   </div>
 </template>
-
+/**插槽，允许多次插入元素，因为此组件中只有一个地方有slot，因此不用定义id**/
 <script>
   module.exports = {
-    props: {
+    props: { //panel 暴露出的属性
       type: { default: 'default' },//panel 样式 panel-*** 属性
-      title: { default: '' },
+      title: { default: '' }, //所有自定义属性都有默认值
       paddingBody: { default: 20 },
       paddingHead: { default: 20 },
       dataClass: { default: '' }, // FIXME transfer class
