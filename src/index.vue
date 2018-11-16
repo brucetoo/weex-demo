@@ -1,8 +1,8 @@
 <template>
     <list>
-        <cell v-for="item in listData">
+        <cell v-for="item in listData" :key="item">
             <slider v-if="item.cardType === '23_63'" class="slider" interval="4000" auto-play="true">
-                <div class="frame" v-for="image in item.exData.content">
+                <div class="frame" v-for="image in item.exData.content" :key="image">
                     <image class="image" resize="cover" :src="image.imageUrl" v-on:click="onBannerClick(image)"></image>
                 </div>
             </slider>
@@ -30,7 +30,7 @@
     </list>
 </template>
 
-<style>
+<style scoped>
     .frame {
         height: 280px;
     }

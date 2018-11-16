@@ -49,7 +49,7 @@
     right: 32; 
     text-align: right;
     font-size: 32; 
-    font-family: 'Open Sans', sans-serif;
+    font-family: sans-serif;
   }
   .left-text {
     position: absolute; 
@@ -57,7 +57,7 @@
     left :32; 
     text-align :left;  
     font-size: 32; 
-    font-family: 'Open Sans', sans-serif;
+    font-family: sans-serif;
   }
   .center-text {
     position: absolute; 

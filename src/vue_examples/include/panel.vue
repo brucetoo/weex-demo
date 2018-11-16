@@ -51,9 +51,6 @@
     border-width: 1px;
   }
 
-  .panel-default {
-  }
-
   .panel-primary {
     border-color: rgb(40, 96, 144);
   }
@@ -88,9 +85,6 @@
     color: #333;
   }
 
-  .panel-header-default {
-  }
-
   .panel-header-primary {
     background-color: rgb(40, 96, 144);
     color: #ffffff;
@@ -123,21 +117,4 @@
     padding-bottom: 20px;
   }
 
-  .panel-body-default {
-  }
-
-  .panel-body-primary {
-  }
-
-  .panel-body-success {
-  }
-
-  .panel-body-info {
-  }
-
-  .panel-body-warning {
-  }
-
-  .panel-body-danger {
-  }
 </style>
