@@ -34,7 +34,7 @@
           'duration': 2
         })
         // weex.requireModule('WeexModule').fireNativeGlobalEvent("showText", function (e) {
-        //   if (Boolean(e.ok)) {
+        //   if (Boolean(e.ok)) { 
         //     self.btnTitle = "posted"
         //   }
         // })

@@ -75,7 +75,7 @@
 /* global Vue */
 /* weex initialized here, please do not move this line */
 var router = __webpack_require__(1);
-var App = __webpack_require__(7);
+var App = __webpack_require__(23);
 /* eslint-disable no-new */
 new Vue(Vue.util.extend({ el: '#root', router: router }, App));
 router.push('/');
@@ -2678,21 +2678,37 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 7 */
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */,
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */,
+/* 16 */,
+/* 17 */,
+/* 18 */,
+/* 19 */,
+/* 20 */,
+/* 21 */,
+/* 22 */,
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(8)
+__vue_styles__.push(__webpack_require__(24)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(9)
+__vue_exports__ = __webpack_require__(25)
 
 /* template */
-var __vue_template__ = __webpack_require__(10)
+var __vue_template__ = __webpack_require__(26)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -2704,10 +2720,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "/Users/brucetoo/WebstormProjects/weex-demo/src/vue_examples/modules/event.vue"
+__vue_options__.__file = "/Users/brucetoo/WebstormProjects/weex-demo/src/vue_examples/generalEvent.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-55f20106"
+__vue_options__._scopeId = "data-v-1298ff4e"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -2722,28 +2738,101 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 8 */
+/* 24 */
 /***/ (function(module, exports) {
 
 module.exports = {
-  "btn": {
-    "marginTop": "100",
-    "marginLeft": "100",
+  "txt": {
+    "textAlign": "center",
+    "lineHeight": "300",
+    "height": "300",
+    "fontSize": "60",
+    "color": "#FF0000",
+    "borderRadius": "20",
+    "borderColor": "#0000FF",
+    "borderStyle": "dotted",
+    "borderWidth": "2",
+    "marginTop": "12",
+    "marginRight": "12",
+    "marginBottom": "12",
+    "marginLeft": "12",
+    "backgroundColor": "#00FFFF"
+  },
+  "img": {
+    "height": "300",
+    "width": "300",
+    "alignSelf": "center"
+  },
+  "slider": {
+    "marginTop": "12",
+    "marginRight": "12",
+    "marginBottom": "12",
+    "marginLeft": "12",
+    "height": "300",
+    "alignSelf": "center",
+    "borderStyle": "solid",
     "borderWidth": "3",
-    "height": "50",
-    "borderColor": "#FF0000",
-    "borderRadius": "10",
-    "backgroundColor": "rgba(23,145,245,1)"
+    "borderColor": "#D2691E"
+  },
+  "slide-parent": {
+    "height": "300",
+    "width": "700"
+  },
+  "indicator": {
+    "width": "100",
+    "height": "80",
+    "alignSelf": "center",
+    "itemColor": "#008000",
+    "itemSelectedColor": "#FF0000",
+    "itemSize": "20",
+    "position": "absolute",
+    "right": "20",
+    "bottom": "0"
   }
 }
 
 /***/ }),
-/* 9 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2752,67 +2841,149 @@ module.exports = {
 //
 //
 
-var nativeModule = weex.requireModule('WeexModule');
-module.exports = {
+var native = weex.requireModule('WeexModule');
+var modal = weex.requireModule('modal');
+var dom = weex.requireModule('dom');
+exports.default = {
   data: function data() {
     return {
-      content: "I received event",
-      show: false,
-      btnTitle: "click me to fire globalEvent"
+      content: "text-1",
+      imageList: [{ title: 'item A', src: 'https://gd2.alicdn.com/bao/uploaded/i2/T14H1LFwBcXXXXXXXX_!!0-item_pic.jpg' }, { title: 'item B', src: 'https://gd1.alicdn.com/bao/uploaded/i1/TB1PXJCJFXXXXciXFXXXXXXXXXX_!!0-item_pic.jpg' }, { title: 'item C', src: 'https://gd3.alicdn.com/bao/uploaded/i3/TB1x6hYLXXXXXazXVXXXXXXXXXX_!!0-item_pic.jpg' }]
     };
-  },
-  mounted: function mounted() {
-    var self = this;
-    weex.requireModule("globalEvent").addEventListener("showText", function (e) {
-      nativeModule.logger("globalEvent --> " + e.eventParam);
-      self.show = true;
-    });
-    nativeModule.logger("mounted ------->>>> ");
-    nativeModule.addEventListener("WeexModule", function (e) {
-      //JSON.stringify(e) 可以将传的参数解析成string
-      nativeModule.logger("singleEvent --> " + e.data.param1);
-    });
   },
 
   methods: {
-    handleOnclick: function handleOnclick(e) {
-      var self = this;
-      weex.requireModule('modal').toast({
-        'message': "oh my god!",
-        'duration': 2
+    onloadmore: function onloadmore(e) {
+      modal.toast({
+        message: "load more trigger",
+        duration: 2
       });
-      // weex.requireModule('WeexModule').fireNativeGlobalEvent("showText", function (e) {
-      //   if (Boolean(e.ok)) {
-      //     self.btnTitle = "posted"
-      //   }
-      // })
+    },
+    onclick: function onclick(e) {
+      this.content = "onclick-> type:" + e.type + " target:" + e.target;
+      dom.scrollToElement(this.$refs.text6, {
+        offset: -400,
+        animated: true
+      });
+    },
+    onlongpress: function onlongpress(e) {
+      this.content = 'onlongpress-> type:' + e.type;
+    },
+    onappear: function onappear(e) {
+      if (e.target.id === 'text1') {
+        this.content = e.target.id;
+      }
+      native.logger("appear -> direction:" + e.direction);
+      // this.content = 'onappear-> type:' + e.target.id
+    },
+    ondisappear: function ondisappear(e) {
+      native.logger("disappear -> direction:" + e.direction);
+      if (e.target.id === 'text1') {
+        this.content = e.target.id;
+      }
     }
   }
 };
 
 /***/ }),
-/* 10 */
+/* 26 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticStyle: {
-      flexDirection: "row"
-    }
-  }, [(_vm.show) ? _c('text', {
-    staticClass: ["btn"],
+  return _c('scroller', {
     attrs: {
-      "testId": "content"
-    }
-  }, [_vm._v(_vm._s(_vm.content))]) : _vm._e(), _c('text', {
-    staticClass: ["btn"],
-    attrs: {
-      "testId": "button"
+      "showScrollbar": "false",
+      "loadmoreoffset": "50"
     },
     on: {
-      "click": _vm.handleOnclick
+      "loadmore": _vm.onloadmore
     }
-  }, [_vm._v(_vm._s(_vm.btnTitle))])])
+  }, [_c('text', {
+    staticClass: ["txt"],
+    attrs: {
+      "id": "text1"
+    },
+    on: {
+      "click": _vm.onclick,
+      "longpress": _vm.onlongpress,
+      "appear": _vm.onappear,
+      "disappear": _vm.ondisappear
+    }
+  }, [_vm._v(_vm._s(_vm.content) + "\n    ")]), _c('image', {
+    staticClass: ["img"],
+    attrs: {
+      "id": "img",
+      "resize": "stretch",
+      "src": "https://gw.alicdn.com/tfs/TB1dZ4WowoQMeJjy0FnXXb8gFXa-950-1267.jpg"
+    }
+  }), _c('slider', {
+    staticClass: ["slider"],
+    attrs: {
+      "interval": "2000",
+      "autoPlay": "true"
+    },
+    on: {
+      "change": _vm.onchange
+    }
+  }, [_vm._l((_vm.imageList), function(img) {
+    return _c('div', {
+      staticClass: ["slide-parent"]
+    }, [_c('image', {
+      staticClass: ["img"],
+      attrs: {
+        "src": img.src,
+        "resize": "cover"
+      }
+    })])
+  }), _c('indicator', {
+    staticClass: ["indicator"]
+  })], 2), _c('text', {
+    staticClass: ["txt"],
+    attrs: {
+      "id": "text2"
+    },
+    on: {
+      "appear": _vm.onappear,
+      "disappear": _vm.ondisappear
+    }
+  }, [_vm._v(" " + _vm._s("text-2"))]), _c('text', {
+    staticClass: ["txt"],
+    attrs: {
+      "id": "text3"
+    },
+    on: {
+      "appear": _vm.onappear,
+      "disappear": _vm.ondisappear
+    }
+  }, [_vm._v(" " + _vm._s("text-3"))]), _c('text', {
+    staticClass: ["txt"],
+    attrs: {
+      "id": "text4"
+    },
+    on: {
+      "appear": _vm.onappear,
+      "disappear": _vm.ondisappear
+    }
+  }, [_vm._v(" " + _vm._s("text-4"))]), _c('text', {
+    staticClass: ["txt"],
+    attrs: {
+      "id": "text5"
+    },
+    on: {
+      "appear": _vm.onappear,
+      "disappear": _vm.ondisappear
+    }
+  }, [_vm._v(" " + _vm._s("text-5"))]), _c('text', {
+    ref: "text6",
+    staticClass: ["txt"],
+    attrs: {
+      "id": "text6"
+    },
+    on: {
+      "appear": _vm.onappear,
+      "disappear": _vm.ondisappear
+    }
+  }, [_vm._v(" " + _vm._s("text-6"))])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
