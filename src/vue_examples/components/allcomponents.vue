@@ -1,7 +1,13 @@
 <template>
     <!--pagingEnabled="true" pageSize="400"-->
-    <waterfall class="list" :show_scrollbar="showScrollbar" :column-count="columnCount" :column-gap="columnGap"
-               :column-width="columnWidth">
+    <waterfall class="list"
+               :style="{padding:padding}"
+               :show_scrollbar="showScrollbar"
+               :column-count="columnCount"
+               :column-gap="columnGap"
+               :column-width="columnWidth"
+               :scrollable="scrollable"
+               @scroll="recylerScroll">
         <refresh class="refresh" :style="{height:refreshViewHeight}" @refresh="onrefresh" @pullingdown="onpullingdown"
                  :display="refreshing ? 'show' : 'hide'">
             <loading-indicator class="indicator" color="blue"></loading-indicator>
@@ -12,7 +18,7 @@
         <!--<text class="single-txt" @click="onclick">{{"index:" + item}}</text>-->
         <!--</cell>-->
 
-        <header style="position: relative;padding-bottom: 18px;" :ref="header" v-if="showHeader">
+        <header style="position: relative;padding-bottom: 18px;" ref="firstHeader" v-if="showHeader">
             <div class="banner">
                 <div class="bannerInfo">
                     <image class="avatar" src="https://gw.alicdn.com/tps/TB1EP9bPFXXXXbpXVXXXXXXXXXX-150-110.jpg"
@@ -54,9 +60,40 @@
             </div>
         </header>
 
-        <cell v-for="item in listItems">
-            <text class="single-txt" @click="onclick">{{"index:" + item}}</text>
+        <!--sticky header 94px-->
+        <header class="stickyHeader">
+            <div v-if="stickyHeaderType === 'none'" class="stickyWrapper">
+                <text class="stickyText">Sticky Header</text>
+            </div>
+            <div v-if="stickyHeaderType === 'appear'" class="stickyWrapper">
+                <div class="stickyTextImageWrapper">
+                    <text class="stickyText">Last Appear:</text>
+                    <image class="stickyImage" :src="appearImage"></image>
+                </div>
+                <div class="stickyTextImageWrapper">
+                    <text class="stickyText">Last Disappear:</text>
+                    <image class="stickyImage" :src="disappearImage"></image>
+                </div>
+            </div>
+            <div v-if="stickyHeaderType === 'scroll'" class="stickyWrapper">
+                <text class="stickyText">Content Offset:{{contentOffset}}</text>
+            </div>
+        </header>`
+        <cell v-for="(item, index) in items" v-bind:key="index" :ref="`cell${index}`" class="cell">
+            <div style="align-items: center; background-color: cornflowerblue"
+                 @click="onItemClick(item.behaviour, index)"
+                 @appear="itemAppear(item.src)"
+                 @disappear="itemDisappear(item.src)">
+                <text v-if="item.name" class="itemName">{{item.name}}</text>
+                <image class="itemPhoto" :src="item.src"></image>
+                <text v-if="item.desc" class="itemDesc">{{item.desc}}</text>
+                <text v-if="item.behaviourName" class="itemClickBehaviour"> {{item.behaviourName}}</text>
+            </div>
         </cell>
+
+        <div class="fixedItem" @click="scrollToTop">
+            <text class="fixedText">Top</text>
+        </div>
     </waterfall>
 </template>
 
@@ -64,17 +101,93 @@
   export default {
     name: "allcomponents",
     data() {
+
+      const items = [
+        {
+          src:'https://gw.alicdn.com/tps/TB1Jl1CPFXXXXcJXXXXXXXXXXXX-370-370.jpg',
+          name: 'Thomas Carlyle',
+          desc:'Genius only means hard-working all one\'s life',
+          behaviourName: 'Change count',
+          behaviour: 'changeColumnCount'
+        },
+        {
+          src:'https://gw.alicdn.com/tps/TB1Hv1JPFXXXXa3XXXXXXXXXXXX-370-370.jpg',
+          desc:'The man who has made up his mind to win will never say "impossible "',
+          behaviourName: 'Change gap',
+          behaviour: 'changeColumnGap'
+        },
+        {
+          src:'https://gw.alicdn.com/tps/TB1eNKuPFXXXXc_XpXXXXXXXXXX-370-370.jpg',
+          desc:'There is no such thing as a great talent without great will - power',
+          behaviourName: 'Show scrollbar',
+          behaviour: 'showScrollbar',
+        },
+        {
+          src:'https://gw.alicdn.com/tps/TB1DCh8PFXXXXX7aXXXXXXXXXXX-370-370.jpg',
+          name:'Addison',
+          desc:'Cease to struggle and you cease to live',
+          behaviourName: 'Change width',
+          behaviour: 'changeColumnWidth',
+        },
+        {
+          src:'https://gw.alicdn.com/tps/TB1ACygPFXXXXXwXVXXXXXXXXXX-370-370.jpg',
+          desc:'A strong man will struggle with the storms of fate',
+          behaviourName: 'Listen appear',
+          behaviour: 'listenAppear',
+        },
+        {
+          src:'https://gw.alicdn.com/tps/TB1IGShPFXXXXaqXVXXXXXXXXXX-370-370.jpg',
+          name:'Ruskin',
+          desc:'Living without an aim is like sailing without a compass',
+          behaviourName: 'Set scrollable',
+          behaviour: 'setScrollable',
+        },
+        {
+          src:'https://gw.alicdn.com/tps/TB1xU93PFXXXXXHaXXXXXXXXXXX-240-240.jpg',
+          behaviourName: 'waterfall padding',
+          behaviour: 'setPadding',
+        },
+        {
+          src:'https://gw.alicdn.com/tps/TB19hu0PFXXXXaXaXXXXXXXXXXX-240-240.jpg',
+          name:'Balzac',
+          desc:'There is no such thing as a great talent without great will - power',
+          behaviourName: 'listen scroll',
+          behaviour: 'listenScroll',
+        },
+        {
+          src:'https://gw.alicdn.com/tps/TB1ux2vPFXXXXbkXXXXXXXXXXXX-240-240.jpg',
+          behaviourName: 'Remove cell',
+          behaviour: 'removeCell',
+        },
+        {
+          src:'https://gw.alicdn.com/tps/TB1tCCWPFXXXXa7aXXXXXXXXXXX-240-240.jpg',
+          behaviourName: 'Move cell',
+          behaviour: 'moveCell',
+        }
+      ]
+
+      let repeatItems = [];
+      for (let i = 0; i < 3; i++){
+        repeatItems.push(...items)
+      }
+
       return {
         showScrollbar: true,
         columnCount: 2,
-        columnGap: 12,
+        columnGap: 8,
+        padding: 0,
         columnWidth: 'auto',
+        contentOffset: '0',
         refreshing: false,
         refreshViewHeight: 128,
         refreshText: '↓   pull to refresh...',
         showHeader: true,
         listItems: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
         needBgColor: false,
+        stickyHeaderType: 'none',
+        appearImage: null,
+        scrollable: true,
+        disappearImage: null,
         banner: {
           photos: [
             {src: 'https://gw.alicdn.com/tps/TB1JyaCPFXXXXc9XXXXXXXXXXXX-140-140.jpg'},
@@ -85,10 +198,13 @@
             {src: 'https://gw.alicdn.com/tps/TB1oCefPFXXXXbVXVXXXXXXXXXX-140-140.jpg'}
           ]
         },
+        items: repeatItems
       }
     },
     methods: {
-
+      recylerScroll: function(e) {
+        this.contentOffset = e.contentOffset.y
+      },
       getRowCount() {
         return this.listItems.length % 3 === 0 ? this.listItems.length / 3 : Math.floor(this.listItems.length / 3) + 1;
       },
@@ -112,6 +228,111 @@
         } else {
           this.refreshText = '↓   pull to refresh...'
         }
+      },
+      scrollToTop(e) {
+        weex.requireModule('dom').scrollToElement(this.$refs.firstHeader )
+      },
+
+      onItemClick: function (behaviour, index) {
+        console.log(`click...${behaviour} at index ${index}`)
+        switch (behaviour) {
+          case 'changeColumnCount':
+            this.changeColumnCount()
+            break
+          case 'changeColumnGap':
+            this.changeColumnGap()
+            break
+          case 'changeColumnWidth':
+            this.changeColumnWidth()
+            break
+          case 'showScrollbar':
+            this.showOrHideScrollbar()
+            break
+          case 'listenAppear':
+            this.listenAppearAndDisappear()
+            break
+          case 'setScrollable':
+            this.setScrollable()
+            break
+          case 'setPadding':
+            this.setRecyclerPadding()
+            break
+          case 'listenScroll':
+            this.listenScrollEvent()
+            break
+          case 'removeCell':
+            this.removeCell(index)
+            break
+          case 'moveCell':
+            this.moveCell(index)
+            break
+        }
+      },
+      itemAppear: function(src) {
+        this.appearImage = src;
+      },
+
+      itemDisappear: function(src) {
+        this.disappearImage = src;
+      },
+
+      changeColumnCount: function() {
+        console.log("onItem click changeColumnCount: " + this.columnCount)
+        if (this.columnCount === 2) {
+          this.columnCount = 3
+        } else {
+          this.columnCount = 2
+        }
+      },
+
+      changeColumnGap: function() {
+        console.log("onItem click changeColumnGap: " + this.columnGap)
+        if (this.columnGap === 12) {
+          this.columnGap = 8
+        } else {
+          this.columnGap = 12
+        }
+      },
+
+      changeColumnWidth: function() {
+        if (this.columnWidth === 'auto') {
+          this.columnWidth = 600
+        } else {
+          this.columnWidth = 'auto'
+        }
+      },
+
+      showOrHideScrollbar: function() {
+        this.showScrollbar = !this.showScrollbar
+      },
+
+      setScrollable: function() {
+        this.scrollable = !this.scrollable
+      },
+
+      listenAppearAndDisappear: function() {
+        this.stickyHeaderType = (this.stickyHeaderType === 'appear' ? 'none' : 'appear')
+      },
+
+      listenScrollEvent: function() {
+        this.stickyHeaderType = (this.stickyHeaderType === 'scroll' ? 'none' : 'scroll')
+      },
+
+      setRecyclerPadding: function() {
+        this.padding = (this.padding === 0 ? 12 : 0);
+      },
+
+      removeCell: function(index) {
+        this.items.splice(index, 1)
+      },
+
+      moveCell: function(index) {
+
+        if (index == 0) {
+          this.items.splice(this.items.length - 1, 0, this.items.splice(index, 1)[0]);
+        } else {
+          this.items.splice(0, 0, this.items.splice(index, 1)[0]);
+        }
       }
     }
   }
@@ -119,6 +340,52 @@
 
 <style scoped>
 
+    .stickyHeader {
+        position: sticky;
+        height: 94px;
+        flex-direction: row;
+        padding-bottom:6px;
+    }
+    .stickyWrapper {
+        flex-direction: row;
+        background-color:#00cc99;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+    }
+    .stickyTextImageWrapper {
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+    }
+    .stickyText {
+        color: #FFFFFF;
+        font-weight: bold;
+        font-size: 32px;
+    }
+    .stickyImage {
+        width: 64px;
+        height: 64px;
+        border-radius: 32px;
+    }
+    .fixedItem {
+        position: fixed;
+        width: 78px;
+        height: 78px;
+        background-color: #00cc99;
+        right: 32px;
+        bottom: 32px;
+        /*右下角的位置 */
+        border-radius: 39px;
+        justify-content: center;
+        align-items: center;
+    }
+    .fixedText {
+        font-size: 36px;
+        color: white;
+        line-height: 36px;
+    }
     .headerFlexWrap {
         padding-top: 20px;
         background-color: cornsilk;
@@ -261,5 +528,37 @@
         border-radius: 20px;
         margin: 12px;
         background-color: #00B4FF;
+    }
+
+    .cell {
+        padding-top: 6px;
+        padding-bottom: 6px;
+    }
+
+    .itemName {
+        font-size: 28px;
+        color:#333333;
+        line-height: 42px;
+        text-align:center;
+        margin-top: 24px;
+    }
+    .itemPhoto {
+        width: 220px;
+        height: 220px;
+        margin-top: 18px;
+        margin-bottom: 18px;
+    }
+    .itemDesc {
+        font-size: 24px;
+        margin: 12px;
+        color: darkorchid;
+        line-height: 36px;
+        text-align: center;
+    }
+    .itemClickBehaviour {
+        font-size: 36px;
+        color: coral;
+        text-align:center;
+        margin-bottom: 30px;
     }
 </style>

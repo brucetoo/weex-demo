@@ -2750,6 +2750,51 @@ module.exports = __vue_exports__
 /***/ (function(module, exports) {
 
 module.exports = {
+  "stickyHeader": {
+    "position": "sticky",
+    "height": "94",
+    "flexDirection": "row",
+    "paddingBottom": "6"
+  },
+  "stickyWrapper": {
+    "flexDirection": "row",
+    "backgroundColor": "#00cc99",
+    "justifyContent": "center",
+    "alignItems": "center",
+    "flex": 1
+  },
+  "stickyTextImageWrapper": {
+    "flex": 1,
+    "justifyContent": "center",
+    "alignItems": "center",
+    "flexDirection": "row"
+  },
+  "stickyText": {
+    "color": "#FFFFFF",
+    "fontWeight": "bold",
+    "fontSize": "32"
+  },
+  "stickyImage": {
+    "width": "64",
+    "height": "64",
+    "borderRadius": "32"
+  },
+  "fixedItem": {
+    "position": "fixed",
+    "width": "78",
+    "height": "78",
+    "backgroundColor": "#00cc99",
+    "right": "32",
+    "bottom": "32",
+    "borderRadius": "39",
+    "justifyContent": "center",
+    "alignItems": "center"
+  },
+  "fixedText": {
+    "fontSize": "36",
+    "color": "#FFFFFF",
+    "lineHeight": "36"
+  },
   "headerFlexWrap": {
     "paddingTop": "20",
     "backgroundColor": "#FFF8DC",
@@ -2877,6 +2922,39 @@ module.exports = {
     "marginBottom": "12",
     "marginLeft": "12",
     "backgroundColor": "#00B4FF"
+  },
+  "cell": {
+    "paddingTop": "6",
+    "paddingBottom": "6"
+  },
+  "itemName": {
+    "fontSize": "28",
+    "color": "#333333",
+    "lineHeight": "42",
+    "textAlign": "center",
+    "marginTop": "24"
+  },
+  "itemPhoto": {
+    "width": "220",
+    "height": "220",
+    "marginTop": "18",
+    "marginBottom": "18"
+  },
+  "itemDesc": {
+    "fontSize": "24",
+    "marginTop": "12",
+    "marginRight": "12",
+    "marginBottom": "12",
+    "marginLeft": "12",
+    "color": "#9932CC",
+    "lineHeight": "36",
+    "textAlign": "center"
+  },
+  "itemClickBehaviour": {
+    "fontSize": "36",
+    "color": "#FF7F50",
+    "textAlign": "center",
+    "marginBottom": "30"
   }
 }
 
@@ -2952,28 +3030,134 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 exports.default = {
   name: "allcomponents",
   data: function data() {
+
+    var items = [{
+      src: 'https://gw.alicdn.com/tps/TB1Jl1CPFXXXXcJXXXXXXXXXXXX-370-370.jpg',
+      name: 'Thomas Carlyle',
+      desc: 'Genius only means hard-working all one\'s life',
+      behaviourName: 'Change count',
+      behaviour: 'changeColumnCount'
+    }, {
+      src: 'https://gw.alicdn.com/tps/TB1Hv1JPFXXXXa3XXXXXXXXXXXX-370-370.jpg',
+      desc: 'The man who has made up his mind to win will never say "impossible "',
+      behaviourName: 'Change gap',
+      behaviour: 'changeColumnGap'
+    }, {
+      src: 'https://gw.alicdn.com/tps/TB1eNKuPFXXXXc_XpXXXXXXXXXX-370-370.jpg',
+      desc: 'There is no such thing as a great talent without great will - power',
+      behaviourName: 'Show scrollbar',
+      behaviour: 'showScrollbar'
+    }, {
+      src: 'https://gw.alicdn.com/tps/TB1DCh8PFXXXXX7aXXXXXXXXXXX-370-370.jpg',
+      name: 'Addison',
+      desc: 'Cease to struggle and you cease to live',
+      behaviourName: 'Change width',
+      behaviour: 'changeColumnWidth'
+    }, {
+      src: 'https://gw.alicdn.com/tps/TB1ACygPFXXXXXwXVXXXXXXXXXX-370-370.jpg',
+      desc: 'A strong man will struggle with the storms of fate',
+      behaviourName: 'Listen appear',
+      behaviour: 'listenAppear'
+    }, {
+      src: 'https://gw.alicdn.com/tps/TB1IGShPFXXXXaqXVXXXXXXXXXX-370-370.jpg',
+      name: 'Ruskin',
+      desc: 'Living without an aim is like sailing without a compass',
+      behaviourName: 'Set scrollable',
+      behaviour: 'setScrollable'
+    }, {
+      src: 'https://gw.alicdn.com/tps/TB1xU93PFXXXXXHaXXXXXXXXXXX-240-240.jpg',
+      behaviourName: 'waterfall padding',
+      behaviour: 'setPadding'
+    }, {
+      src: 'https://gw.alicdn.com/tps/TB19hu0PFXXXXaXaXXXXXXXXXXX-240-240.jpg',
+      name: 'Balzac',
+      desc: 'There is no such thing as a great talent without great will - power',
+      behaviourName: 'listen scroll',
+      behaviour: 'listenScroll'
+    }, {
+      src: 'https://gw.alicdn.com/tps/TB1ux2vPFXXXXbkXXXXXXXXXXXX-240-240.jpg',
+      behaviourName: 'Remove cell',
+      behaviour: 'removeCell'
+    }, {
+      src: 'https://gw.alicdn.com/tps/TB1tCCWPFXXXXa7aXXXXXXXXXXX-240-240.jpg',
+      behaviourName: 'Move cell',
+      behaviour: 'moveCell'
+    }];
+
+    var repeatItems = [];
+    for (var i = 0; i < 3; i++) {
+      repeatItems.push.apply(repeatItems, items);
+    }
+
     return {
       showScrollbar: true,
       columnCount: 2,
-      columnGap: 12,
+      columnGap: 8,
+      padding: 0,
       columnWidth: 'auto',
+      contentOffset: '0',
       refreshing: false,
       refreshViewHeight: 128,
       refreshText: '↓   pull to refresh...',
       showHeader: true,
       listItems: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
       needBgColor: false,
+      stickyHeaderType: 'none',
+      appearImage: null,
+      scrollable: true,
+      disappearImage: null,
       banner: {
         photos: [{ src: 'https://gw.alicdn.com/tps/TB1JyaCPFXXXXc9XXXXXXXXXXXX-140-140.jpg' }, { src: 'https://gw.alicdn.com/tps/TB1MwSFPFXXXXbdXXXXXXXXXXXX-140-140.jpg' }, { src: 'https://gw.alicdn.com/tps/TB1U8avPFXXXXaDXpXXXXXXXXXX-140-140.jpg' }, { src: 'https://gw.alicdn.com/tps/TB17Xh8PFXXXXbkaXXXXXXXXXXX-140-140.jpg' }, { src: 'https://gw.alicdn.com/tps/TB1cTmLPFXXXXXRXXXXXXXXXXXX-140-140.jpg' }, { src: 'https://gw.alicdn.com/tps/TB1oCefPFXXXXbVXVXXXXXXXXXX-140-140.jpg' }]
-      }
+      },
+      items: repeatItems
     };
   },
 
   methods: {
+    recylerScroll: function recylerScroll(e) {
+      this.contentOffset = e.contentOffset.y;
+    },
     getRowCount: function getRowCount() {
       return this.listItems.length % 3 === 0 ? this.listItems.length / 3 : Math.floor(this.listItems.length / 3) + 1;
     },
@@ -2996,6 +3180,112 @@ exports.default = {
       } else {
         this.refreshText = '↓   pull to refresh...';
       }
+    },
+    scrollToTop: function scrollToTop(e) {
+      weex.requireModule('dom').scrollToElement(this.$refs.firstHeader);
+    },
+
+
+    onItemClick: function onItemClick(behaviour, index) {
+      console.log('click...' + behaviour + ' at index ' + index);
+      switch (behaviour) {
+        case 'changeColumnCount':
+          this.changeColumnCount();
+          break;
+        case 'changeColumnGap':
+          this.changeColumnGap();
+          break;
+        case 'changeColumnWidth':
+          this.changeColumnWidth();
+          break;
+        case 'showScrollbar':
+          this.showOrHideScrollbar();
+          break;
+        case 'listenAppear':
+          this.listenAppearAndDisappear();
+          break;
+        case 'setScrollable':
+          this.setScrollable();
+          break;
+        case 'setPadding':
+          this.setRecyclerPadding();
+          break;
+        case 'listenScroll':
+          this.listenScrollEvent();
+          break;
+        case 'removeCell':
+          this.removeCell(index);
+          break;
+        case 'moveCell':
+          this.moveCell(index);
+          break;
+      }
+    },
+    itemAppear: function itemAppear(src) {
+      this.appearImage = src;
+    },
+
+    itemDisappear: function itemDisappear(src) {
+      this.disappearImage = src;
+    },
+
+    changeColumnCount: function changeColumnCount() {
+      console.log("onItem click changeColumnCount: " + this.columnCount);
+      if (this.columnCount === 2) {
+        this.columnCount = 3;
+      } else {
+        this.columnCount = 2;
+      }
+    },
+
+    changeColumnGap: function changeColumnGap() {
+      console.log("onItem click changeColumnGap: " + this.columnGap);
+      if (this.columnGap === 12) {
+        this.columnGap = 8;
+      } else {
+        this.columnGap = 12;
+      }
+    },
+
+    changeColumnWidth: function changeColumnWidth() {
+      if (this.columnWidth === 'auto') {
+        this.columnWidth = 600;
+      } else {
+        this.columnWidth = 'auto';
+      }
+    },
+
+    showOrHideScrollbar: function showOrHideScrollbar() {
+      this.showScrollbar = !this.showScrollbar;
+    },
+
+    setScrollable: function setScrollable() {
+      this.scrollable = !this.scrollable;
+    },
+
+    listenAppearAndDisappear: function listenAppearAndDisappear() {
+      this.stickyHeaderType = this.stickyHeaderType === 'appear' ? 'none' : 'appear';
+    },
+
+    listenScrollEvent: function listenScrollEvent() {
+      this.stickyHeaderType = this.stickyHeaderType === 'scroll' ? 'none' : 'scroll';
+    },
+
+    setRecyclerPadding: function setRecyclerPadding() {
+      this.padding = this.padding === 0 ? 12 : 0;
+    },
+
+    removeCell: function removeCell(index) {
+      this.items.splice(index, 1);
+    },
+
+    moveCell: function moveCell(index) {
+
+      if (index == 0) {
+        this.items.splice(this.items.length - 1, 0, this.items.splice(index, 1)[0]);
+      } else {
+        this.items.splice(0, 0, this.items.splice(index, 1)[0]);
+      }
     }
   }
 };
@@ -3007,11 +3297,18 @@ exports.default = {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('waterfall', {
     staticClass: ["list"],
+    style: {
+      padding: _vm.padding
+    },
     attrs: {
       "show_scrollbar": _vm.showScrollbar,
       "columnCount": _vm.columnCount,
       "columnGap": _vm.columnGap,
-      "columnWidth": _vm.columnWidth
+      "columnWidth": _vm.columnWidth,
+      "scrollable": _vm.scrollable
+    },
+    on: {
+      "scroll": _vm.recylerScroll
     }
   }, [_c('refresh', {
     staticClass: ["refresh"],
@@ -3033,7 +3330,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }), _c('text', {
     staticClass: ["refreshText"]
   }, [_vm._v(_vm._s(_vm.refreshText))])]), (_vm.showHeader) ? _c('header', {
-    ref: _vm.header,
+    ref: "firstHeader",
     staticStyle: {
       position: "relative",
       paddingBottom: "18px"
@@ -3122,19 +3419,86 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     return _c('text', {
       staticClass: ["header2TextItemFlexWrap"]
     }, [_vm._v(_vm._s(item))])
-  }))]), _vm._l((_vm.listItems), function(item) {
+  }))]), _c('header', {
+    staticClass: ["stickyHeader"],
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
+    }
+  }, [(_vm.stickyHeaderType === 'none') ? _c('div', {
+    staticClass: ["stickyWrapper"]
+  }, [_c('text', {
+    staticClass: ["stickyText"]
+  }, [_vm._v("Sticky Header")])]) : _vm._e(), (_vm.stickyHeaderType === 'appear') ? _c('div', {
+    staticClass: ["stickyWrapper"]
+  }, [_c('div', {
+    staticClass: ["stickyTextImageWrapper"]
+  }, [_c('text', {
+    staticClass: ["stickyText"]
+  }, [_vm._v("Last Appear:")]), _c('image', {
+    staticClass: ["stickyImage"],
+    attrs: {
+      "src": _vm.appearImage
+    }
+  })]), _c('div', {
+    staticClass: ["stickyTextImageWrapper"]
+  }, [_c('text', {
+    staticClass: ["stickyText"]
+  }, [_vm._v("Last Disappear:")]), _c('image', {
+    staticClass: ["stickyImage"],
+    attrs: {
+      "src": _vm.disappearImage
+    }
+  })])]) : _vm._e(), (_vm.stickyHeaderType === 'scroll') ? _c('div', {
+    staticClass: ["stickyWrapper"]
+  }, [_c('text', {
+    staticClass: ["stickyText"]
+  }, [_vm._v("Content Offset:" + _vm._s(_vm.contentOffset))])]) : _vm._e()]), _vm._v("`\n    "), _vm._l((_vm.items), function(item, index) {
     return _c('cell', {
+      key: index,
+      ref: ("cell" + index),
+      refInFor: true,
+      staticClass: ["cell"],
       appendAsTree: true,
       attrs: {
         "append": "tree"
       }
-    }, [_c('text', {
-      staticClass: ["single-txt"],
+    }, [_c('div', {
+      staticStyle: {
+        alignItems: "center",
+        backgroundColor: "cornflowerblue"
+      },
       on: {
-        "click": _vm.onclick
+        "click": function($event) {
+          _vm.onItemClick(item.behaviour, index)
+        },
+        "appear": function($event) {
+          _vm.itemAppear(item.src)
+        },
+        "disappear": function($event) {
+          _vm.itemDisappear(item.src)
+        }
       }
-    }, [_vm._v(_vm._s("index:" + item))])])
-  })], 2)
+    }, [(item.name) ? _c('text', {
+      staticClass: ["itemName"]
+    }, [_vm._v(_vm._s(item.name))]) : _vm._e(), _c('image', {
+      staticClass: ["itemPhoto"],
+      attrs: {
+        "src": item.src
+      }
+    }), (item.desc) ? _c('text', {
+      staticClass: ["itemDesc"]
+    }, [_vm._v(_vm._s(item.desc))]) : _vm._e(), (item.behaviourName) ? _c('text', {
+      staticClass: ["itemClickBehaviour"]
+    }, [_vm._v(" " + _vm._s(item.behaviourName))]) : _vm._e()])])
+  }), _c('div', {
+    staticClass: ["fixedItem"],
+    on: {
+      "click": _vm.scrollToTop
+    }
+  }, [_c('text', {
+    staticClass: ["fixedText"]
+  }, [_vm._v("Top")])])], 2)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
