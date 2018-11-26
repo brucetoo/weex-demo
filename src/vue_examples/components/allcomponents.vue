@@ -124,14 +124,13 @@
         background-color: cornsilk;
         margin-left: 12px;
         margin-right: 12px;
-        flex-direction: row;
-        flex-wrap: wrap;
+        flex-flow: row wrap;
     }
 
     .header2TextItemFlexWrap {
         color: darkslategrey;
         border-radius: 20px;
-        width: 235px;
+        flex: 0 0 32%;
         line-height: 40px;
         font-size: 30px;
         margin-left: 6px;

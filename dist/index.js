@@ -2755,13 +2755,11 @@ module.exports = {
     "backgroundColor": "#FFF8DC",
     "marginLeft": "12",
     "marginRight": "12",
-    "flexDirection": "row",
-    "flexWrap": "wrap"
+    "flexFlow": "row wrap"
   },
   "header2TextItemFlexWrap": {
     "color": "#2F4F4F",
     "borderRadius": "20",
-    "width": "235",
     "lineHeight": "40",
     "fontSize": "30",
     "marginLeft": "6",
