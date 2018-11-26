@@ -447,7 +447,6 @@
       },
 
       onpullingdown (event) {
-        // console.log(`${event.pullingDistance}`)
         if (event.pullingDistance < -64) {
           this.refreshText = '↑   release to refresh...'
         } else {

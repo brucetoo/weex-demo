@@ -75,7 +75,7 @@
 /* global Vue */
 /* weex initialized here, please do not move this line */
 var router = __webpack_require__(1);
-var App = __webpack_require__(23);
+var App = __webpack_require__(31);
 /* eslint-disable no-new */
 new Vue(Vue.util.extend({ el: '#root', router: router }, App));
 router.push('/');
@@ -2694,21 +2694,29 @@ module.exports.render._withStripped = true
 /* 20 */,
 /* 21 */,
 /* 22 */,
-/* 23 */
+/* 23 */,
+/* 24 */,
+/* 25 */,
+/* 26 */,
+/* 27 */,
+/* 28 */,
+/* 29 */,
+/* 30 */,
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(24)
+__vue_styles__.push(__webpack_require__(32)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(25)
+__vue_exports__ = __webpack_require__(33)
 
 /* template */
-var __vue_template__ = __webpack_require__(26)
+var __vue_template__ = __webpack_require__(34)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -2720,10 +2728,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "/Users/brucetoo/WebstormProjects/weex-demo/src/vue_examples/generalEvent.vue"
+__vue_options__.__file = "/Users/brucetoo/WebstormProjects/weex-demo/src/vue_examples/components/allcomponents.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-1298ff4e"
+__vue_options__._scopeId = "data-v-c7470e0c"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -2738,61 +2746,142 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 24 */
+/* 32 */
 /***/ (function(module, exports) {
 
 module.exports = {
-  "txt": {
-    "textAlign": "center",
-    "lineHeight": "300",
-    "height": "300",
-    "fontSize": "60",
-    "color": "#FF0000",
+  "headerFlexWrap": {
+    "paddingTop": "20",
+    "backgroundColor": "#FFF8DC",
+    "marginLeft": "12",
+    "marginRight": "12",
+    "flexDirection": "row",
+    "flexWrap": "wrap"
+  },
+  "header2TextItemFlexWrap": {
+    "color": "#2F4F4F",
     "borderRadius": "20",
-    "borderColor": "#0000FF",
-    "borderStyle": "dotted",
+    "width": "235",
+    "lineHeight": "40",
+    "fontSize": "30",
+    "marginLeft": "6",
+    "textAlign": "center",
+    "marginBottom": "20",
+    "backgroundColor": "#dddddd"
+  },
+  "header2TextTitle": {
+    "color": "#8A2BE2",
+    "fontSize": "40",
+    "fontWeight": "bold",
+    "marginLeft": "12"
+  },
+  "header2TextItem": {
+    "color": "#2F4F4F",
+    "borderRadius": "20",
+    "fontSize": "30",
+    "marginLeft": "6",
+    "paddingLeft": "105",
+    "height": "40",
+    "flex": 1
+  },
+  "header2TextItemColor": {
+    "backgroundColor": "#dddddd"
+  },
+  "banner": {
+    "height": "377",
+    "flexDirection": "row",
+    "backgroundColor": "#D3D3D3"
+  },
+  "bannerInfo": {
+    "width": "270",
+    "alignItems": "center",
+    "justifyContent": "center"
+  },
+  "avatar": {
+    "width": "108",
+    "height": "108",
+    "borderRadius": "54",
     "borderWidth": "2",
-    "marginTop": "12",
-    "marginRight": "12",
-    "marginBottom": "12",
-    "marginLeft": "12",
-    "backgroundColor": "#00FFFF"
+    "borderColor": "#FFFFFF",
+    "marginBottom": "14"
   },
-  "img": {
-    "height": "300",
-    "width": "300",
-    "alignSelf": "center"
+  "name": {
+    "fontWeight": "bold",
+    "fontSize": "32",
+    "color": "#ffffff",
+    "lineHeight": "32",
+    "textAlign": "center",
+    "marginBottom": "16"
   },
-  "slider": {
-    "marginTop": "12",
-    "marginRight": "12",
-    "marginBottom": "12",
-    "marginLeft": "12",
-    "height": "300",
-    "alignSelf": "center",
-    "borderStyle": "solid",
-    "borderWidth": "3",
-    "borderColor": "#D2691E"
+  "titleWrap": {
+    "width": "100",
+    "height": "24",
+    "marginBottom": "10",
+    "backgroundColor": "rgba(255,255,255,0.8)",
+    "borderRadius": "12",
+    "justifyContent": "center",
+    "alignItems": "center"
   },
-  "slide-parent": {
-    "height": "300",
-    "width": "700"
+  "title": {
+    "fontSize": "20",
+    "color": "#000000"
+  },
+  "bannerPhotoWrap": {
+    "width": "447",
+    "height": "304",
+    "backgroundColor": "#FFFFFF",
+    "borderRadius": "12",
+    "marginTop": "35",
+    "paddingTop": "12",
+    "paddingRight": "12",
+    "paddingBottom": "12",
+    "paddingLeft": "12",
+    "flexDirection": "row",
+    "justifyContent": "space-between",
+    "flexWrap": "wrap"
+  },
+  "bannerPhoto": {
+    "width": "137",
+    "height": "137",
+    "marginBottom": "6"
+  },
+  "refresh": {
+    "width": "750",
+    "flexDirection": "row",
+    "alignItems": "center",
+    "justifyContent": "center"
+  },
+  "refreshText": {
+    "color": "#888888",
+    "fontWeight": "bold"
   },
   "indicator": {
-    "width": "100",
-    "height": "80",
-    "alignSelf": "center",
-    "itemColor": "#008000",
-    "itemSelectedColor": "#FF0000",
-    "itemSize": "20",
-    "position": "absolute",
-    "right": "20",
-    "bottom": "0"
+    "color": "#888888",
+    "height": "40",
+    "width": "40",
+    "marginRight": "30"
+  },
+  "list": {
+    "width": "750"
+  },
+  "single-txt": {
+    "height": "300",
+    "lineHeight": "300",
+    "textAlign": "center",
+    "fontSize": "50",
+    "color": "#ff27a4",
+    "border": "2px dotted blueviolet",
+    "borderRadius": "20",
+    "marginTop": "12",
+    "marginRight": "12",
+    "marginBottom": "12",
+    "marginLeft": "12",
+    "backgroundColor": "#00B4FF"
   }
 }
 
 /***/ }),
-/* 25 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2840,150 +2929,212 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-var native = weex.requireModule('WeexModule');
-var modal = weex.requireModule('modal');
-var dom = weex.requireModule('dom');
 exports.default = {
+  name: "allcomponents",
   data: function data() {
     return {
-      content: "text-1",
-      imageList: [{ title: 'item A', src: 'https://gd2.alicdn.com/bao/uploaded/i2/T14H1LFwBcXXXXXXXX_!!0-item_pic.jpg' }, { title: 'item B', src: 'https://gd1.alicdn.com/bao/uploaded/i1/TB1PXJCJFXXXXciXFXXXXXXXXXX_!!0-item_pic.jpg' }, { title: 'item C', src: 'https://gd3.alicdn.com/bao/uploaded/i3/TB1x6hYLXXXXXazXVXXXXXXXXXX_!!0-item_pic.jpg' }]
+      showScrollbar: true,
+      columnCount: 2,
+      columnGap: 12,
+      columnWidth: 'auto',
+      refreshing: false,
+      refreshViewHeight: 128,
+      refreshText: '↓   pull to refresh...',
+      showHeader: true,
+      listItems: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+      needBgColor: false,
+      banner: {
+        photos: [{ src: 'https://gw.alicdn.com/tps/TB1JyaCPFXXXXc9XXXXXXXXXXXX-140-140.jpg' }, { src: 'https://gw.alicdn.com/tps/TB1MwSFPFXXXXbdXXXXXXXXXXXX-140-140.jpg' }, { src: 'https://gw.alicdn.com/tps/TB1U8avPFXXXXaDXpXXXXXXXXXX-140-140.jpg' }, { src: 'https://gw.alicdn.com/tps/TB17Xh8PFXXXXbkaXXXXXXXXXXX-140-140.jpg' }, { src: 'https://gw.alicdn.com/tps/TB1cTmLPFXXXXXRXXXXXXXXXXXX-140-140.jpg' }, { src: 'https://gw.alicdn.com/tps/TB1oCefPFXXXXbVXVXXXXXXXXXX-140-140.jpg' }]
+      }
     };
   },
 
   methods: {
-    onloadmore: function onloadmore(e) {
-      modal.toast({
-        message: "load more trigger",
-        duration: 2
-      });
+    getRowCount: function getRowCount() {
+      return this.listItems.length % 3 === 0 ? this.listItems.length / 3 : Math.floor(this.listItems.length / 3) + 1;
     },
-    onclick: function onclick(e) {
-      this.content = "onclick-> type:" + e.type + " target:" + e.target;
-      dom.scrollToElement(this.$refs.text6, {
-        offset: -400,
-        animated: true
-      });
+    getIndexNumber: function getIndexNumber(row, index) {
+      return (row - 1) * 3 + index - 1;
     },
-    onlongpress: function onlongpress(e) {
-      this.content = 'onlongpress-> type:' + e.type;
+    onrefresh: function onrefresh(e) {
+      var _this = this;
+
+      this.refreshing = true;
+      this.refreshText = "loading...";
+      setTimeout(function () {
+        _this.refreshing = false;
+        _this.refreshText = "↓   pull to refresh...";
+      }, 2000);
     },
-    onappear: function onappear(e) {
-      if (e.target.id === 'text1') {
-        this.content = e.target.id;
-      }
-      native.logger("appear -> direction:" + e.direction);
-      // this.content = 'onappear-> type:' + e.target.id
-    },
-    ondisappear: function ondisappear(e) {
-      native.logger("disappear -> direction:" + e.direction);
-      if (e.target.id === 'text1') {
-        this.content = e.target.id;
+    onpullingdown: function onpullingdown(e) {
+      if (e.pullingDistance > this.refreshViewHeight) {
+        this.refreshText = '↑   release to refresh...';
+      } else {
+        this.refreshText = '↓   pull to refresh...';
       }
     }
   }
 };
 
 /***/ }),
-/* 26 */
+/* 34 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('scroller', {
+  return _c('waterfall', {
+    staticClass: ["list"],
     attrs: {
-      "showScrollbar": "false",
-      "loadmoreoffset": "50"
+      "show_scrollbar": _vm.showScrollbar,
+      "columnCount": _vm.columnCount,
+      "columnGap": _vm.columnGap,
+      "columnWidth": _vm.columnWidth
+    }
+  }, [_c('refresh', {
+    staticClass: ["refresh"],
+    style: {
+      height: _vm.refreshViewHeight
+    },
+    attrs: {
+      "display": _vm.refreshing ? 'show' : 'hide'
     },
     on: {
-      "loadmore": _vm.onloadmore
+      "refresh": _vm.onrefresh,
+      "pullingdown": _vm.onpullingdown
+    }
+  }, [_c('loading-indicator', {
+    staticClass: ["indicator"],
+    attrs: {
+      "color": "blue"
+    }
+  }), _c('text', {
+    staticClass: ["refreshText"]
+  }, [_vm._v(_vm._s(_vm.refreshText))])]), (_vm.showHeader) ? _c('header', {
+    ref: _vm.header,
+    staticStyle: {
+      position: "relative",
+      paddingBottom: "18px"
+    },
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
+    }
+  }, [_c('div', {
+    staticClass: ["banner"]
+  }, [_c('div', {
+    staticClass: ["bannerInfo"]
+  }, [_c('image', {
+    staticClass: ["avatar"],
+    attrs: {
+      "src": "https://gw.alicdn.com/tps/TB1EP9bPFXXXXbpXVXXXXXXXXXX-150-110.jpg",
+      "resize": "cover"
+    }
+  }), _c('text', {
+    staticClass: ["name"]
+  }, [_vm._v("Adam Cat")]), _c('div', {
+    staticClass: ["titleWrap"]
+  }, [_c('text', {
+    staticClass: ["title"]
+  }, [_vm._v("Genius")])])]), _c('div', {
+    staticClass: ["bannerPhotoWrap"]
+  }, _vm._l((_vm.banner.photos), function(photo) {
+    return _c('image', {
+      staticClass: ["bannerPhoto"],
+      attrs: {
+        "src": photo.src
+      }
+    })
+  }))])]) : _vm._e(), _c('header', {
+    staticStyle: {
+      marginBottom: "18px"
+    },
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
+    }
+  }, [_c('div', {
+    staticStyle: {
+      flexDirection: "column"
     }
   }, [_c('text', {
-    staticClass: ["txt"],
-    attrs: {
-      "id": "text1"
-    },
-    on: {
-      "click": _vm.onclick,
-      "longpress": _vm.onlongpress,
-      "appear": _vm.onappear,
-      "disappear": _vm.ondisappear
+    staticClass: ["header2TextTitle"]
+  }, [_vm._v("THIS IS TITLE")])]), _c('div', {
+    staticStyle: {
+      paddingTop: "20px",
+      backgroundColor: "cornsilk",
+      marginLeft: "12px",
+      marginRight: "12px"
     }
-  }, [_vm._v(_vm._s(_vm.content) + "\n    ")]), _c('image', {
-    staticClass: ["img"],
-    attrs: {
-      "id": "img",
-      "resize": "stretch",
-      "src": "https://gw.alicdn.com/tfs/TB1dZ4WowoQMeJjy0FnXXb8gFXa-950-1267.jpg"
-    }
-  }), _c('slider', {
-    staticClass: ["slider"],
-    attrs: {
-      "interval": "2000",
-      "autoPlay": "true"
-    },
-    on: {
-      "change": _vm.onchange
-    }
-  }, [_vm._l((_vm.imageList), function(img) {
+  }, _vm._l((_vm.getRowCount()), function(row) {
     return _c('div', {
-      staticClass: ["slide-parent"]
-    }, [_c('image', {
-      staticClass: ["img"],
-      attrs: {
-        "src": img.src,
-        "resize": "cover"
+      staticStyle: {
+        marginBottom: "20px"
       }
-    })])
-  }), _c('indicator', {
-    staticClass: ["indicator"]
-  })], 2), _c('text', {
-    staticClass: ["txt"],
-    attrs: {
-      "id": "text2"
+    }, [_c('div', {
+      staticStyle: {
+        flexDirection: "row"
+      }
+    }, _vm._l((3), function(index) {
+      return _c('text', {
+        class: ['header2TextItem', _vm.getIndexNumber(row, index) < _vm.listItems.length ? 'header2TextItemColor' : '']
+      }, [_vm._v(_vm._s(_vm.listItems[_vm.getIndexNumber(row, index)]) + "\n                    ")])
+    }))])
+  }))]), _c('header', {
+    staticStyle: {
+      marginBottom: "18px"
     },
-    on: {
-      "appear": _vm.onappear,
-      "disappear": _vm.ondisappear
-    }
-  }, [_vm._v(" " + _vm._s("text-2"))]), _c('text', {
-    staticClass: ["txt"],
+    appendAsTree: true,
     attrs: {
-      "id": "text3"
-    },
-    on: {
-      "appear": _vm.onappear,
-      "disappear": _vm.ondisappear
+      "append": "tree"
     }
-  }, [_vm._v(" " + _vm._s("text-3"))]), _c('text', {
-    staticClass: ["txt"],
-    attrs: {
-      "id": "text4"
-    },
-    on: {
-      "appear": _vm.onappear,
-      "disappear": _vm.ondisappear
+  }, [_c('div', {
+    staticStyle: {
+      flexDirection: "column"
     }
-  }, [_vm._v(" " + _vm._s("text-4"))]), _c('text', {
-    staticClass: ["txt"],
-    attrs: {
-      "id": "text5"
-    },
-    on: {
-      "appear": _vm.onappear,
-      "disappear": _vm.ondisappear
-    }
-  }, [_vm._v(" " + _vm._s("text-5"))]), _c('text', {
-    ref: "text6",
-    staticClass: ["txt"],
-    attrs: {
-      "id": "text6"
-    },
-    on: {
-      "appear": _vm.onappear,
-      "disappear": _vm.ondisappear
-    }
-  }, [_vm._v(" " + _vm._s("text-6"))])])
+  }, [_c('text', {
+    staticClass: ["header2TextTitle"]
+  }, [_vm._v("THIS IS TITLE FOR FLEX-WRAP")])]), _c('div', {
+    staticClass: ["headerFlexWrap"]
+  }, _vm._l((_vm.listItems), function(item) {
+    return _c('text', {
+      staticClass: ["header2TextItemFlexWrap"]
+    }, [_vm._v(_vm._s(item))])
+  }))]), _vm._l((_vm.listItems), function(item) {
+    return _c('cell', {
+      appendAsTree: true,
+      attrs: {
+        "append": "tree"
+      }
+    }, [_c('text', {
+      staticClass: ["single-txt"],
+      on: {
+        "click": _vm.onclick
+      }
+    }, [_vm._v(_vm._s("index:" + item))])])
+  })], 2)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 

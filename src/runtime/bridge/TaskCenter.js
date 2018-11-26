@@ -153,7 +153,7 @@ export function init () {
     addEvent: global.callAddEvent,
     removeEvent: global.callRemoveEvent
   }
-  const proto = TaskCenter.prototype
+  const proto = TaskCenter.prototype//创立共享原型对象
 
   for (const name in DOM_METHODS) {
     const method = DOM_METHODS[name]
@@ -162,10 +162,15 @@ export function init () {
       (id, args) => fallback(id, [{ module: 'dom', method: name, args }], '-1')
   }
 
+  //因为proto在此就代表TaskCenter对象，并且其中的属性和方向都是共享的，一个地方改，全部都改
+  //http://www.ruanyifeng.com/blog/2011/06/designing_ideas_of_inheritance_mechanism_in_javascript.html
+
+  //定义名叫componentHandler的属性
   proto.componentHandler = global.callNativeComponent ||
     ((id, ref, method, args, options) =>
       fallback(id, [{ component: options.component, ref, method, args }]))
 
+  //定义名叫componentHandler的属性
   proto.moduleHandler = global.callNativeModule ||
     ((id, module, method, args) =>
       fallback(id, [{ module, method, args }]))

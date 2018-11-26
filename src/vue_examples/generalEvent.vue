@@ -29,6 +29,14 @@
             </div>
             <indicator class="indicator"></indicator>
         </slider>
+
+        <!--不支持嵌套-->
+        <!--<recycle-list class="list" scrollDirection="horizontal" v-for="item in listItems">-->
+            <!--<cell-slot>-->
+                <!--<text class="recycler-txt">{{"index:" + item}}</text>-->
+            <!--</cell-slot>-->
+        <!--</recycle-list>-->
+
         <text id="text2" class='txt' @appear="onappear" @disappear="ondisappear"> {{"text-2"}}</text>
         <text id="text3" class='txt' @appear="onappear" @disappear="ondisappear"> {{"text-3"}}</text>
         <text id="text4" class='txt' @appear="onappear" @disappear="ondisappear"> {{"text-4"}}</text>
@@ -49,7 +57,8 @@
           {title: 'item A', src: 'https://gd2.alicdn.com/bao/uploaded/i2/T14H1LFwBcXXXXXXXX_!!0-item_pic.jpg'},
           {title: 'item B', src: 'https://gd1.alicdn.com/bao/uploaded/i1/TB1PXJCJFXXXXciXFXXXXXXXXXX_!!0-item_pic.jpg'},
           {title: 'item C', src: 'https://gd3.alicdn.com/bao/uploaded/i3/TB1x6hYLXXXXXazXVXXXXXXXXXX_!!0-item_pic.jpg'}
-        ]
+        ],
+        listItems:[1,2,3,4,5,6,7,8]
       };
     },
     methods: {
@@ -87,6 +96,20 @@
 </script>
 
 <style scoped>
+    .list {
+        width: 750px;
+        height: 300px;
+    }
+    .recycler-txt {
+        height: 300px;
+        width: 200px;
+        text-align: center;
+        font-size: 50px;
+        color: #ff27a4;
+        border: 2px dotted blueviolet;
+        border-radius: 20px;
+        margin-left: 10px;
+    }
     .txt {
         text-align: center;
         line-height: 300px;

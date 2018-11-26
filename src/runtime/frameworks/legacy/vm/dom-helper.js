@@ -51,6 +51,7 @@ export function createElement (vm, type) {
  * The frag block has a starter, ender and the element itself.
  *
  * @param  {object} element
+ * 创建一个内容节点
  */
 export function createBlock (vm, element) {
   const start = createBlockStart(vm)

@@ -92,13 +92,17 @@ export function build (vm) {
  * Root element info would be merged if has. The first argument may be an array
  * if the root element with options.replace has not only one child.
  *
- * @param {object|array} target
- * @param {object}       dest
- * @param {object}       meta
+ * @param vm 待编译的 Vm 对象
+ * @param {object|array} target 需要编译的节点，是模板中的标签经过 transformer 转换后的结构。
+ * @param {object}       dest 当前节点父节点的 Virtual DOM。
+ * @param {object}       meta 元数据
+ * 内部并没有渲染逻辑，他只是将不同类型的节点交给不同的函数来编译，
+ * 只是负责逻辑的分发和实现递归
  */
 function compile (vm, target, dest, meta) {
   const app = vm._app || {}
 
+  //如果native在绘制UI时发生错误，会将-1回调给此，来终止编译
   if (app.lastSignal === -1) {
     return
   }
@@ -107,17 +111,20 @@ function compile (vm, target, dest, meta) {
     vm._static = true
   }
 
+  //编译数组 -- 应该对应的是list列表，翻译后恰好是一个数组
   if (targetIsFragment(target)) {
     compileFragment(vm, target, dest, meta)
     return
   }
   meta = meta || {}
+  //创建 content 内容块
   if (targetIsContent(target)) {
     console.debug('[JS Framework] compile "content" block by', target)
     vm._content = createBlock(vm, dest)
     return
   }
 
+  //type 类型是 repeat
   if (targetNeedCheckRepeat(target, meta)) {
     console.debug('[JS Framework] compile "repeat" logic by', target)
     if (dest.type === 'document') {
@@ -128,6 +135,7 @@ function compile (vm, target, dest, meta) {
     }
     return
   }
+  //if语句
   if (targetNeedCheckShown(target, meta)) {
     console.debug('[JS Framework] compile "if" logic by', target)
     if (dest.type === 'document') {
