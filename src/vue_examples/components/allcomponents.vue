@@ -124,13 +124,17 @@
         background-color: cornsilk;
         margin-left: 12px;
         margin-right: 12px;
-        flex-flow: row wrap;
+        flex-direction: row;
+        flex-wrap: wrap;
+        /*weex 不支持flex的这中缩写方式*/
+        /*flex-flow: row wrap;*/
     }
 
     .header2TextItemFlexWrap {
         color: darkslategrey;
         border-radius: 20px;
-        flex: 0 0 32%;
+        width: 235px;
+        /*flex: 0 0 32%;*/
         line-height: 40px;
         font-size: 30px;
         margin-left: 6px;
