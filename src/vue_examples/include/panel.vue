@@ -113,8 +113,12 @@
   .panel-body {
     padding-left: 12px;
     padding-right: 12px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .panel-body-primary {
+      background-color: moccasin;
   }
 
 </style>

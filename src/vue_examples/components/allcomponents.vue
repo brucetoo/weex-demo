@@ -78,7 +78,14 @@
             <div v-if="stickyHeaderType === 'scroll'" class="stickyWrapper">
                 <text class="stickyText">Content Offset:{{contentOffset}}</text>
             </div>
-        </header>`
+        </header>
+
+        <header style="padding-top: 10px" @click="fetch">
+            <panel type="primary" title="STREAM MODULE" paddingBody="10px" paddingHead="10px">
+                <text style="color: #00B4FF; font-size: 30px">{{streamText}}</text>
+            </panel>
+        </header>
+
         <cell v-for="(item, index) in items" v-bind:key="index" :ref="`cell${index}`" class="cell">
             <div style="align-items: center; background-color: cornflowerblue"
                  @click="onItemClick(item.behaviour, index)"
@@ -98,6 +105,7 @@
 </template>
 
 <script>
+  var stream = weex.requireModule('stream');
   export default {
     name: "allcomponents",
     data() {
@@ -198,10 +206,30 @@
             {src: 'https://gw.alicdn.com/tps/TB1oCefPFXXXXbVXVXXXXXXXXXX-140-140.jpg'}
           ]
         },
-        items: repeatItems
+        items: repeatItems,
+        streamText: "Clike me to request",
       }
     },
+    //引入组件
+    components: {
+      panel: require('../include/panel.vue')
+    },
     methods: {
+      fetch(e) {
+        var self = this
+        stream.fetch({
+          method: 'GET',
+          type: 'json',
+          url: 'http://httpbin.org/get'
+        }, function (result) {
+          if(result.ok){
+            self.streamText = JSON.stringify(result.data)
+          }
+        },function (responce) {
+          self.streamText = JSON.stringify(responce.length)
+        })
+      },
+
       recylerScroll: function(e) {
         this.contentOffset = e.contentOffset.y
       },
