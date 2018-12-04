@@ -1,7 +1,8 @@
 <template>
   <scroller>
     <panel title="Countdown" type="primary">
-      <countdown
+        <!--子组件的名字不能与父vue取名一致，否则weex解析错误，导致无法控制子组件-->
+      <countdownChild
         @tick="tick($event, 'countdown1')"
         :remain="countdown1.remain"
         style="width: 750; margin-top: 20; margin-bottom: 20;">
@@ -13,16 +14,16 @@
         <text class="ctno1" style="background-color: #FFFFFF; color: #AAAAAA;">minute(s)</text>
         <text class="ctno1">{{countdown1.time.ss}}</text>
         <text class="ctno1" style="background-color: #FFFFFF; color: #AAAAAA;">second(s)</text>
-      </countdown>
+      </countdownChild>
 
-      <countdown
+      <countdownChild
         @tick="tick($event, 'countdown2')"
         :remain="countdown2.remain"
         style="width: 600;">
         <text class="ctno2">{{countdown2.time.MM}}</text>
         <text class="ctno2" style="background-color: #FFFFFF; color: #AAAAAA;">:</text>
         <text class="ctno2">{{countdown2.time.ss}}</text>
-      </countdown>
+      </countdownChild>
     </panel>
   </scroller>
 </template>
@@ -77,7 +78,7 @@
     },
     components: {
       panel: require('../include/panel.vue'),
-      countdown: require('../include/countdown.vue')
+      countdownChild: require('../include/countdown.vue')
     },
     methods: {
       tick: function (e, k) {
