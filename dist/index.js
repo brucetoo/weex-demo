@@ -2692,7 +2692,7 @@ __vue_styles__.push(__webpack_require__(8)
 __vue_exports__ = __webpack_require__(9)
 
 /* template */
-var __vue_template__ = __webpack_require__(18)
+var __vue_template__ = __webpack_require__(14)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -2704,10 +2704,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "/Users/brucetoo/WebstormProjects/weex-demo/src/vue_examples/components/countdown.vue"
+__vue_options__.__file = "/Users/brucetoo/WebstormProjects/weex-demo/src/vue_examples/components/allcomponents.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-02bca834"
+__vue_options__._scopeId = "data-v-c7470e0c"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -2726,27 +2726,211 @@ module.exports = __vue_exports__
 /***/ (function(module, exports) {
 
 module.exports = {
-  "ctno1": {
-    "borderRadius": 8,
-    "paddingTop": 6,
-    "paddingBottom": 6,
-    "paddingRight": 4,
-    "paddingLeft": 4,
-    "marginLeft": 2,
-    "marginRight": 2,
-    "backgroundColor": "rgb(242,222,222)",
-    "color": "rgb(169,68,66)"
+  "stickyHeader": {
+    "position": "sticky",
+    "height": "94",
+    "flexDirection": "row",
+    "paddingBottom": "6"
   },
-  "ctno2": {
-    "borderRadius": 8,
-    "paddingTop": 30,
-    "paddingBottom": 30,
-    "paddingLeft": 16,
-    "paddingRight": 16,
-    "backgroundColor": "rgb(217,237,247)",
-    "color": "rgb(49,112,143)",
+  "stickyWrapper": {
+    "flexDirection": "row",
+    "backgroundColor": "#00cc99",
+    "justifyContent": "center",
+    "alignItems": "center",
+    "flex": 1
+  },
+  "stickyTextImageWrapper": {
+    "flex": 1,
+    "justifyContent": "center",
+    "alignItems": "center",
+    "flexDirection": "row"
+  },
+  "stickyText": {
+    "color": "#FFFFFF",
+    "fontWeight": "bold",
+    "fontSize": "32"
+  },
+  "stickyImage": {
+    "width": "64",
+    "height": "64",
+    "borderRadius": "32"
+  },
+  "fixedItem": {
+    "position": "fixed",
+    "width": "78",
+    "height": "78",
+    "backgroundColor": "#00cc99",
+    "right": "32",
+    "bottom": "32",
+    "borderRadius": "39",
+    "justifyContent": "center",
+    "alignItems": "center"
+  },
+  "fixedText": {
+    "fontSize": "36",
+    "color": "#FFFFFF",
+    "lineHeight": "36"
+  },
+  "headerFlexWrap": {
+    "paddingTop": "20",
+    "backgroundColor": "#FFF8DC",
+    "marginLeft": "12",
+    "marginRight": "12",
+    "flexDirection": "row",
+    "flexWrap": "wrap"
+  },
+  "header2TextItemFlexWrap": {
+    "color": "#2F4F4F",
+    "borderRadius": "20",
+    "width": "235",
+    "lineHeight": "40",
+    "fontSize": "30",
+    "marginLeft": "6",
     "textAlign": "center",
-    "fontSize": 40
+    "marginBottom": "20",
+    "backgroundColor": "#dddddd"
+  },
+  "header2TextTitle": {
+    "color": "#8A2BE2",
+    "fontSize": "40",
+    "fontWeight": "bold",
+    "marginLeft": "12"
+  },
+  "header2TextItem": {
+    "color": "#2F4F4F",
+    "borderRadius": "20",
+    "fontSize": "30",
+    "marginLeft": "6",
+    "paddingLeft": "105",
+    "height": "40",
+    "flex": 1
+  },
+  "header2TextItemColor": {
+    "backgroundColor": "#dddddd"
+  },
+  "banner": {
+    "height": "377",
+    "flexDirection": "row",
+    "backgroundColor": "#D3D3D3"
+  },
+  "bannerInfo": {
+    "width": "270",
+    "alignItems": "center",
+    "justifyContent": "center"
+  },
+  "avatar": {
+    "width": "108",
+    "height": "108",
+    "borderRadius": "54",
+    "borderWidth": "2",
+    "borderColor": "#FFFFFF",
+    "marginBottom": "14"
+  },
+  "name": {
+    "fontWeight": "bold",
+    "fontSize": "32",
+    "color": "#ffffff",
+    "lineHeight": "32",
+    "textAlign": "center",
+    "marginBottom": "16"
+  },
+  "titleWrap": {
+    "width": "100",
+    "height": "24",
+    "marginBottom": "10",
+    "backgroundColor": "rgba(255,255,255,0.8)",
+    "borderRadius": "12",
+    "justifyContent": "center",
+    "alignItems": "center"
+  },
+  "title": {
+    "fontSize": "20",
+    "color": "#000000"
+  },
+  "bannerPhotoWrap": {
+    "width": "447",
+    "height": "304",
+    "backgroundColor": "#FFFFFF",
+    "borderRadius": "12",
+    "marginTop": "35",
+    "paddingTop": "12",
+    "paddingRight": "12",
+    "paddingBottom": "12",
+    "paddingLeft": "12",
+    "flexDirection": "row",
+    "justifyContent": "space-between",
+    "flexWrap": "wrap"
+  },
+  "bannerPhoto": {
+    "width": "137",
+    "height": "137",
+    "marginBottom": "6"
+  },
+  "refresh": {
+    "width": "750",
+    "flexDirection": "row",
+    "alignItems": "center",
+    "justifyContent": "center"
+  },
+  "refreshText": {
+    "color": "#888888",
+    "fontWeight": "bold"
+  },
+  "indicator": {
+    "color": "#888888",
+    "height": "40",
+    "width": "40",
+    "marginRight": "30"
+  },
+  "list": {
+    "width": "750"
+  },
+  "single-txt": {
+    "height": "300",
+    "lineHeight": "300",
+    "textAlign": "center",
+    "fontSize": "50",
+    "color": "#ff27a4",
+    "border": "2px dotted blueviolet",
+    "borderRadius": "20",
+    "marginTop": "12",
+    "marginRight": "12",
+    "marginBottom": "12",
+    "marginLeft": "12",
+    "backgroundColor": "#00B4FF"
+  },
+  "cell": {
+    "paddingTop": "6",
+    "paddingBottom": "6"
+  },
+  "itemName": {
+    "fontSize": "28",
+    "color": "#333333",
+    "lineHeight": "42",
+    "textAlign": "center",
+    "marginTop": "24"
+  },
+  "itemPhoto": {
+    "width": "220",
+    "height": "220",
+    "marginTop": "18",
+    "marginBottom": "18"
+  },
+  "itemDesc": {
+    "fontSize": "24",
+    "marginTop": "12",
+    "marginRight": "12",
+    "marginBottom": "12",
+    "marginLeft": "12",
+    "color": "#9932CC",
+    "lineHeight": "36",
+    "textAlign": "center"
+  },
+  "itemClickBehaviour": {
+    "fontSize": "36",
+    "color": "#FF7F50",
+    "textAlign": "center",
+    "marginBottom": "30"
   }
 }
 
@@ -2757,6 +2941,63 @@ module.exports = {
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2814,34 +3055,273 @@ module.exports = {
 //
 //
 
-module.exports = {
+var stream = weex.requireModule('stream');
+var animation = weex.requireModule('animation');
+exports.default = {
+  name: "allcomponents",
   data: function data() {
+    var items = [{
+      src: 'https://gw.alicdn.com/tps/TB1Jl1CPFXXXXcJXXXXXXXXXXXX-370-370.jpg',
+      name: 'Thomas Carlyle',
+      desc: 'Genius only means hard-working all one\'s life',
+      behaviourName: 'Change count',
+      behaviour: 'changeColumnCount'
+    }, {
+      src: 'https://gw.alicdn.com/tps/TB1Hv1JPFXXXXa3XXXXXXXXXXXX-370-370.jpg',
+      desc: 'The man who has made up his mind to win will never say "impossible "',
+      behaviourName: 'Change gap',
+      behaviour: 'changeColumnGap'
+    }, {
+      src: 'https://gw.alicdn.com/tps/TB1eNKuPFXXXXc_XpXXXXXXXXXX-370-370.jpg',
+      desc: 'There is no such thing as a great talent without great will - power',
+      behaviourName: 'Show scrollbar',
+      behaviour: 'showScrollbar'
+    }, {
+      src: 'https://gw.alicdn.com/tps/TB1DCh8PFXXXXX7aXXXXXXXXXXX-370-370.jpg',
+      name: 'Addison',
+      desc: 'Cease to struggle and you cease to live',
+      behaviourName: 'Change width',
+      behaviour: 'changeColumnWidth'
+    }, {
+      src: 'https://gw.alicdn.com/tps/TB1ACygPFXXXXXwXVXXXXXXXXXX-370-370.jpg',
+      desc: 'A strong man will struggle with the storms of fate',
+      behaviourName: 'Listen appear',
+      behaviour: 'listenAppear'
+    }, {
+      src: 'https://gw.alicdn.com/tps/TB1IGShPFXXXXaqXVXXXXXXXXXX-370-370.jpg',
+      name: 'Ruskin',
+      desc: 'Living without an aim is like sailing without a compass',
+      behaviourName: 'Set scrollable',
+      behaviour: 'setScrollable'
+    }, {
+      src: 'https://gw.alicdn.com/tps/TB1xU93PFXXXXXHaXXXXXXXXXXX-240-240.jpg',
+      behaviourName: 'waterfall padding',
+      behaviour: 'setPadding'
+    }, {
+      src: 'https://gw.alicdn.com/tps/TB19hu0PFXXXXaXaXXXXXXXXXXX-240-240.jpg',
+      name: 'Balzac',
+      desc: 'There is no such thing as a great talent without great will - power',
+      behaviourName: 'listen scroll',
+      behaviour: 'listenScroll'
+    }, {
+      src: 'https://gw.alicdn.com/tps/TB1ux2vPFXXXXbkXXXXXXXXXXXX-240-240.jpg',
+      behaviourName: 'Remove cell',
+      behaviour: 'removeCell'
+    }, {
+      src: 'https://gw.alicdn.com/tps/TB1tCCWPFXXXXa7aXXXXXXXXXXX-240-240.jpg',
+      behaviourName: 'Move cell',
+      behaviour: 'moveCell'
+    }];
+
+    var repeatItems = [];
+    for (var i = 0; i < 3; i++) {
+      repeatItems.push.apply(repeatItems, items);
+    }
+
     return {
-      countdown1: {
-        remain: 5000,
-        time: {
-          D: '0',
-          hh: '00',
-          mm: '00',
-          ss: '00'
-        }
+      showScrollbar: true,
+      columnCount: 2,
+      columnGap: 8,
+      padding: 0,
+      columnWidth: 'auto',
+      contentOffset: '0',
+      refreshing: false,
+      refreshViewHeight: 128,
+      refreshText: '↓   pull to refresh...',
+      showHeader: true,
+      listItems: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11],
+      needBgColor: false,
+      stickyHeaderType: 'none',
+      appearImage: null,
+      scrollable: true,
+      disappearImage: null,
+      animationHint: 'Animation',
+      startAnimate: true,
+      transformer: 'rotate(45deg) translate(10%,10%) scale(0.8,0.8)',
+      banner: {
+        photos: [{ src: 'https://gw.alicdn.com/tps/TB1JyaCPFXXXXc9XXXXXXXXXXXX-140-140.jpg' }, { src: 'https://gw.alicdn.com/tps/TB1MwSFPFXXXXbdXXXXXXXXXXXX-140-140.jpg' }, { src: 'https://gw.alicdn.com/tps/TB1U8avPFXXXXaDXpXXXXXXXXXX-140-140.jpg' }, { src: 'https://gw.alicdn.com/tps/TB17Xh8PFXXXXbkaXXXXXXXXXXX-140-140.jpg' }, { src: 'https://gw.alicdn.com/tps/TB1cTmLPFXXXXXRXXXXXXXXXXXX-140-140.jpg' }, { src: 'https://gw.alicdn.com/tps/TB1oCefPFXXXXbVXVXXXXXXXXXX-140-140.jpg' }]
       },
-      countdown2: {
-        remain: 5000,
-        time: {
-          MM: '0',
-          ss: '0'
-        }
-      }
+      items: repeatItems,
+      streamText: "Clike me to request"
     };
   },
+
+  //引入组件
   components: {
-    panel: __webpack_require__(10),
-    countdownChild: __webpack_require__(14)
+    panel: __webpack_require__(10)
   },
   methods: {
-    tick: function tick(e, k) {
-      this[k].time = JSON.parse(JSON.stringify(e));
+    animate: function animate(e) {
+      var self = this;
+      animation.transition(this.$refs.animate_header, {
+        styles: {
+          transform: self.transformer,
+          transformOrigin: 'left bottom',
+          // width: '200px',
+          // height: '200px',
+          backgroundColor: 'rgb(217, 83, 79)',
+          opacity: self.startAnimate ? 0.5 : 1
+        },
+        duration: 2000,
+        timingFunction: 'ease-in',
+        delay: 0
+      }, function () {
+        self.startAnimate = !self.startAnimate;
+        if (self.startAnimate) {
+          self.animationHint = 'StartAnimation', self.transformer = 'rotate(45deg) translate(10%,10%) scale(0.8,0.8)';
+        } else {
+          self.animationHint = 'EndAnimation';
+          self.transformer = 'rotate(0deg) translate(0%,0%) scale(1,1)';
+        }
+      });
+    },
+    fetch: function fetch(e) {
+      var self = this;
+      stream.fetch({
+        method: 'GET',
+        type: 'json',
+        url: 'http://httpbin.org/get'
+      }, function (result) {
+        if (result.ok) {
+          self.streamText = JSON.stringify(result.data);
+        }
+      }, function (responce) {
+        self.streamText = JSON.stringify(responce.length);
+      });
+    },
+
+
+    recylerScroll: function recylerScroll(e) {
+      this.contentOffset = e.contentOffset.y;
+    },
+    getRowCount: function getRowCount() {
+      return this.listItems.length % 3 === 0 ? this.listItems.length / 3 : Math.floor(this.listItems.length / 3) + 1;
+    },
+    getIndexNumber: function getIndexNumber(row, index) {
+      return (row - 1) * 3 + index - 1;
+    },
+    onrefresh: function onrefresh(e) {
+      var _this = this;
+
+      this.refreshing = true;
+      this.refreshText = "loading...";
+      setTimeout(function () {
+        _this.refreshing = false;
+        _this.refreshText = "↓   pull to refresh...";
+      }, 2000);
+    },
+    onpullingdown: function onpullingdown(e) {
+      if (e.pullingDistance > this.refreshViewHeight) {
+        this.refreshText = '↑   release to refresh...';
+      } else {
+        this.refreshText = '↓   pull to refresh...';
+      }
+    },
+    scrollToTop: function scrollToTop(e) {
+      weex.requireModule('dom').scrollToElement(this.$refs.firstHeader);
+    },
+
+
+    onItemClick: function onItemClick(behaviour, index) {
+      console.log('click...' + behaviour + ' at index ' + index);
+      switch (behaviour) {
+        case 'changeColumnCount':
+          this.changeColumnCount();
+          break;
+        case 'changeColumnGap':
+          this.changeColumnGap();
+          break;
+        case 'changeColumnWidth':
+          this.changeColumnWidth();
+          break;
+        case 'showScrollbar':
+          this.showOrHideScrollbar();
+          break;
+        case 'listenAppear':
+          this.listenAppearAndDisappear();
+          break;
+        case 'setScrollable':
+          this.setScrollable();
+          break;
+        case 'setPadding':
+          this.setRecyclerPadding();
+          break;
+        case 'listenScroll':
+          this.listenScrollEvent();
+          break;
+        case 'removeCell':
+          this.removeCell(index);
+          break;
+        case 'moveCell':
+          this.moveCell(index);
+          break;
+      }
+    },
+    itemAppear: function itemAppear(src) {
+      this.appearImage = src;
+    },
+
+    itemDisappear: function itemDisappear(src) {
+      this.disappearImage = src;
+    },
+
+    changeColumnCount: function changeColumnCount() {
+      console.log("onItem click changeColumnCount: " + this.columnCount);
+      if (this.columnCount === 2) {
+        this.columnCount = 3;
+      } else {
+        this.columnCount = 2;
+      }
+    },
+
+    changeColumnGap: function changeColumnGap() {
+      console.log("onItem click changeColumnGap: " + this.columnGap);
+      if (this.columnGap === 12) {
+        this.columnGap = 8;
+      } else {
+        this.columnGap = 12;
+      }
+    },
+
+    changeColumnWidth: function changeColumnWidth() {
+      if (this.columnWidth === 'auto') {
+        this.columnWidth = 600;
+      } else {
+        this.columnWidth = 'auto';
+      }
+    },
+
+    showOrHideScrollbar: function showOrHideScrollbar() {
+      this.showScrollbar = !this.showScrollbar;
+    },
+
+    setScrollable: function setScrollable() {
+      this.scrollable = !this.scrollable;
+    },
+
+    listenAppearAndDisappear: function listenAppearAndDisappear() {
+      this.stickyHeaderType = this.stickyHeaderType === 'appear' ? 'none' : 'appear';
+    },
+
+    listenScrollEvent: function listenScrollEvent() {
+      this.stickyHeaderType = this.stickyHeaderType === 'scroll' ? 'none' : 'scroll';
+    },
+
+    setRecyclerPadding: function setRecyclerPadding() {
+      this.padding = this.padding === 0 ? 12 : 0;
+    },
+
+    removeCell: function removeCell(index) {
+      this.items.splice(index, 1);
+    },
+
+    moveCell: function moveCell(index) {
+
+      if (index == 0) {
+        this.items.splice(this.items.length - 1, 0, this.items.splice(index, 1)[0]);
+      } else {
+        this.items.splice(0, 0, this.items.splice(index, 1)[0]);
+      }
     }
   }
 };
@@ -3031,255 +3511,255 @@ module.exports.render._withStripped = true
 
 /***/ }),
 /* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(15)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(16)
-
-/* template */
-var __vue_template__ = __webpack_require__(17)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "/Users/brucetoo/WebstormProjects/weex-demo/src/vue_examples/include/countdown.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-0b90d67e"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports) {
-
-module.exports = {
-  "wrap": {
-    "overflow": "hidden"
-  }
-}
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-function format(str) {
-  if (str.length >= 2) {
-    return str;
-  } else {
-    return '0' + str;
-  }
-}
-
-function getTime(target, now) {
-  var remain = parseInt((target - now) / 1000);
-  var D = String(parseInt(remain / 86400));
-  var DD = format(D);
-  var h = String(parseInt((remain - parseInt(D) * 86400) / 3600));
-  var hh = format(h);
-  var H = String(parseInt(remain / 3600));
-  var HH = format(H);
-  var m = String(parseInt((remain - parseInt(H) * 3600) / 60));
-  var mm = format(m);
-  var M = String(parseInt(remain / 60));
-  var MM = format(M);
-  var s = String(remain - parseInt(M) * 60);
-  var ss = format(s);
-  var S = String(remain);
-  var SS = format(S);
-  return {
-    D: D, DD: DD,
-    h: h, hh: hh,
-    H: H, HH: HH,
-    m: m, mm: mm,
-    M: M, MM: MM,
-    s: s, ss: ss,
-    S: S, SS: SS
-  };
-}
-
-module.exports = {
-  props: {
-    remain: {
-      default: 0
-    }
-  },
-  data: function data() {
-    return {
-      now: 0,
-      target: 0,
-      outofview: false
-    };
-  },
-  created: function created() {
-    this.now = Date.now();
-    this.target = this.now + this.remain * 1000;
-    if (this.remain > 0) {
-      this.run();
-    }
-  },
-  methods: {
-    run: function run() {
-      if (!this.outofview) {
-        this.now = Date.now();
-      }
-      var time = getTime(this.target, this.now);
-      if (this.target >= this.now) {
-        this.$emit('tick', time);
-      } else {
-        this.$emit('alarm', time);
-        return;
-      }
-      setTimeout(this.run.bind(this), 1000);
-    },
-    appeared: function appeared() {
-      this.outofview = false;
-    },
-    disappeared: function disappeared() {
-      this.outofview = true;
-    }
-  }
-};
-
-/***/ }),
-/* 17 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticStyle: {
-      overflow: "hidden",
-      flexDirection: "row"
-    },
-    on: {
-      "appear": _vm.appeared,
-      "disappear": _vm.disappeared
-    }
-  }, [_vm._t("default")], 2)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('scroller', [_c('panel', {
-    attrs: {
-      "title": "Countdown",
-      "type": "primary"
-    }
-  }, [_c('countdownChild', {
-    staticStyle: {
-      width: "750",
-      marginTop: "20",
-      marginBottom: "20"
+  return _c('waterfall', {
+    staticClass: ["list"],
+    style: {
+      padding: _vm.padding
     },
     attrs: {
-      "remain": _vm.countdown1.remain
+      "show_scrollbar": _vm.showScrollbar,
+      "columnCount": _vm.columnCount,
+      "columnGap": _vm.columnGap,
+      "columnWidth": _vm.columnWidth,
+      "scrollable": _vm.scrollable
     },
     on: {
-      "tick": function($event) {
-        _vm.tick($event, 'countdown1')
+      "scroll": _vm.recylerScroll
+    }
+  }, [_c('refresh', {
+    staticClass: ["refresh"],
+    style: {
+      height: _vm.refreshViewHeight
+    },
+    attrs: {
+      "display": _vm.refreshing ? 'show' : 'hide'
+    },
+    on: {
+      "refresh": _vm.onrefresh,
+      "pullingdown": _vm.onpullingdown
+    }
+  }, [_c('loading-indicator', {
+    staticClass: ["indicator"],
+    attrs: {
+      "color": "blue"
+    }
+  }), _c('text', {
+    staticClass: ["refreshText"]
+  }, [_vm._v(_vm._s(_vm.refreshText))])]), (_vm.showHeader) ? _c('header', {
+    ref: "firstHeader",
+    staticStyle: {
+      position: "relative",
+      paddingBottom: "18px"
+    },
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
+    }
+  }, [_c('div', {
+    staticClass: ["banner"]
+  }, [_c('div', {
+    staticClass: ["bannerInfo"]
+  }, [_c('image', {
+    staticClass: ["avatar"],
+    attrs: {
+      "src": "https://gw.alicdn.com/tps/TB1EP9bPFXXXXbpXVXXXXXXXXXX-150-110.jpg",
+      "resize": "cover"
+    }
+  }), _c('text', {
+    staticClass: ["name"]
+  }, [_vm._v("Adam Cat")]), _c('div', {
+    staticClass: ["titleWrap"]
+  }, [_c('text', {
+    staticClass: ["title"]
+  }, [_vm._v("Genius")])])]), _c('div', {
+    staticClass: ["bannerPhotoWrap"]
+  }, _vm._l((_vm.banner.photos), function(photo) {
+    return _c('image', {
+      staticClass: ["bannerPhoto"],
+      attrs: {
+        "src": photo.src
       }
+    })
+  }))])]) : _vm._e(), _c('header', {
+    staticStyle: {
+      marginBottom: "18px"
+    },
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
+    }
+  }, [_c('div', {
+    staticStyle: {
+      flexDirection: "column"
     }
   }, [_c('text', {
-    staticClass: ["ctno1"]
-  }, [_vm._v(_vm._s(_vm.countdown1.time.D))]), _c('text', {
-    staticClass: ["ctno1"],
+    staticClass: ["header2TextTitle"]
+  }, [_vm._v("THIS IS TITLE")])]), _c('div', {
     staticStyle: {
-      backgroundColor: "#FFFFFF",
-      color: "#AAAAAA"
+      paddingTop: "20px",
+      backgroundColor: "cornsilk",
+      marginLeft: "12px",
+      marginRight: "12px"
     }
-  }, [_vm._v("day(s)")]), _c('text', {
-    staticClass: ["ctno1"]
-  }, [_vm._v(_vm._s(_vm.countdown1.time.hh))]), _c('text', {
-    staticClass: ["ctno1"],
-    staticStyle: {
-      backgroundColor: "#FFFFFF",
-      color: "#AAAAAA"
-    }
-  }, [_vm._v("hour(s)")]), _c('text', {
-    staticClass: ["ctno1"]
-  }, [_vm._v(_vm._s(_vm.countdown1.time.mm))]), _c('text', {
-    staticClass: ["ctno1"],
-    staticStyle: {
-      backgroundColor: "#FFFFFF",
-      color: "#AAAAAA"
-    }
-  }, [_vm._v("minute(s)")]), _c('text', {
-    staticClass: ["ctno1"]
-  }, [_vm._v(_vm._s(_vm.countdown1.time.ss))]), _c('text', {
-    staticClass: ["ctno1"],
-    staticStyle: {
-      backgroundColor: "#FFFFFF",
-      color: "#AAAAAA"
-    }
-  }, [_vm._v("second(s)")])]), _c('countdownChild', {
-    staticStyle: {
-      width: "600"
-    },
-    attrs: {
-      "remain": _vm.countdown2.remain
-    },
-    on: {
-      "tick": function($event) {
-        _vm.tick($event, 'countdown2')
+  }, _vm._l((_vm.getRowCount()), function(row) {
+    return _c('div', {
+      staticStyle: {
+        marginBottom: "20px"
       }
+    }, [_c('div', {
+      staticStyle: {
+        flexDirection: "row"
+      }
+    }, _vm._l((3), function(index) {
+      return _c('text', {
+        class: ['header2TextItem', _vm.getIndexNumber(row, index) < _vm.listItems.length ? 'header2TextItemColor' : '']
+      }, [_vm._v(_vm._s(_vm.listItems[_vm.getIndexNumber(row, index)]) + "\n                    ")])
+    }))])
+  }))]), _c('header', {
+    staticStyle: {
+      marginBottom: "18px"
+    },
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
+    }
+  }, [_c('div', {
+    staticStyle: {
+      flexDirection: "column"
     }
   }, [_c('text', {
-    staticClass: ["ctno2"]
-  }, [_vm._v(_vm._s(_vm.countdown2.time.MM))]), _c('text', {
-    staticClass: ["ctno2"],
-    staticStyle: {
-      backgroundColor: "#FFFFFF",
-      color: "#AAAAAA"
+    staticClass: ["header2TextTitle"]
+  }, [_vm._v("THIS IS TITLE FOR FLEX-WRAP")])]), _c('div', {
+    staticClass: ["headerFlexWrap"]
+  }, _vm._l((_vm.listItems), function(item) {
+    return _c('text', {
+      staticClass: ["header2TextItemFlexWrap"]
+    }, [_vm._v(_vm._s(item))])
+  }))]), _c('header', {
+    staticClass: ["stickyHeader"],
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
     }
-  }, [_vm._v(":")]), _c('text', {
-    staticClass: ["ctno2"]
-  }, [_vm._v(_vm._s(_vm.countdown2.time.ss))])])], 1)], 1)
+  }, [(_vm.stickyHeaderType === 'none') ? _c('div', {
+    staticClass: ["stickyWrapper"]
+  }, [_c('text', {
+    staticClass: ["stickyText"]
+  }, [_vm._v("Sticky Header")])]) : _vm._e(), (_vm.stickyHeaderType === 'appear') ? _c('div', {
+    staticClass: ["stickyWrapper"]
+  }, [_c('div', {
+    staticClass: ["stickyTextImageWrapper"]
+  }, [_c('text', {
+    staticClass: ["stickyText"]
+  }, [_vm._v("Last Appear:")]), _c('image', {
+    staticClass: ["stickyImage"],
+    attrs: {
+      "src": _vm.appearImage
+    }
+  })]), _c('div', {
+    staticClass: ["stickyTextImageWrapper"]
+  }, [_c('text', {
+    staticClass: ["stickyText"]
+  }, [_vm._v("Last Disappear:")]), _c('image', {
+    staticClass: ["stickyImage"],
+    attrs: {
+      "src": _vm.disappearImage
+    }
+  })])]) : _vm._e(), (_vm.stickyHeaderType === 'scroll') ? _c('div', {
+    staticClass: ["stickyWrapper"]
+  }, [_c('text', {
+    staticClass: ["stickyText"]
+  }, [_vm._v("Content Offset:" + _vm._s(_vm.contentOffset))])]) : _vm._e()]), _c('header', {
+    staticStyle: {
+      paddingTop: "10px"
+    },
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
+    },
+    on: {
+      "click": _vm.fetch
+    }
+  }, [_c('panel', {
+    attrs: {
+      "type": "primary",
+      "title": "STREAM MODULE",
+      "paddingBody": "10px",
+      "paddingHead": "10px"
+    }
+  }, [_c('text', {
+    staticStyle: {
+      color: "#00B4FF",
+      fontSize: "30px"
+    }
+  }, [_vm._v(_vm._s(_vm.streamText))])])], 1), _c('header', {
+    ref: "animate_header",
+    staticStyle: {
+      marginBottom: "10px"
+    },
+    appendAsTree: true,
+    attrs: {
+      "append": "tree"
+    },
+    on: {
+      "click": _vm.animate
+    }
+  }, [_c('panel', {
+    attrs: {
+      "type": "primary",
+      "title": _vm.animationHint,
+      "paddingBody": "10px",
+      "paddingHead": "10px"
+    }
+  })], 1), _vm._l((_vm.items), function(item, index) {
+    return _c('cell', {
+      key: index,
+      ref: ("cell" + index),
+      refInFor: true,
+      staticClass: ["cell"],
+      appendAsTree: true,
+      attrs: {
+        "append": "tree"
+      }
+    }, [_c('div', {
+      staticStyle: {
+        alignItems: "center",
+        backgroundColor: "cornflowerblue"
+      },
+      on: {
+        "click": function($event) {
+          _vm.onItemClick(item.behaviour, index)
+        },
+        "appear": function($event) {
+          _vm.itemAppear(item.src)
+        },
+        "disappear": function($event) {
+          _vm.itemDisappear(item.src)
+        }
+      }
+    }, [(item.name) ? _c('text', {
+      staticClass: ["itemName"]
+    }, [_vm._v(_vm._s(item.name))]) : _vm._e(), _c('image', {
+      staticClass: ["itemPhoto"],
+      attrs: {
+        "src": item.src
+      }
+    }), (item.desc) ? _c('text', {
+      staticClass: ["itemDesc"]
+    }, [_vm._v(_vm._s(item.desc))]) : _vm._e(), (item.behaviourName) ? _c('text', {
+      staticClass: ["itemClickBehaviour"]
+    }, [_vm._v(" " + _vm._s(item.behaviourName))]) : _vm._e()])])
+  }), _c('div', {
+    staticClass: ["fixedItem"],
+    on: {
+      "click": _vm.scrollToTop
+    }
+  }, [_c('text', {
+    staticClass: ["fixedText"]
+  }, [_vm._v("Top")])])], 2)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 

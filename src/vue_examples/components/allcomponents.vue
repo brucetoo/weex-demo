@@ -86,6 +86,10 @@
             </panel>
         </header>
 
+        <header ref="animate_header" style="margin-bottom: 10px" @click="animate">
+            <panel type="primary" :title="animationHint" paddingBody="10px" paddingHead="10px"></panel>
+        </header>
+
         <cell v-for="(item, index) in items" v-bind:key="index" :ref="`cell${index}`" class="cell">
             <div style="align-items: center; background-color: cornflowerblue"
                  @click="onItemClick(item.behaviour, index)"
@@ -106,10 +110,10 @@
 
 <script>
   var stream = weex.requireModule('stream');
+  var animation = weex.requireModule('animation');
   export default {
     name: "allcomponents",
     data() {
-
       const items = [
         {
           src:'https://gw.alicdn.com/tps/TB1Jl1CPFXXXXcJXXXXXXXXXXXX-370-370.jpg',
@@ -196,6 +200,9 @@
         appearImage: null,
         scrollable: true,
         disappearImage: null,
+        animationHint: 'Animation',
+        startAnimate: true,
+        transformer: 'rotate(45deg) translate(10%,10%) scale(0.8,0.8)',
         banner: {
           photos: [
             {src: 'https://gw.alicdn.com/tps/TB1JyaCPFXXXXc9XXXXXXXXXXXX-140-140.jpg'},
@@ -215,6 +222,31 @@
       panel: require('../include/panel.vue')
     },
     methods: {
+      animate(e) {
+        var self = this
+        animation.transition(this.$refs.animate_header,{
+          styles: {
+            transform: self.transformer,
+            transformOrigin: 'left bottom',
+            // width: '200px',
+            // height: '200px',
+            backgroundColor: 'rgb(217, 83, 79)',
+            opacity: self.startAnimate ? 0.5 : 1
+          },
+          duration: 2000,
+          timingFunction: 'ease-in',
+          delay: 0
+        },function () {
+          self.startAnimate = !self.startAnimate;
+          if(self.startAnimate){
+            self.animationHint = 'StartAnimation',
+            self.transformer = 'rotate(45deg) translate(10%,10%) scale(0.8,0.8)'
+          }else {
+            self.animationHint = 'EndAnimation'
+            self.transformer = 'rotate(0deg) translate(0%,0%) scale(1,1)'
+          }
+        })
+      },
       fetch(e) {
         var self = this
         stream.fetch({
