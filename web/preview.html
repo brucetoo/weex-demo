@@ -38,7 +38,7 @@
     (function(){
       const page = getUrlParam('page');
       const entrys = getUrlParam('entrys');
-      function getUrlParam (key) {
+      function getUrlParam (key) {//location.search = 匹配url地址中的请求参数 "?id=1&name=2"
         var reg = new RegExp('[?|&]' + key + '=([^&]+)')
         var match = location.search.match(reg)
         return match && match[1]

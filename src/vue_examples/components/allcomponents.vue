@@ -113,7 +113,7 @@
   var animation = weex.requireModule('animation');
   export default {
     name: "allcomponents",
-    data() {
+    data: function() {
       const items = [
         {
           src:'https://gw.alicdn.com/tps/TB1Jl1CPFXXXXcJXXXXXXXXXXXX-370-370.jpg',

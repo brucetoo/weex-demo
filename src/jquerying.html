@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery整理</title>
+    <script src="../lib/jquery-1.11.3.js"></script>
+</head>
+<body>
+<input type="button" value="按钮" id="btn">
+<script>
+    $(function () {
+      //页面加载完成后的回调
+      var $btn = $('#btn'); //通过id选择器,返回jquery包装对象
+      var btn = $btn[0]; //jquery对象转成dom对象
+      var $btn1 = $(btn) //dom对象转换成jquery对象
+    });
+
+    $(function () {
+      // 点击了当前行， 那么让当前行 背景高亮，让其他的兄弟节点背景不高亮。
+      // 选择到了所有的tr
+      $('tr').click(function (e) {// 隐式迭代
+        // jQuery的事件处理程序中。 this依然指向 绑定事件dom对象。
+        $(this).css('backgroundColor', '#c1c');
+        // 拿到多个兄弟节点，隐式迭代全部设置背景为白色。
+        $(this).siblings().css('backgroundColor','#fff');
+      })
+
+    })
+</script>
+</body>
+</html>

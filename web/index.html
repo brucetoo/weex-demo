@@ -9,6 +9,7 @@
   <meta name="apple-touch-fullscreen" content="yes">
   <meta name="format-detection" content="telephone=no, email=no">
   <!-- <style>body > div { height: 100%; }</style> -->
+    <!--<script src="https://unpkg.com/vue/dist/vue.js"></script>-->
   <style>
     html, body {
       -ms-overflow-style: scrollbar;
@@ -29,6 +30,30 @@
 </head>
 <body>
   <div id="root"></div>
+<script>
+    //全局扩展方法 -- Vue实例做一些扩展的动作 -- 创建构造器
+    var Profile = Vue.extend({
+      //对象的模板,所有子实例都拥有此模板
+      template: '<p> {{firstName}} {{lastName} aka {{alias}} </p>',
+      data: function () {
+        return{
+          firstName: 'Walter',
+          lastName: 'White',
+          alias: 'Heisenberg'
+        }
+      }
+    });
+    //将profile挂载到root元素中
+    var app = new Profile({
+      el: '#root'
+    });
+    //和上面的结果一致，手动挂载，传入css选择器
+    new Profile().$mount('#root');
+
+
+    /*组件扩展~~*/
+
+</script>
 </body>
 <%= htmlWebpackPlugin.options.devScripts %>
 </html>

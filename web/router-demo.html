@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue-Router综合案例</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <style>
+        ul, li { list-style: none; }
+        ul { overflow: hidden; }
+        li { float: left; width: 100px; }
+    </style>
+</head>
+<body>
+<div id="app">
+    <top-bar></top-bar>
+    <hr>
+    <p>Email to: {{email}} </p>
+    <hr>
+    <h2>Below is Router View PlaceHolder</h2>
+    <router-view></router-view>
+    <foot-bar></foot-bar>
+</div>
+<script>
+  var topBar = `
+    <nav>
+     <ul>
+       <li v-for="item in NaviList">
+          <router-link :to="item.url">{{item.name}}</router-link>
+       </li>
+     </ul>
+    </nav>
+    `;
+   Vue.component('top-bar', {
+    template: topBar,
+    //组件中的data必须是函数，且必须有返回值
+    data: function () {
+      //必须有return函数返回
+      return {
+        NaviList: [
+          //  第二个/about表示传递的参数，在此只是用于实验
+          {name: '首页', url: '/home/home'},
+          {name: '产品', url: '/product/product'},
+          {name: '服务', url: '/service/service'},
+          {name: '关于', url: '/about/about'}
+        ]
+      }
+    }
+  });
+
+  Vue.component('foot-bar',{
+    template: ' <footer>\n' +
+    '          <hr/>\n' +
+    '          <div @click="jumpToHome"><p>版权所有@brucetoo(Click Me to Navigate to Home)<p>\n </div>' +
+    '        </footer>',
+    methods: {
+      jumpToHome: function (e) {
+        //js路由的方式
+        // this.$router.push('home')
+
+        //路由的命名,参数传递
+        // this.$router.push({
+        //   path:'home',
+        //   params: {name: '这是传递的参数'}
+        // })
+      }
+    }
+  });
+
+  const home = {
+    template:'<div> This is {{$route.params.name}} Tab PlaceHolder -- HOME</div>',
+    data: function () {
+      return {
+        name: 'Home'
+      }
+    }
+  };
+
+  const product = {
+    template:'<div> This is {{$route.params.name}} Tab PlaceHolder-- PRODUCT</div>',
+    data: function () {
+      return {
+        name: 'Product'
+      }
+    }
+  };
+
+  const service = {
+    template:'<div> This is {{$route.params.name}} Tab PlaceHolder -- SERVICE</div>',
+    data: function () {
+      return {
+        name: 'Service'
+      }
+    }
+  };
+
+  const about = {
+    template:'<div> This is {{$route.params.name}} Tab PlaceHolder -- ABOUT</div>',
+    data: function () {
+      return {
+        name: 'About'
+      }
+    }
+  };
+
+  var router = new VueRouter({
+    routes: [
+      //  定义路由的参数规则 name参数 可以通过 $route.params.name来获取
+      {path: '/home/:name',component:home},
+      {path: '/product/:name',component:product},
+      {path: '/service/:name',component:service},
+      {path: '/about/:name',component:about},
+    ]
+  });
+
+  new Vue({
+    el: '#app',
+    router: router,
+    data: {//非组件中data使用可以不是function
+      email: 'brucetoo14@gmail.com'
+    }
+  });
+</script>
+</body>
+</html>

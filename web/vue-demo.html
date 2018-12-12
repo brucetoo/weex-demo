@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Demo</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--<radio-tag rid="rBas" txt="篮球" val="1"/>-->
+
+    <!--自定义属性可以使用绑定语法，也可以直接如上当标签使用-->
+    <!--<radio-tag :rid="demoId" :txt="demoText" :val="demoVal"/>-->
+
+    <h1>Hello Vue-Router</h1>
+
+    <p>
+        <!--router-link会默认转换成a标签-->
+        <router-link to="/foo">Go to Foo</router-link>
+        <router-link to="/bar">Go to Bar</router-link>
+    </p>
+    <!--路由出口,组件会全部渲染到此-->
+    <router-view></router-view>
+</div>
+<script>
+  //router使用
+  //1.定义路由组件，可以从其他地方import进来
+  const foo = {template: '<div>Foo</div>'};
+  const bar = {template: '<div>Bar</div>'};
+  //2.定义路由
+  const routers = [
+    {path: '/foo', component: foo},
+    {path: '/bar', component: bar}
+  ];
+  //3.创建router实例，传入routes实例
+  const router = new VueRouter({
+    routes: routers
+  });
+  //4.挂载实例
+  new Vue({
+    el: '#app',
+    router: router
+  });
+
+  //全局扩展方法 -- Vue实例做一些扩展的动作 -- 创建构造器
+  var Profile = Vue.extend({
+    //对象的模板,所有子实例都拥有此模板
+    template: '<div>{{ name }} - {{ age }} - {{ mail }}</div>',
+    data: function () {
+      return {
+        name: 'brucetoo',
+        age: '25',
+        mail: 'brucetoo14@gmail.com'
+      };
+    }
+  });
+  //将profile挂载到root元素中
+  //   var app = new Profile({
+  //     el: '#app'
+  //   });
+
+  //和上面的结果一致，手动挂载，传入css选择器
+  // new Profile().$mount('#root');
+
+
+  var temp =//组件模板必须要有一个根元素
+      '<div>' +
+      '<label v-bind:for="rid">{{ txt }}</label>' +
+      '<input :id="rid" type="checkbox" v-bind:value="val">' +
+      '</div>';
+  //组件的名字不能有大写字母
+  Vue.component('radio-tag', Vue.extend({
+    template: temp,
+    props: ['rid', 'txt', 'val'],//属性名都得是小写
+    data() {
+      return {
+        age: 19,
+        email: 'brucetoo14@gmail.com'
+      }
+    }
+  }));
+  // var app = new Vue({
+  //   el: '#app',
+  //   data: {
+  //     demoId: 'ft',
+  //     demoText: '足球',
+  //     demoVal: 2
+  //   }
+  // });
+
+  //注册全局组件
+  var child = {
+    template: '<div>A custom component</div>'
+  };
+  new Vue({
+    components: {
+      'my-component': child
+    }
+  });
+
+
+</script>
+</body>
+</html>
