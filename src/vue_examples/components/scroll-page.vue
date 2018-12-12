@@ -39,7 +39,9 @@
     data: function () {
       return {
         indicatorStyle: {
-          transform: ''
+          transform: '',
+          width: 150,
+          height: 10
         },
         tabs: [
           {title: '首页', icon: 'https://gw.alicdn.com/tfs/TB19YESOVXXXXaNaXXXXXXXXXXX-45-45.png'},
@@ -61,11 +63,15 @@
       onScroll: function (e) {
         offset = e.offsetXRatio;
         var translateX = 150 * currentIndex - offset * 150;
-        console.log(`onScroll ${translateX}`);
+        console.log(`onScroll ${offset} ${translateX}`);
         this.indicatorStyle.transform = "translateX(" + translateX +"px)";
+        // this.indicatorStyle.height = Math.max((Math.abs(offset) - 1),0.3) * 10;
+        this.indicatorStyle.width = (Math.abs(offset) + 1) * 150
       },
       onChange: function (e) {
         currentIndex = e.index;
+        this.indicatorStyle.height = 10;
+        this.indicatorStyle.width = 150;
         console.log("onChange " + currentIndex);
       }
     }
@@ -105,15 +111,16 @@
     }
 
     .indicator-parent {
-        width:750px;
+        width:150px;
         height: 10px;
-        transition-property: transform;
+        transition-property: transform,width,height;
         position: absolute;
         left: 0;
         bottom: 0;
+        align-content: left;
     }
     .indicator {
-        width: 150px;
+        width: auto;
         height: 10px;
         background-color: cornflowerblue;
         border-radius: 2px;

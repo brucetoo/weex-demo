@@ -2905,20 +2905,20 @@ module.exports = {
     "marginTop": "10"
   },
   "indicator-parent": {
-    "width": "750",
+    "width": "150",
     "height": "10",
-    "transitionProperty": "transform",
+    "transitionProperty": "transform,width,height",
     "position": "absolute",
     "left": 0,
-    "bottom": 0
+    "bottom": 0,
+    "alignContent": "left"
   },
   "@TRANSITION": {
     "indicator-parent": {
-      "property": "transform"
+      "property": "transform,width,height"
     }
   },
   "indicator": {
-    "width": "150",
     "height": "10",
     "backgroundColor": "#6495ED",
     "borderRadius": "2"
@@ -2987,7 +2987,9 @@ exports.default = {
   data: function data() {
     return {
       indicatorStyle: {
-        transform: ''
+        transform: '',
+        width: 150,
+        height: 10
       },
       tabs: [{ title: '首页', icon: 'https://gw.alicdn.com/tfs/TB19YESOVXXXXaNaXXXXXXXXXXX-45-45.png' }, { title: '耍帅', icon: 'https://gw.alicdn.com/tfs/TB1I2E9OVXXXXbFXVXXXXXXXXXX-45-45.png' }, { title: '旅行', icon: 'https://gw.alicdn.com/tfs/TB1gUhyPXXXXXX5XXXXXXXXXXXX-45-45.png' }, { title: '潮玩', icon: 'https://img.alicdn.com/tfs/TB1D4RzQFXXXXcoXpXXXXXXXXXX-45-45.png' }, { title: '穿搭', icon: 'https://gw.alicdn.com/tfs/TB1N1.6OVXXXXXqaXXXXXXXXXXX-45-45.png' }],
       imageList: [{ src: 'https://gd2.alicdn.com/bao/uploaded/i2/T14H1LFwBcXXXXXXXX_!!0-item_pic.jpg' }, { src: 'https://gd1.alicdn.com/bao/uploaded/i1/TB1PXJCJFXXXXciXFXXXXXXXXXX_!!0-item_pic.jpg' }, { src: 'https://gd3.alicdn.com/bao/uploaded/i3/TB1x6hYLXXXXXazXVXXXXXXXXXX_!!0-item_pic.jpg' }, { src: 'https://img.alicdn.com/tfscom/i1/0/TB28OZ9oZnI8KJjSsziXXb8QpXa_!!3470683347-0-dgshop.jpg' }, { src: 'https://img.alicdn.com/tfscom/i1/0/TB2xKpjpf6H8KJjSspmXXb2WXXa_!!3138112227-0-dgshop.jpg' }]
@@ -2997,11 +2999,15 @@ exports.default = {
     onScroll: function onScroll(e) {
       offset = e.offsetXRatio;
       var translateX = 150 * currentIndex - offset * 150;
-      console.log('onScroll ' + translateX);
+      console.log('onScroll ' + offset + ' ' + translateX);
       this.indicatorStyle.transform = "translateX(" + translateX + "px)";
+      // this.indicatorStyle.height = Math.max((Math.abs(offset) - 1),0.3) * 10;
+      this.indicatorStyle.width = (Math.abs(offset) + 1) * 150;
     },
     onChange: function onChange(e) {
       currentIndex = e.index;
+      this.indicatorStyle.height = 10;
+      this.indicatorStyle.width = 150;
       console.log("onChange " + currentIndex);
     }
   }
