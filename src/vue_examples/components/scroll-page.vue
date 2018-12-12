@@ -6,7 +6,7 @@
                 <text class="tab-name">{{item.title}}</text>
             </div>
             <div class="indicator-parent" :style="indicatorStyle">
-                <div class="indicator" ></div>
+                <div class="indicator"></div>
             </div>
         </div>
         <slider class="banner"
@@ -28,6 +28,14 @@
             <div style="width: 50px;height: 50px; background-color: coral; position: relative; left: 10px;top: 10px;"></div>
             <div style="width: 50px;height: 50px; background-color: chartreuse"></div>
         </div>
+
+        <div class="tab-bottom">
+            <div class="tab" v-for="(item,index) in tabs" @click="changeTab(index)">
+                <image class="tab-icon" :src="item.icon" resize="cover"></image>
+                <text class="tab-name">{{item.title}}</text>
+            </div>
+            <div class="tab-active" :style="{left: tabIndex * 150 + 'px'}"></div>
+        </div>
     </div>
 </template>
 
@@ -43,6 +51,7 @@
           width: 150,
           height: 10
         },
+        tabIndex: 0,
         tabs: [
           {title: '首页', icon: 'https://gw.alicdn.com/tfs/TB19YESOVXXXXaNaXXXXXXXXXXX-45-45.png'},
           {title: '耍帅', icon: 'https://gw.alicdn.com/tfs/TB1I2E9OVXXXXbFXVXXXXXXXXXX-45-45.png'},
@@ -64,7 +73,7 @@
         offset = e.offsetXRatio;
         var translateX = 150 * currentIndex - offset * 150;
         console.log(`onScroll ${offset} ${translateX}`);
-        this.indicatorStyle.transform = "translateX(" + translateX +"px)";
+        this.indicatorStyle.transform = "translateX(" + translateX + "px)";
         // this.indicatorStyle.height = Math.max((Math.abs(offset) - 1),0.3) * 10;
         this.indicatorStyle.width = (Math.abs(offset) + 1) * 150
       },
@@ -73,6 +82,9 @@
         this.indicatorStyle.height = 10;
         this.indicatorStyle.width = 150;
         console.log("onChange " + currentIndex);
+      },
+      changeTab: function (tabIndex) {
+        this.tabIndex = tabIndex;
       }
     }
   }
@@ -81,7 +93,7 @@
 <style scoped>
     .wrapper {
         width: 750px;
-        height: 900px;
+        height: auto;
     }
 
     .top-tabs {
@@ -99,6 +111,24 @@
         justify-content: center;
     }
 
+    .tab-bottom {
+        width: 750px;
+        height: 140px;
+        position: relative;
+        flex-direction: row;
+        background-color: coral;
+    }
+
+    .tab-active {
+        background-color: rgba(100, 100, 100, 0.2);
+        transition: left 0.2s ease-in-out 0s;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 150px;
+        height: 140px;
+    }
+
     .tab-icon {
         width: 45px;
         height: 45px;
@@ -111,14 +141,15 @@
     }
 
     .indicator-parent {
-        width:150px;
+        width: 150px;
         height: 10px;
-        transition-property: transform,width,height;
+        transition-property: transform, width, height;
         position: absolute;
         left: 0;
         bottom: 0;
         align-content: left;
     }
+
     .indicator {
         width: auto;
         height: 10px;

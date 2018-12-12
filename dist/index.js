@@ -65,9 +65,8 @@
 /******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ 0:
+/******/ ([
+/* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -76,7 +75,7 @@
 /* global Vue */
 /* weex initialized here, please do not move this line */
 var router = __webpack_require__(1);
-var App = __webpack_require__(56);
+var App = __webpack_require__(11);
 /* eslint-disable no-new */
 //Vue.extend 是组件的声明 el中的 #root 是id为root的div标签
 //el表示vue绑定数据该去哪里找，可以是 选择器或者HTMLElement
@@ -84,8 +83,7 @@ new Vue(Vue.util.extend({ el: '#root', router: router }, App));
 router.push('/');
 
 /***/ }),
-
-/***/ 1:
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -99,7 +97,7 @@ var _HelloWorld = __webpack_require__(3);
 
 var _HelloWorld2 = _interopRequireDefault(_HelloWorld);
 
-var _scrollPage = __webpack_require__(75);
+var _scrollPage = __webpack_require__(7);
 
 var _scrollPage2 = _interopRequireDefault(_scrollPage);
 
@@ -113,8 +111,7 @@ module.exports = new _vueRouter2.default({
 });
 
 /***/ }),
-
-/***/ 2:
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2575,8 +2572,7 @@ if (inBrowser && window.Vue) {
 exports.default = VueRouter;
 
 /***/ }),
-
-/***/ 3:
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
@@ -2620,15 +2616,13 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-
-/***/ 4:
+/* 4 */
 /***/ (function(module, exports) {
 
 module.exports = {}
 
 /***/ }),
-
-/***/ 5:
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2684,124 +2678,7 @@ exports.default = {
 };
 
 /***/ }),
-
-/***/ 56:
-/***/ (function(module, exports, __webpack_require__) {
-
-var __vue_exports__, __vue_options__
-var __vue_styles__ = []
-
-/* styles */
-__vue_styles__.push(__webpack_require__(57)
-)
-
-/* script */
-__vue_exports__ = __webpack_require__(58)
-
-/* template */
-var __vue_template__ = __webpack_require__(59)
-__vue_options__ = __vue_exports__ = __vue_exports__ || {}
-if (
-  typeof __vue_exports__.default === "object" ||
-  typeof __vue_exports__.default === "function"
-) {
-if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
-__vue_options__ = __vue_exports__ = __vue_exports__.default
-}
-if (typeof __vue_options__ === "function") {
-  __vue_options__ = __vue_options__.options
-}
-__vue_options__.__file = "/Users/brucetoo/WebstormProjects/weex-demo/src/app.vue"
-__vue_options__.render = __vue_template__.render
-__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
-__vue_options__._scopeId = "data-v-ca9759e0"
-__vue_options__.style = __vue_options__.style || {}
-__vue_styles__.forEach(function (module) {
-  for (var name in module) {
-    __vue_options__.style[name] = module[name]
-  }
-})
-if (typeof __register_static_styles__ === "function") {
-  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
-}
-
-module.exports = __vue_exports__
-
-
-/***/ }),
-
-/***/ 57:
-/***/ (function(module, exports) {
-
-module.exports = {
-  "box": {
-    "width": "200",
-    "height": "200"
-  },
-  "shadow": {
-    "boxShadow": "0 15px 30px rgba(0, 0, 0, 0.2)",
-    "boxShadow:active": "0 5px 10px rgba(0, 0, 0, 0.2)"
-  },
-  "top-menu": {
-    "overflow": "hidden"
-  }
-}
-
-/***/ }),
-
-/***/ 58:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-exports.default = {
-  name: "app",
-  data: function data() {
-    return {};
-  }
-};
-
-/***/ }),
-
-/***/ 59:
-/***/ (function(module, exports) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    attrs: {
-      "id": "app"
-    }
-  }, [_vm._m(0), _c('div', [_c('router-view')], 1)])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["box", "shadow"],
-    staticStyle: {
-      alignContent: "center",
-      justifyItems: "center"
-    }
-  }, [_c('text', [_vm._v(" Router-View")])])
-}]}
-module.exports.render._withStripped = true
-
-/***/ }),
-
-/***/ 6:
+/* 6 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -2828,22 +2705,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-
-/***/ 75:
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(76)
+__vue_styles__.push(__webpack_require__(8)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(77)
+__vue_exports__ = __webpack_require__(9)
 
 /* template */
-var __vue_template__ = __webpack_require__(78)
+var __vue_template__ = __webpack_require__(10)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -2873,14 +2749,12 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-
-/***/ 76:
+/* 8 */
 /***/ (function(module, exports) {
 
 module.exports = {
   "wrapper": {
-    "width": "750",
-    "height": "900"
+    "width": "750"
   },
   "top-tabs": {
     "height": "140",
@@ -2894,6 +2768,36 @@ module.exports = {
     "flexGrow": 1,
     "alignItems": "center",
     "justifyContent": "center"
+  },
+  "tab-bottom": {
+    "width": "750",
+    "height": "140",
+    "position": "relative",
+    "flexDirection": "row",
+    "backgroundColor": "#FF7F50"
+  },
+  "tab-active": {
+    "backgroundColor": "rgba(100,100,100,0.2)",
+    "transitionProperty": "left",
+    "transitionDuration": 200,
+    "transitionTimingFunction": "ease-in-out",
+    "transitionDelay": 0,
+    "position": "absolute",
+    "top": 0,
+    "left": 0,
+    "width": "150",
+    "height": "140"
+  },
+  "@TRANSITION": {
+    "tab-active": {
+      "property": "left",
+      "duration": 200,
+      "timingFunction": "ease-in-out",
+      "delay": 0
+    },
+    "indicator-parent": {
+      "property": "transform,width,height"
+    }
   },
   "tab-icon": {
     "width": "45",
@@ -2913,11 +2817,6 @@ module.exports = {
     "bottom": 0,
     "alignContent": "left"
   },
-  "@TRANSITION": {
-    "indicator-parent": {
-      "property": "transform,width,height"
-    }
-  },
   "indicator": {
     "height": "10",
     "backgroundColor": "#6495ED",
@@ -2936,8 +2835,7 @@ module.exports = {
 }
 
 /***/ }),
-
-/***/ 77:
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2946,6 +2844,14 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2991,6 +2897,7 @@ exports.default = {
         width: 150,
         height: 10
       },
+      tabIndex: 0,
       tabs: [{ title: '首页', icon: 'https://gw.alicdn.com/tfs/TB19YESOVXXXXaNaXXXXXXXXXXX-45-45.png' }, { title: '耍帅', icon: 'https://gw.alicdn.com/tfs/TB1I2E9OVXXXXbFXVXXXXXXXXXX-45-45.png' }, { title: '旅行', icon: 'https://gw.alicdn.com/tfs/TB1gUhyPXXXXXX5XXXXXXXXXXXX-45-45.png' }, { title: '潮玩', icon: 'https://img.alicdn.com/tfs/TB1D4RzQFXXXXcoXpXXXXXXXXXX-45-45.png' }, { title: '穿搭', icon: 'https://gw.alicdn.com/tfs/TB1N1.6OVXXXXXqaXXXXXXXXXXX-45-45.png' }],
       imageList: [{ src: 'https://gd2.alicdn.com/bao/uploaded/i2/T14H1LFwBcXXXXXXXX_!!0-item_pic.jpg' }, { src: 'https://gd1.alicdn.com/bao/uploaded/i1/TB1PXJCJFXXXXciXFXXXXXXXXXX_!!0-item_pic.jpg' }, { src: 'https://gd3.alicdn.com/bao/uploaded/i3/TB1x6hYLXXXXXazXVXXXXXXXXXX_!!0-item_pic.jpg' }, { src: 'https://img.alicdn.com/tfscom/i1/0/TB28OZ9oZnI8KJjSsziXXb8QpXa_!!3470683347-0-dgshop.jpg' }, { src: 'https://img.alicdn.com/tfscom/i1/0/TB2xKpjpf6H8KJjSspmXXb2WXXa_!!3138112227-0-dgshop.jpg' }]
     };
@@ -3009,13 +2916,15 @@ exports.default = {
       this.indicatorStyle.height = 10;
       this.indicatorStyle.width = 150;
       console.log("onChange " + currentIndex);
+    },
+    changeTab: function changeTab(tabIndex) {
+      this.tabIndex = tabIndex;
     }
   }
 };
 
 /***/ }),
-
-/***/ 78:
+/* 10 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -3063,7 +2972,31 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "resize": "cover"
       }
     })])
-  })), _vm._m(0)])
+  })), _vm._m(0), _c('div', {
+    staticClass: ["tab-bottom"]
+  }, [_vm._l((_vm.tabs), function(item, index) {
+    return _c('div', {
+      staticClass: ["tab"],
+      on: {
+        "click": function($event) {
+          _vm.changeTab(index)
+        }
+      }
+    }, [_c('image', {
+      staticClass: ["tab-icon"],
+      attrs: {
+        "src": item.icon,
+        "resize": "cover"
+      }
+    }), _c('text', {
+      staticClass: ["tab-name"]
+    }, [_vm._v(_vm._s(item.title))])])
+  }), _c('div', {
+    staticClass: ["tab-active"],
+    style: {
+      left: _vm.tabIndex * 150 + 'px'
+    }
+  })], 2)])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticStyle: {
@@ -3100,6 +3033,117 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 }]}
 module.exports.render._withStripped = true
 
-/***/ })
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
 
-/******/ });
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(12)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(13)
+
+/* template */
+var __vue_template__ = __webpack_require__(14)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/brucetoo/WebstormProjects/weex-demo/src/app.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-ca9759e0"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "box": {
+    "width": "100",
+    "height": "100"
+  },
+  "shadow": {
+    "boxShadow": "0 15px 30px rgba(0, 0, 0, 0.2)",
+    "boxShadow:active": "0 5px 10px rgba(0, 0, 0, 0.2)"
+  },
+  "top-menu": {
+    "overflow": "hidden"
+  }
+}
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+  name: "app",
+  data: function data() {
+    return {};
+  }
+};
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    attrs: {
+      "id": "app"
+    }
+  }, [_vm._m(0), _c('div', [_c('router-view')], 1)])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["box", "shadow"],
+    staticStyle: {
+      alignContent: "center",
+      justifyItems: "center"
+    }
+  }, [_c('text', [_vm._v(" Router-View")])])
+}]}
+module.exports.render._withStripped = true
+
+/***/ })
+/******/ ]);
