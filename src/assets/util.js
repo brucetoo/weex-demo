@@ -4,6 +4,7 @@
 
 let utilFunc = {
     initIconFont () {
+      //css字体icon的引入 https://www.jianshu.com/p/39eed36da67d
         let domModule = weex.requireModule('dom');
         domModule.addRule('fontFace', {
             'fontFamily': "iconfont",

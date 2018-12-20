@@ -1,11 +1,11 @@
 <template>
     <div :class="['wrapper', isIpx&&isIpx()?'w-ipx':'']" >
-        <div class="scan">
+        <div class="scan" @click="showMessage('scan')">
             <text class="ic iconfont">&#xe689;</text>
             <text class="txt">扫一扫</text>
         </div>
         <text class="search iconfont"  @click="jumpWeb()">&#xe65c; 搜索商品，共8888款好物</text>
-        <div class="notice">
+        <div class="notice" @click="showMessage('notice')">
             <text class="ic iconfont">&#xe70a;</text>
             <text class="txt">消息</text>
         </div>
@@ -20,8 +20,8 @@
         position: fixed;
         top: 0;
         left: 0;right: 0;
-        height: 114px;
-        padding-top: 44px;
+        height: 84px;
+        padding-top: 10px;
         display:flex;
         flex-wrap: nowrap;
         flex-direction: row;
@@ -48,12 +48,14 @@
     }
     .txt{
         font-size: 18px;
+        margin-top: 5px;
      }
     .search {
         flex: 1;
         height: 60px;
         font-size: 26px;
-        padding-top: 13px;
+        text-align: center;
+        line-height: 60px;
         background-color: #ededed;
         border-radius: 8px;
     }
@@ -76,6 +78,9 @@
                     url: util.setBundleUrl(url, 'page/webview.js?weburl='+_url) ,
                     animated: "false"
                 });
+            },
+            showMessage(message){
+              this.Toast(message)
             }
         }
     }

@@ -1,5 +1,5 @@
 <template>
-    <div :class="['wrapper', isIpx&&isIpx()?'w-ipx':'']">
+    <div class="wrapper">
         <!--<div v-for="i in items">-->
             <!--<div class="bar-item" @click="tabTo(i.key)">-->
                 <!--<text class="bar-ic iconfont">{{i.icon}}</text>-->
@@ -52,6 +52,7 @@
     }
     .bar-item{
         flex: 1;
+        justify-content: center;
     }
     .bar-txt,.bar-ic{
         color:#666;
@@ -61,12 +62,11 @@
         color:#b4282d;
     }
     .bar-ic{
-        padding-top: 14px;
-        font-size: 38px;
+        font-size: 32px;
     }
     .bar-txt{
         font-size: 22px;
-        padding-top: 2px;
+        margin-top: 10px;
     }
     .i-notice{
         position: absolute;

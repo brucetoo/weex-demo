@@ -1,123 +1,130 @@
 <template>
     <div :class="['wrapper', isIpx&&isIpx()?'w-ipx':'']">
-        <scroller class="scroller" @click="chooseChannel" scroll-direction="horizontal" loadmoreoffset="750px" show-scrollbar=false>
-            <div class="j-uline" :style="jLPosition" ref="jcLine"></div>
-            <text class="i-c c-act">推荐</text>
-            <text class="i-c">限时购</text>
-            <text class="i-c">新品</text>
-            <text class="i-c">居家</text>
-            <text class="i-c">餐厨</text>
-            <text class="i-c">配件</text>
-            <text class="i-c">服装</text>
-            <text class="i-c">电器</text>
-            <text class="i-c">洗护</text>
-            <text class="i-c">杂货</text>
-            <text class="i-c">饮食</text>
-            <text class="i-c">婴童</text>
-            <text class="i-c">志趣</text>
+        <scroller class="scroller"
+                  scroll-direction="horizontal"
+                  show-scrollbar=false>
+            <!--<div class="j-uline" :style="jLPosition" ref="jcLine"></div>-->
+            <div v-for="(name,index) in channels" ref="item">
+                <div class="channel-item">
+                    <text :class="['i-c', selectedIndex === index ? 'c-act' : '']"
+                          @click="selectChannel(index)">{{name}}
+                    </text>
+                    <div class="j-uline" v-if="selectedIndex === index"></div>
+                </div>
+            </div>
         </scroller>
-        <text class="more iconfont">&#xe661;</text>
+        <text class="more iconfont" @click="extend">&#xe661;</text>
     </div>
 </template>
 <style scoped>
 
     .iconfont {
-        font-family:iconfont;
+        font-family: iconfont;
     }
-    .wrapper{
-        position: fixed;
-        top: 114px;
-        left: 0;right: 0;
+
+    .wrapper {
+        position: absolute;
+        top: 84px;
+        left: 0;
+        right: 0;
         height: 54px;
         z-index: 10;
         background-color: #fafafa;
         border-bottom-width: 1px;
         border-bottom-color: #d9d9d9;
     }
-    .w-ipx{
+
+    .w-ipx {
         top: 154px;
     }
-    .scroller{
-        height: 54px;
+
+    .scroller {
+        height: 60px;
         flex-direction: row;
     }
-    .i-c{
-        padding-top:10px;
-        padding-left: 45px;
-        padding-right: 45px;
-        padding-bottom:6px;
+
+    .i-c {
+        height: 45px;
+        line-height: 45px;
+        text-align: center;
         font-size: 26px;
-        color:#333;
+        color: #333;
     }
-    .c-act{
-        color:#b4282d;
+
+    .c-act {
+        color: #b4282d;
     }
-    .j-uline{
-        position: absolute;
-        left: 30px;
+
+    .j-uline {
+        position: relative;
         bottom: 0;
-        width: 82px;
+        width: 60px;
         height: 4px;
+        margin-top: 5px;
         background-color: #b4282d;
     }
-    .more{
+
+    .more {
         position: absolute;
-        top:0;
-        right:0;
+        top: 0;
+        right: 0;
         height: 52px;
         width: 100px;
         background-color: #fafafa;
         text-align: center;
         padding-top: 10px;
         opacity: 0.96;
-        box-shadow:-6px -4px 4px #fafafa;
+        /*box-shadow: -6px -4px 4px #fafafa;*/
+    }
+
+    .channel-item {
+        flex-direction: column;
+        margin-left: 30px;
+        align-items: center;
+        justify-content: center
     }
 </style>
 <script>
-    const dom = weex.requireModule('dom');
-    const animation = weex.requireModule('animation');
-    export default {
-        data () {
-            return {
-                jLPosition:{left:'30px',width:'80px'}
-            }
-        },
-        mounted () {
-//            this.initJLine();
-        },
-        methods: {
-            initJLine:function () {
-                if(!this.$refs.actJC) return;
-                let l = this.$refs.actJC.$el.offsetLeft;
-                let w = this.$refs.actJC.$el.offsetWidth;
-                this.jLPosition = {
-                    left: l+30 +"px",
-                    width:w-60+"px"
-                };
-            },
-
-            chooseChannel:function (event) {
-//                const _target = event.target;
-//                if(_target.dataset.act !== "j-c") return;
-//                let l = _target.offsetLeft || 0;
-//                let w =  _target.offsetWidth || 0;
-//                if(w<=0) return;
-//                this.jLPosition = {
-//                    left: l+30 +"px",
-//                    width:w-60+"px"
-//                };
-//                animation.transition(this.$refs.jcLine, {
-//                    styles: {
-//                        left : l+30+"px",
-//                        width : w-60+"px"
-//                    },
-//                    duration: 300, //ms
-//                    timingFunction: 'ease',
-//                    delay: 0 //ms
-//                }, function () {});
-            }
-        }
+  const dom = weex.requireModule('dom');
+  const animation = weex.requireModule('animation');
+  export default {
+    props:['selectedIndex'],
+    data() {
+      return {
+        channels: ['限时购', '新品', '居家', '餐厨', '配件', '服装', '电器', '洗护', '杂货', '饮食', '婴童', '志趣'],
+        jLPosition: {left: '30px', width: '100px'}
+      }
+    },
+    mounted() {
+      let self = this;
+      this.$emit('tabChannels',{
+        channels: self.channels
+      })
+    },
+    created() {
+      this.handleEvent('scrollToTab',(_result) => {
+        dom.scrollToElement(this.$refs.item[_result.index], {})
+      })
+    },
+    methods: {
+      selectChannel(index) {
+        //1、scroll to selected item
+        dom.scrollToElement(this.$refs.item[index], {})
+        //2、move indicator 30 + (90 + 60) * index
+        // this.jLPosition = {
+        //   left: 30 + (90 + 60) * index + 'px',
+        //   width: '100px'
+        // };
+        //3、send change page event
+        this.$emit('changeTab',{
+          index: index
+        })
+      },
+      extend(e){
+        this.Toast('open tab channel');
+      }
     }
+  }
 </script>
 
 

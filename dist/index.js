@@ -2855,6 +2855,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var utilFunc = {
     initIconFont: function initIconFont() {
+        //css字体icon的引入 https://www.jianshu.com/p/39eed36da67d
         var domModule = weex.requireModule('dom');
         domModule.addRule('fontFace', {
             'fontFamily': "iconfont",
@@ -2985,19 +2986,19 @@ module.exports = {
     "height": "140"
   },
   "bar-item": {
-    "flex": 1
+    "flex": 1,
+    "justifyContent": "center"
   },
   "bar-txt": {
     "color": "#666666",
     "textAlign": "center",
     "fontSize": "22",
-    "paddingTop": "2"
+    "marginTop": "10"
   },
   "bar-ic": {
     "color": "#666666",
     "textAlign": "center",
-    "paddingTop": "14",
-    "fontSize": "38"
+    "fontSize": "32"
   },
   "bar-active": {
     "color": "#b4282d"
@@ -3164,7 +3165,7 @@ exports.default = {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    class: ['wrapper', _vm.isIpx && _vm.isIpx() ? 'w-ipx' : '']
+    staticClass: ["wrapper"]
   }, [_c('div', {
     staticClass: ["bar-item"],
     on: {
@@ -3319,29 +3320,42 @@ function unescape(text) {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
-
 var stream = weex.requireModule('stream');
+var modal = weex.requireModule('modal');
+var eventBus = new Vue();
 exports.default = {
-    methods: {
-        jump: function jump(to) {
-            if (this.$router) {
-                this.$router.push(to);
-            }
-        },
-        isIpx: function isIpx() {
-            return weex && (weex.config.env.deviceModel === 'iPhone10,3' || weex.config.env.deviceModel === 'iPhone10,6');
-        },
-        GET: function GET(api, callback) {
-            return stream.fetch({
-                method: 'GET',
-                type: 'json',
-                url: 'http://cdn.zwwill.com/yanxuan/' + api
-                // url: 'http://10.242.69.181:8089/yanxuan/' + api
-            }, callback);
-        }
+  methods: {
+    jump: function jump(to) {
+      if (this.$router) {
+        this.$router.push(to);
+      }
+    },
+    isIpx: function isIpx() {
+      return weex && (weex.config.env.deviceModel === 'iPhone10,3' || weex.config.env.deviceModel === 'iPhone10,6');
+    },
+    GET: function GET(api, callback) {
+      return stream.fetch({
+        method: 'GET',
+        type: 'json',
+        url: 'http://cdn.zwwill.com/yanxuan/' + api
+        // url: 'http://10.242.69.181:8089/yanxuan/' + api
+      }, callback);
+    },
+    Toast: function Toast(_message, _duration, _callback) {
+      return modal.toast({
+        message: _message,
+        duration: _duration | 0.3
+      }, _callback);
+    },
+    sendEvent: function sendEvent(_eventName, _callback) {
+      eventBus.$emit(_eventName, _callback);
+    },
+    handleEvent: function handleEvent(_eventName, _callback) {
+      eventBus.$on(_eventName, _callback);
     }
+  }
 };
 
 /***/ }),
@@ -3529,9 +3543,9 @@ module.exports = {
     "fontFamily": "iconfont"
   },
   "main-list": {
-    "position": "fixed",
-    "top": "168",
-    "bottom": "90",
+    "position": "absolute",
+    "top": 0,
+    "bottom": 0,
     "left": 0,
     "right": 0
   },
@@ -3555,6 +3569,23 @@ module.exports = {
     "flex": 1,
     "textAlign": "center",
     "color": "#b4282d"
+  },
+  "main_container": {
+    "position": "absolute",
+    "top": "138",
+    "bottom": "90",
+    "left": 0,
+    "right": 0
+  },
+  "container": {
+    "width": "750",
+    "top": 0,
+    "bottom": 0,
+    "left": 0,
+    "right": 0,
+    "position": "absolute",
+    "alignItems": "center",
+    "justifyContent": "center"
   }
 }
 
@@ -3566,7 +3597,7 @@ module.exports = {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _util = __webpack_require__(83);
@@ -3677,97 +3708,147 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var modal = weex.requireModule('modal');
 var navigator = weex.requireModule('navigator');
 exports.default = {
-    components: {
-        'home-header': _Header2.default,
-        'refresher': _refresh2.default,
-        'top-channel': _topChannel2.default,
-        'yx-slider': _YXSlider2.default,
-        'block-1': _Block2.default,
-        'block-2': _Block4.default,
-        'block-3': _Block6.default
-    },
-    data: function data() {
-        return {
-            YXBanners: [],
-            makers: {
-                title: '品牌SS制造商直供',
-                items: []
-            },
-            recommend: {
-                head1: {
-                    tlt: '周一周四 · 新品发布',
-                    tltBg: 'http://doc.zwwill.com/yanxuan/imgs/bg-new.png',
-                    url: 'http://m.you.163.com/item/newItem'
-                },
-                goods1: [],
-                head2: {
-                    tlt: '人气推荐 · 好物精选',
-                    tltBg: 'http://doc.zwwill.com/yanxuan/imgs/bg-hot.png',
-                    url: 'http://m.you.163.com/item/recommend'
-                },
-                goods2: []
-            },
-            goodsList: [],
-            showLoading: 'hide'
-        };
-    },
-    created: function created() {
-        var _this = this;
-
-        this.GET('api/home/index', function (res) {
-            var result = res.data.result;
-            _this.YXBanners = result['banners'];
-            _this.makers = result['makers'];
-            _this.recommend = result['recommend'];
-        });
-        this.GET('api/home/pullGoods', function (res) {
-            var result = res.data.result;
-            _this.goodsList = result['goods'];
-        });
-    },
-
-    methods: {
-        jumpWeb: function jumpWeb(_url) {
-            var url = this.$getConfig().bundleUrl;
-            navigator.push({
-                url: _util2.default.setBundleUrl(url, 'page/webview.js?weburl=' + _url),
-                animated: "true"
-            });
+  components: {
+    'home-header': _Header2.default,
+    'refresher': _refresh2.default,
+    'top-channel': _topChannel2.default,
+    'yx-slider': _YXSlider2.default,
+    'block-1': _Block2.default,
+    'block-2': _Block4.default,
+    'block-3': _Block6.default
+  },
+  data: function data() {
+    return {
+      selectedIndex: 0,
+      channels: [],
+      YXBanners: [],
+      makers: {
+        title: '品牌SS制造商直供',
+        items: []
+      },
+      recommend: {
+        head1: {
+          tlt: '周一周四 · 新品发布',
+          tltBg: 'http://doc.zwwill.com/yanxuan/imgs/bg-new.png',
+          url: 'http://m.you.163.com/item/newItem'
         },
-        onloading: function onloading() {
-            var _this2 = this;
-
-            modal.toast({ message: 'loading', duration: 0.3 });
-            this.showLoading = 'show';
-            setTimeout(function () {
-                var _goodsList;
-
-                (_goodsList = _this2.goodsList).push.apply(_goodsList, _toConsumableArray(_this2.recommend.goods1));
-                _this2.showLoading = 'hide';
-            }, 300);
+        goods1: [],
+        head2: {
+          tlt: '人气推荐 · 好物精选',
+          tltBg: 'http://doc.zwwill.com/yanxuan/imgs/bg-hot.png',
+          url: 'http://m.you.163.com/item/recommend'
         },
-        onloadmore: function onloadmore() {
-            var _this3 = this;
+        goods2: []
+      },
+      goodsList: [],
+      showLoading: 'hide'
+    };
+  },
+  created: function created() {
+    var _this = this;
 
-            modal.toast({ message: 'loading', duration: 0.3 });
-            setTimeout(function () {
-                var _goodsList2;
+    this.GET('api/home/index', function (res) {
+      var result = res.data.result;
+      _this.YXBanners = result['banners'];
+      _this.makers = result['makers'];
+      _this.recommend = result['recommend'];
+    });
+    this.GET('api/home/pullGoods', function (res) {
+      var result = res.data.result;
+      _this.goodsList = result['goods'];
+    });
+  },
 
-                (_goodsList2 = _this3.goodsList).push.apply(_goodsList2, _toConsumableArray(_this3.recommend.goods1));
-            }, 100);
-        },
-        loadingDown: function loadingDown() {
-            var _goodsList3, _goodsList4;
+  methods: {
+    jumpWeb: function jumpWeb(_url) {
+      var url = this.$getConfig().bundleUrl;
+      navigator.push({
+        url: _util2.default.setBundleUrl(url, 'page/webview.js?weburl=' + _url),
+        animated: "true"
+      });
+    },
+    onloading: function onloading() {
+      var _this2 = this;
 
-            this.goodsList = [];
-            (_goodsList3 = this.goodsList).push.apply(_goodsList3, _toConsumableArray(this.recommend.goods2));
-            (_goodsList4 = this.goodsList).push.apply(_goodsList4, _toConsumableArray(this.recommend.goods1));
-        }
+      modal.toast({ message: 'loading', duration: 0.3 });
+      this.showLoading = 'show';
+      setTimeout(function () {
+        var _goodsList;
+
+        (_goodsList = _this2.goodsList).push.apply(_goodsList, _toConsumableArray(_this2.recommend.goods1));
+        _this2.showLoading = 'hide';
+      }, 300);
+    },
+    onloadmore: function onloadmore() {
+      var _this3 = this;
+
+      modal.toast({ message: 'loading', duration: 0.3 });
+      setTimeout(function () {
+        var _goodsList2;
+
+        (_goodsList2 = _this3.goodsList).push.apply(_goodsList2, _toConsumableArray(_this3.recommend.goods1));
+      }, 100);
+    },
+    loadingDown: function loadingDown() {
+      var _goodsList3, _goodsList4;
+
+      this.goodsList = [];
+      (_goodsList3 = this.goodsList).push.apply(_goodsList3, _toConsumableArray(this.recommend.goods2));
+      (_goodsList4 = this.goodsList).push.apply(_goodsList4, _toConsumableArray(this.recommend.goods1));
+    },
+    onChangeTab: function onChangeTab(_result) {
+      this.Toast('select:' + _result.index);
+      this.onPageChange(_result);
+    },
+    initChannels: function initChannels(_result) {
+      var _channels;
+
+      (_channels = this.channels).push.apply(_channels, _toConsumableArray(_result.channels));
+    },
+    onPageChange: function onPageChange(_event) {
+      this.selectedIndex = _event.index;
+      this.sendEvent('scrollToTab', {
+        index: _event.index
+      });
     }
+  }
 };
 
 /***/ }),
@@ -3827,8 +3908,8 @@ module.exports = {
     "top": 0,
     "left": 0,
     "right": 0,
-    "height": "114",
-    "paddingTop": "44",
+    "height": "84",
+    "paddingTop": "10",
     "display": "flex",
     "flexWrap": "nowrap",
     "flexDirection": "row",
@@ -3859,7 +3940,8 @@ module.exports = {
     "textAlign": "center",
     "color": "#666666",
     "fontWeight": "300",
-    "fontSize": "18"
+    "fontSize": "18",
+    "marginTop": "5"
   },
   "search": {
     "textAlign": "center",
@@ -3868,7 +3950,7 @@ module.exports = {
     "flex": 1,
     "height": "60",
     "fontSize": "26",
-    "paddingTop": "13",
+    "lineHeight": "60",
     "backgroundColor": "#ededed",
     "borderRadius": "8"
   }
@@ -3951,6 +4033,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
 
 var navigator = weex.requireModule('navigator');
 exports.default = {
@@ -3967,6 +4051,9 @@ exports.default = {
                 url: _util2.default.setBundleUrl(url, 'page/webview.js?weburl=' + _url),
                 animated: "false"
             });
+        },
+        showMessage: function showMessage(message) {
+            this.Toast(message);
         }
     }
 };
@@ -3978,31 +4065,37 @@ exports.default = {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     class: ['wrapper', _vm.isIpx && _vm.isIpx() ? 'w-ipx' : '']
-  }, [_vm._m(0), _c('text', {
+  }, [_c('div', {
+    staticClass: ["scan"],
+    on: {
+      "click": function($event) {
+        _vm.showMessage('scan')
+      }
+    }
+  }, [_c('text', {
+    staticClass: ["ic", "iconfont"]
+  }, [_vm._v("")]), _c('text', {
+    staticClass: ["txt"]
+  }, [_vm._v("扫一扫")])]), _c('text', {
     staticClass: ["search", "iconfont"],
     on: {
       "click": function($event) {
         _vm.jumpWeb()
       }
     }
-  }, [_vm._v(" 搜索商品，共8888款好物")]), _vm._m(1)])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["scan"]
-  }, [_c('text', {
-    staticClass: ["ic", "iconfont"]
-  }, [_vm._v("")]), _c('text', {
-    staticClass: ["txt"]
-  }, [_vm._v("扫一扫")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: ["notice"]
+  }, [_vm._v(" 搜索商品，共8888款好物")]), _c('div', {
+    staticClass: ["notice"],
+    on: {
+      "click": function($event) {
+        _vm.showMessage('notice')
+      }
+    }
   }, [_c('text', {
     staticClass: ["ic", "iconfont"]
   }, [_vm._v("")]), _c('text', {
     staticClass: ["txt"]
-  }, [_vm._v("消息")])])
-}]}
+  }, [_vm._v("消息")])])])
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 
 /***/ }),
@@ -4255,8 +4348,8 @@ module.exports = {
     "fontFamily": "iconfont"
   },
   "wrapper": {
-    "position": "fixed",
-    "top": "114",
+    "position": "absolute",
+    "top": "84",
     "left": 0,
     "right": 0,
     "height": "54",
@@ -4269,14 +4362,13 @@ module.exports = {
     "top": "154"
   },
   "scroller": {
-    "height": "54",
+    "height": "60",
     "flexDirection": "row"
   },
   "i-c": {
-    "paddingTop": "10",
-    "paddingLeft": "45",
-    "paddingRight": "45",
-    "paddingBottom": "6",
+    "height": "45",
+    "lineHeight": "45",
+    "textAlign": "center",
     "fontSize": "26",
     "color": "#333333"
   },
@@ -4284,11 +4376,11 @@ module.exports = {
     "color": "#b4282d"
   },
   "j-uline": {
-    "position": "absolute",
-    "left": "30",
+    "position": "relative",
     "bottom": 0,
-    "width": "82",
+    "width": "60",
     "height": "4",
+    "marginTop": "5",
     "backgroundColor": "#b4282d"
   },
   "more": {
@@ -4300,8 +4392,13 @@ module.exports = {
     "backgroundColor": "#fafafa",
     "textAlign": "center",
     "paddingTop": "10",
-    "opacity": 0.96,
-    "boxShadow": "-6px -4px 4px #fafafa"
+    "opacity": 0.96
+  },
+  "channel-item": {
+    "flexDirection": "column",
+    "marginLeft": "30",
+    "alignItems": "center",
+    "justifyContent": "center"
   }
 }
 
@@ -4313,8 +4410,19 @@ module.exports = {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4394,47 +4502,45 @@ Object.defineProperty(exports, "__esModule", {
 var dom = weex.requireModule('dom');
 var animation = weex.requireModule('animation');
 exports.default = {
-    data: function data() {
-        return {
-            jLPosition: { left: '30px', width: '80px' }
-        };
-    },
-    mounted: function mounted() {
-        //            this.initJLine();
-    },
+  props: ['selectedIndex'],
+  data: function data() {
+    return {
+      channels: ['限时购', '新品', '居家', '餐厨', '配件', '服装', '电器', '洗护', '杂货', '饮食', '婴童', '志趣'],
+      jLPosition: { left: '30px', width: '100px' }
+    };
+  },
+  mounted: function mounted() {
+    var self = this;
+    this.$emit('tabChannels', {
+      channels: self.channels
+    });
+  },
+  created: function created() {
+    var _this = this;
 
-    methods: {
-        initJLine: function initJLine() {
-            if (!this.$refs.actJC) return;
-            var l = this.$refs.actJC.$el.offsetLeft;
-            var w = this.$refs.actJC.$el.offsetWidth;
-            this.jLPosition = {
-                left: l + 30 + "px",
-                width: w - 60 + "px"
-            };
-        },
+    this.handleEvent('scrollToTab', function (_result) {
+      dom.scrollToElement(_this.$refs.item[_result.index], {});
+    });
+  },
 
-        chooseChannel: function chooseChannel(event) {
-            //                const _target = event.target;
-            //                if(_target.dataset.act !== "j-c") return;
-            //                let l = _target.offsetLeft || 0;
-            //                let w =  _target.offsetWidth || 0;
-            //                if(w<=0) return;
-            //                this.jLPosition = {
-            //                    left: l+30 +"px",
-            //                    width:w-60+"px"
-            //                };
-            //                animation.transition(this.$refs.jcLine, {
-            //                    styles: {
-            //                        left : l+30+"px",
-            //                        width : w-60+"px"
-            //                    },
-            //                    duration: 300, //ms
-            //                    timingFunction: 'ease',
-            //                    delay: 0 //ms
-            //                }, function () {});
-        }
+  methods: {
+    selectChannel: function selectChannel(index) {
+      //1、scroll to selected item
+      dom.scrollToElement(this.$refs.item[index], {});
+      //2、move indicator 30 + (90 + 60) * index
+      // this.jLPosition = {
+      //   left: 30 + (90 + 60) * index + 'px',
+      //   width: '100px'
+      // };
+      //3、send change page event
+      this.$emit('changeTab', {
+        index: index
+      });
+    },
+    extend: function extend(e) {
+      this.Toast('open tab channel');
     }
+  }
 };
 
 /***/ }),
@@ -4448,44 +4554,29 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["scroller"],
     attrs: {
       "scrollDirection": "horizontal",
-      "loadmoreoffset": "750px",
       "showScrollbar": "false"
-    },
-    on: {
-      "click": _vm.chooseChannel
     }
-  }, [_c('div', {
-    ref: "jcLine",
-    staticClass: ["j-uline"],
-    style: _vm.jLPosition
-  }), _c('text', {
-    staticClass: ["i-c", "c-act"]
-  }, [_vm._v("推荐")]), _c('text', {
-    staticClass: ["i-c"]
-  }, [_vm._v("限时购")]), _c('text', {
-    staticClass: ["i-c"]
-  }, [_vm._v("新品")]), _c('text', {
-    staticClass: ["i-c"]
-  }, [_vm._v("居家")]), _c('text', {
-    staticClass: ["i-c"]
-  }, [_vm._v("餐厨")]), _c('text', {
-    staticClass: ["i-c"]
-  }, [_vm._v("配件")]), _c('text', {
-    staticClass: ["i-c"]
-  }, [_vm._v("服装")]), _c('text', {
-    staticClass: ["i-c"]
-  }, [_vm._v("电器")]), _c('text', {
-    staticClass: ["i-c"]
-  }, [_vm._v("洗护")]), _c('text', {
-    staticClass: ["i-c"]
-  }, [_vm._v("杂货")]), _c('text', {
-    staticClass: ["i-c"]
-  }, [_vm._v("饮食")]), _c('text', {
-    staticClass: ["i-c"]
-  }, [_vm._v("婴童")]), _c('text', {
-    staticClass: ["i-c"]
-  }, [_vm._v("志趣")])]), _c('text', {
-    staticClass: ["more", "iconfont"]
+  }, _vm._l((_vm.channels), function(name, index) {
+    return _c('div', {
+      ref: "item",
+      refInFor: true
+    }, [_c('div', {
+      staticClass: ["channel-item"]
+    }, [_c('text', {
+      class: ['i-c', _vm.selectedIndex === index ? 'c-act' : ''],
+      on: {
+        "click": function($event) {
+          _vm.selectChannel(index)
+        }
+      }
+    }, [_vm._v(_vm._s(name) + "\n                ")]), (_vm.selectedIndex === index) ? _c('div', {
+      staticClass: ["j-uline"]
+    }) : _vm._e()])])
+  })), _c('text', {
+    staticClass: ["more", "iconfont"],
+    on: {
+      "click": _vm.extend
+    }
   }, [_vm._v("")])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
@@ -5590,72 +5681,97 @@ module.exports.render._withStripped = true
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: ["wrapper"]
-  }, [_c('home-header'), _c('top-channel'), _c('scroller', {
-    class: ['main-list', _vm.isIpx && _vm.isIpx() ? 'ml-ipx' : ''],
+  }, [_c('home-header'), _c('top-channel', {
     attrs: {
-      "offsetAccuracy": "300",
-      "loadmoreoffset": "300"
+      "selectedIndex": _vm.selectedIndex
     },
     on: {
-      "loadmore": _vm.onloadmore
+      "changeTab": _vm.onChangeTab,
+      "tabChannels": _vm.initChannels
     }
-  }, [_c('refresher', {
+  }), _c('slider', {
+    staticClass: ["main_container"],
+    attrs: {
+      "autoPlay": "false",
+      "index": _vm.selectedIndex
+    },
     on: {
-      "loadingDown": _vm.loadingDown
+      "change": _vm.onPageChange
     }
-  }), _c('div', {
-    staticClass: ["cell-button"],
-    on: {
-      "click": function($event) {
-        _vm.jumpWeb('https://m.you.163.com/act/pub/DxDpYNfbBd.html')
+  }, _vm._l((_vm.channels), function(name, index) {
+    return _c('div', {
+      staticClass: ["container"]
+    }, [(index !== 0) ? _c('text', {
+      staticStyle: {
+        color: "#0088fb",
+        fontSize: "55px"
       }
-    }
-  }, [_c('yx-slider', {
-    attrs: {
-      "imageList": _vm.YXBanners
-    }
-  }), _vm._m(0)], 1), _c('div', {
-    staticClass: ["cell-button"]
-  }, [_c('block-1', {
-    attrs: {
-      "title": _vm.makers.title,
-      "items": _vm.makers.items
-    }
-  })], 1), _c('div', {
-    staticClass: ["cell-button"]
-  }, [_c('block-2', {
-    attrs: {
-      "hasMore": "true",
-      "newGoods": "true",
-      "head": _vm.recommend.head1,
-      "goods": _vm.recommend.goods1
-    }
-  })], 1), _c('div', {
-    staticClass: ["cell-button"]
-  }, [_c('block-2', {
-    attrs: {
-      "hasMore": "true",
-      "hotGoods": "true",
-      "head": _vm.recommend.head2,
-      "goods": _vm.recommend.goods2
-    }
-  })], 1), _c('div', {
-    staticClass: ["cell-button"]
-  }, [_c('block-3', {
-    attrs: {
-      "goods": _vm.goodsList
-    }
-  })], 1), _c('loading', {
-    staticClass: ["loading"],
-    attrs: {
-      "display": _vm.showLoading
-    },
-    on: {
-      "loading": _vm.onloading
-    }
-  }, [_c('text', {
-    staticClass: ["indicator"]
-  }, [_vm._v("...")])])], 1)], 1)
+    }, [_vm._v(_vm._s(name))]) : _vm._e(), (index === 0) ? _c('scroller', {
+      attrs: {
+        "offsetAccuracy": "300",
+        "loadmoreoffset": "300"
+      },
+      on: {
+        "loadmore": _vm.onloadmore
+      }
+    }, [_c('refresher', {
+      on: {
+        "loadingDown": _vm.loadingDown
+      }
+    }), _c('div', {
+      staticClass: ["cell-button"],
+      on: {
+        "click": function($event) {
+          _vm.jumpWeb('https://m.you.163.com/act/pub/DxDpYNfbBd.html')
+        }
+      }
+    }, [_c('yx-slider', {
+      attrs: {
+        "imageList": _vm.YXBanners
+      }
+    }), _vm._m(0, true)], 1), _c('div', {
+      staticClass: ["cell-button"]
+    }, [_c('block-1', {
+      attrs: {
+        "title": _vm.makers.title,
+        "items": _vm.makers.items
+      }
+    })], 1), _c('div', {
+      staticClass: ["cell-button"]
+    }, [_c('block-2', {
+      attrs: {
+        "hasMore": "true",
+        "newGoods": "true",
+        "head": _vm.recommend.head1,
+        "goods": _vm.recommend.goods1
+      }
+    })], 1), _c('div', {
+      staticClass: ["cell-button"]
+    }, [_c('block-2', {
+      attrs: {
+        "hasMore": "true",
+        "hotGoods": "true",
+        "head": _vm.recommend.head2,
+        "goods": _vm.recommend.goods2
+      }
+    })], 1), _c('div', {
+      staticClass: ["cell-button"]
+    }, [_c('block-3', {
+      attrs: {
+        "goods": _vm.goodsList
+      }
+    })], 1), _c('loading', {
+      staticClass: ["loading"],
+      attrs: {
+        "display": _vm.showLoading
+      },
+      on: {
+        "loading": _vm.onloading
+      }
+    }, [_c('text', {
+      staticClass: ["indicator"]
+    }, [_vm._v("...")])])], 1) : _vm._e()])
+  }))], 1)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: ["slogan"]
