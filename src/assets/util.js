@@ -10,6 +10,16 @@ let utilFunc = {
             'fontFamily': "iconfont",
             'src': "url('http://at.alicdn.com/t/font_404010_f29c7wlkludz33di.ttf')"
         });
+        domModule.addRule('fontFace', {
+            'fontFamily': "iconfont-two",
+            'src': "url('http://at.alicdn.com/t/font_982489_g5q05xw4qh.ttf')"
+        });
+        let bold = true;
+      domModule.addRule('fontFace',{
+        'fontFamily': bold ? "font-bold" : "font-normal",
+        'src': bold ? "url('file:/storage/emulated/0/wandoujia/downloader/fonts/FZLTZHK.TTF')" :
+            "url('file:/storage/emulated/0/wandoujia/downloader/fonts/FZLTXIHK.TTF')"
+      })
     },
     setBundleUrl(url, jsFile) {
         const bundleUrl = url;

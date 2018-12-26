@@ -12,9 +12,12 @@
                     <div class="cell-button" @click="jumpWeb('https://m.you.163.com/act/pub/DxDpYNfbBd.html')">
                         <yx-slider :imageList="YXBanners"></yx-slider>
                         <div class="slogan">
-                            <text class="i-slg iconfont">&#xe63a; 网易自营品牌</text>
-                            <text class="i-slg iconfont">&#xe63a; 30天无忧退货</text>
-                            <text class="i-slg iconfont">&#xe63a; 48小时快速退款</text>
+                            <text class="confont-two" style="font-size: 20wx;color: coral">&#xe60b;</text>
+                            <text class="confont-two" style="font-size: 20wx;color: cornflowerblue">&#xe60a;</text>
+                            <text class="confont-two" style="font-size: 20wx;color: lightcoral">&#xe609;</text>
+                            <text class="i-slg customFont" style="font-size: 40px">网易自营品牌</text>
+                            <text class="i-slg iconfont" style="font-size: 40px">网易自营品牌</text>
+                            <text class="i-slg iconfont">&#xe609; 48小时退款</text>
                         </div>
                     </div>
                     <div class="cell-button">
@@ -42,6 +45,13 @@
 <style scoped>
     .iconfont {
         font-family: iconfont;
+    }
+    .confont-two {
+        font-family: iconfont-two;
+    }
+
+    .customFont {
+        font-family: font-bold;
     }
 
     .wrapper {

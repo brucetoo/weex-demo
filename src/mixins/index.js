@@ -31,6 +31,13 @@ export default {
 
     handleEvent(_eventName,_callback){
       eventBus.$on(_eventName,_callback)
-    }
+    },
+
+    initIconFont (_ttf){
+      domModule.addRule('fontFace',{
+        'fontFamily': "iconfont",
+        'src': `url('http:${_ttf}')`
+      })
+    },
   }
 }

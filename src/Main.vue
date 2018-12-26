@@ -40,6 +40,8 @@
     },
     created () {
       util.initIconFont();
+      // this.initIconFont('//at.alicdn.com/t/font_404010_f29c7wlkludz33di.ttf')
+      // this.initIconFont('//at.alicdn.com/t/font_982489_g5q05xw4qh.ttf')
     },
     methods: {
       onTabTo(_result){
