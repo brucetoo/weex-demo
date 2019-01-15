@@ -12,9 +12,9 @@
                     <div class="cell-button" @click="jumpWeb('https://m.you.163.com/act/pub/DxDpYNfbBd.html')">
                         <yx-slider :imageList="YXBanners"></yx-slider>
                         <div class="slogan">
-                            <text class="confont-two" style="font-size: 20wx;color: coral">&#xe60b;</text>
-                            <text class="confont-two" style="font-size: 20wx;color: cornflowerblue">&#xe60a;</text>
-                            <text class="confont-two" style="font-size: 20wx;color: lightcoral">&#xe609;</text>
+                            <text class="confont-two" style="font-size: 20wx;color: coral;padding-top: 14px">&#xe60b;</text>
+                            <text class="confont-two" style="font-size: 20wx;color: cornflowerblue;padding-top: 14px">&#xe60a;</text>
+                            <text class="confont-two" style="font-size: 20wx;color: lightcoral;padding-top: 14px">&#xe609;</text>
                             <text class="i-slg customFont" style="font-size: 40px">网易自营品牌</text>
                             <text class="i-slg iconfont" style="font-size: 40px">网易自营品牌</text>
                             <text class="i-slg iconfont">&#xe609; 48小时退款</text>
@@ -38,11 +38,33 @@
                         <text class="indicator">...</text>
                     </loading>
                 </scroller>
+
+                <list v-if="index === 1">
+                    <cell v-for="index in 50">
+                        <div style="width: 750px;height: 100px; background-color: cornflowerblue; padding-top: 20px">
+                            <text>{{index}}</text>
+                        </div>
+                    </cell>
+                </list>
+
+                <!--<scroller v-if="index === 2">-->
+                   <!--<richText :style='style_richText' @measure="measure" :text="formatHtml" textSize="20"></richText>-->
+                   <!--<web style="width: 750px;height: 300px" :source="formatHtml"></web>-->
+                   <!--<rich-text text="'<p>牧师 | 标准模式 | 7700尘</p>"></rich-text>-->
+                <!--</scroller>-->
+                    <html-text style="background-color: white;padding: 20px"
+                               v-if="index === 2"
+                               class="main-list"
+                               :html-text="formatHtml"
+                               :html-option="htmlOption"
+                    >
+                    </html-text>
             </div>
         </slider>
     </div>
 </template>
 <style scoped>
+
     .iconfont {
         font-family: iconfont;
     }
@@ -159,7 +181,100 @@
           goods2: []
         },
         goodsList: [],
-        showLoading: 'hide'
+        showLoading: 'hide',
+        htmlOption: {
+          image: {
+            resize: 'cover'
+          },
+          table: {
+            template: ''
+          },
+          tags:['img','table','video']
+        },
+        formatHtml: '<h1>Header 1</h1>\n' +
+        '<h2><span>Header 2</span></h2>\n' +
+        '<h6><span>Header 6</span></h6>\n' +
+        '<blockquote>\n' +
+        '    <p>这是引用块</p>\n' +
+        '</blockquote>\n' +
+        '<p><strong>这是粗体</strong></p>\n' +
+        '<p><i>这是斜体</i></p>\n' +
+        '<p><img width="1438" height="612" src="http://android-imgs.25pp.com/fs08/2019/01/15/0/f02270fde4c161b3c97846386fca987a.png" slate-data-type="image" /></p>\n' +
+        '<p><u>这是下划线</u></p>\n' +
+        '<p><s>这是删除线</s></p>\n' +
+        '<p><span style="color:rgba(233,61,13,255)"><span>字体颜色</span></span></p>\n' +
+        '<p><span style="background-color:rgba(238,209,8,255)"><span>字体背景</span></span></p>\n' +
+        '<p><img width="1238" height="574" src="http://android-imgs.25pp.com/fs08/2019/01/15/11/183446ed0255a1c90694f6e927fda491.png" slate-data-type="image" /></p>\n' +
+        '<p><span><s><u><i><strong><span style="font-size:16px">各个复杂的属性集成</span></strong></i></u></s></span></p>\n' +
+        '<table>\n' +
+        '    <colgroup>\n' +
+        '        <col width="20.52%" />\n' +
+        '        <col width="29.48%" />\n' +
+        '        <col width="25%" />\n' +
+        '        <col width="25%" />\n' +
+        '    </colgroup>\n' +
+        '    <tbody>\n' +
+        '        <tr>\n' +
+        '            <td>\n' +
+        '                <p>第一个表格</p>\n' +
+        '            </td>\n' +
+        '            <td>\n' +
+        '                <p><span>第一个表格</span></p>\n' +
+        '            </td>\n' +
+        '            <td>\n' +
+        '                <p><span>第一个表格</span></p>\n' +
+        '            </td>\n' +
+        '            <td>\n' +
+        '                <p><img width="368" height="54" src="http://android-imgs.25pp.com/fs08/2019/01/15/2/05cd29a31a3a1fb28345a1853b956a2f.png" slate-data-type="image" /></p>\n' +
+        '            </td>\n' +
+        '        </tr>\n' +
+        '        <tr>\n' +
+        '            <td>\n' +
+        '                <p><span>第一个表格</span></p>\n' +
+        '            </td>\n' +
+        '            <td>\n' +
+        '                <p><img width="193" height="27" src="http://android-imgs.25pp.com/fs08/2019/01/15/10/9d59a1e74b3cc7ee12b1b8ef8cf13525.png" slate-data-type="image" /></p>\n' +
+        '            </td>\n' +
+        '            <td>\n' +
+        '                <p><span>第一个表格</span></p>\n' +
+        '            </td>\n' +
+        '            <td>\n' +
+        '                <p>这里是文章</p>\n' +
+        '            </td>\n' +
+        '        </tr>\n' +
+        '    </tbody>\n' +
+        '</table>\n' +
+        '<p><video style="width:100%;height:auto" src="http://video.pp.cn/fs08/2019/01/04/5/0_80dea3fc58b450d95190f23a34bdee68.mp4" controls="" poster="https://android-imgs.25pp.com/fs08/2019/01/04/8/1_96b37b8f82c56a92a1af3df4da1f3af6.jpg"></video></p>\n' +
+        '<p></p>\n' +
+        '<table>\n' +
+        '    <tbody>\n' +
+        '        <tr>\n' +
+        '            <td>\n' +
+        '                <p>又是一个table</p>\n' +
+        '            </td>\n' +
+        '            <td>\n' +
+        '                <p><span>又是一个table</span></p>\n' +
+        '            </td>\n' +
+        '        </tr>\n' +
+        '        <tr>\n' +
+        '            <td>\n' +
+        '                <p><span>又是一个table</span></p>\n' +
+        '            </td>\n' +
+        '            <td>\n' +
+        '                <p><span>又是一个table</span></p>\n' +
+        '            </td>\n' +
+        '        </tr>\n' +
+        '    </tbody>\n' +
+        '</table>\n' +
+        '<p></p>\n',
+        subViews: [{
+          type: 1,
+          html: ''
+        }],
+        style_richText: {
+          height: 1500,
+          width: 'auto'
+        }
       }
     },
     created() {
@@ -172,9 +287,16 @@
       this.GET('api/home/pullGoods', res => {
         let result = res.data.result;
         this.goodsList = result['goods'];
-      })
+      });
+      this.generateSubViews();
     },
     methods: {
+      measure(e) {
+        this.style_richText.height = e.height
+      },
+      generateSubViews() {
+        this.formatHtml.search('<table>')
+      },
       jumpWeb(_url) {
         const url = this.$getConfig().bundleUrl;
         navigator.push({

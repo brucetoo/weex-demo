@@ -1,5 +1,6 @@
 let stream = weex.requireModule('stream');
 let modal = weex.requireModule('modal');
+let domModule = weex.requireModule('dom');
 let eventBus = new Vue();
 export default {
   methods: {
@@ -17,6 +18,18 @@ export default {
         type: 'json',
         url: 'http://cdn.zwwill.com/yanxuan/' + api
         // url: 'http://10.242.69.181:8089/yanxuan/' + api
+      }, callback)
+    },
+    POST(api, body, callback) {
+      return stream.fetch({
+        method: 'POST',
+        type: 'json',
+        headers: {
+          //post json的话 必须设置content-type如此，默认是 application/x-www-form-urlencoded
+          'Content-Type': 'application/json'
+        },
+        body: body,
+        url: api
       }, callback)
     },
     Toast(_message, _duration, _callback) {

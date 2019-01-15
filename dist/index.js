@@ -3109,6 +3109,28 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var modal = weex.requireModule('modal');
 var navigator = weex.requireModule('navigator');
@@ -3146,7 +3168,25 @@ exports.default = {
         goods2: []
       },
       goodsList: [],
-      showLoading: 'hide'
+      showLoading: 'hide',
+      htmlOption: {
+        image: {
+          resize: 'cover'
+        },
+        table: {
+          template: ''
+        },
+        tags: ['img', 'table', 'video']
+      },
+      formatHtml: '<h1>Header 1</h1>\n' + '<h2><span>Header 2</span></h2>\n' + '<h6><span>Header 6</span></h6>\n' + '<blockquote>\n' + '    <p>这是引用块</p>\n' + '</blockquote>\n' + '<p><strong>这是粗体</strong></p>\n' + '<p><i>这是斜体</i></p>\n' + '<p><img width="1438" height="612" src="http://android-imgs.25pp.com/fs08/2019/01/15/0/f02270fde4c161b3c97846386fca987a.png" slate-data-type="image" /></p>\n' + '<p><u>这是下划线</u></p>\n' + '<p><s>这是删除线</s></p>\n' + '<p><span style="color:rgba(233,61,13,255)"><span>字体颜色</span></span></p>\n' + '<p><span style="background-color:rgba(238,209,8,255)"><span>字体背景</span></span></p>\n' + '<p><img width="1238" height="574" src="http://android-imgs.25pp.com/fs08/2019/01/15/11/183446ed0255a1c90694f6e927fda491.png" slate-data-type="image" /></p>\n' + '<p><span><s><u><i><strong><span style="font-size:16px">各个复杂的属性集成</span></strong></i></u></s></span></p>\n' + '<table>\n' + '    <colgroup>\n' + '        <col width="20.52%" />\n' + '        <col width="29.48%" />\n' + '        <col width="25%" />\n' + '        <col width="25%" />\n' + '    </colgroup>\n' + '    <tbody>\n' + '        <tr>\n' + '            <td>\n' + '                <p>第一个表格</p>\n' + '            </td>\n' + '            <td>\n' + '                <p><span>第一个表格</span></p>\n' + '            </td>\n' + '            <td>\n' + '                <p><span>第一个表格</span></p>\n' + '            </td>\n' + '            <td>\n' + '                <p><img width="368" height="54" src="http://android-imgs.25pp.com/fs08/2019/01/15/2/05cd29a31a3a1fb28345a1853b956a2f.png" slate-data-type="image" /></p>\n' + '            </td>\n' + '        </tr>\n' + '        <tr>\n' + '            <td>\n' + '                <p><span>第一个表格</span></p>\n' + '            </td>\n' + '            <td>\n' + '                <p><img width="193" height="27" src="http://android-imgs.25pp.com/fs08/2019/01/15/10/9d59a1e74b3cc7ee12b1b8ef8cf13525.png" slate-data-type="image" /></p>\n' + '            </td>\n' + '            <td>\n' + '                <p><span>第一个表格</span></p>\n' + '            </td>\n' + '            <td>\n' + '                <p>这里是文章</p>\n' + '            </td>\n' + '        </tr>\n' + '    </tbody>\n' + '</table>\n' + '<p><video style="width:100%;height:auto" src="http://video.pp.cn/fs08/2019/01/04/5/0_80dea3fc58b450d95190f23a34bdee68.mp4" controls="" poster="https://android-imgs.25pp.com/fs08/2019/01/04/8/1_96b37b8f82c56a92a1af3df4da1f3af6.jpg"></video></p>\n' + '<p></p>\n' + '<table>\n' + '    <tbody>\n' + '        <tr>\n' + '            <td>\n' + '                <p>又是一个table</p>\n' + '            </td>\n' + '            <td>\n' + '                <p><span>又是一个table</span></p>\n' + '            </td>\n' + '        </tr>\n' + '        <tr>\n' + '            <td>\n' + '                <p><span>又是一个table</span></p>\n' + '            </td>\n' + '            <td>\n' + '                <p><span>又是一个table</span></p>\n' + '            </td>\n' + '        </tr>\n' + '    </tbody>\n' + '</table>\n' + '<p></p>\n',
+      subViews: [{
+        type: 1,
+        html: ''
+      }],
+      style_richText: {
+        height: 1500,
+        width: 'auto'
+      }
     };
   },
   created: function created() {
@@ -3162,9 +3202,16 @@ exports.default = {
       var result = res.data.result;
       _this.goodsList = result['goods'];
     });
+    this.generateSubViews();
   },
 
   methods: {
+    measure: function measure(e) {
+      this.style_richText.height = e.height;
+    },
+    generateSubViews: function generateSubViews() {
+      this.formatHtml.search('<table>');
+    },
     jumpWeb: function jumpWeb(_url) {
       var url = this.$getConfig().bundleUrl;
       navigator.push({
@@ -4001,21 +4048,24 @@ module.exports = {
   "iconfont": {
     "fontFamily": "iconfont"
   },
-  "image": {
-    "width": "750",
-    "height": "430"
-  },
   "slider": {
     "width": "750",
     "height": "430"
   },
   "frame": {
-    "width": "750",
+    "width": "630",
     "height": "430",
-    "position": "relative"
+    "backgroundColor": "#FF7F50"
+  },
+  "image": {
+    "position": "absolute",
+    "top": 0,
+    "left": 0,
+    "right": 0,
+    "bottom": 0
   },
   "indicator": {
-    "width": "750",
+    "width": "650",
     "height": "40",
     "itemColor": "#FFFFFF",
     "itemSelectedColor": "#b4282d",
@@ -4034,8 +4084,16 @@ module.exports = {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4074,14 +4132,23 @@ Object.defineProperty(exports, "__esModule", {
 //
 
 exports.default = {
-    props: ["imageList"],
-    data: function data() {
-        return {};
-    },
+  props: ["imageList"],
+  data: function data() {
+    return {};
+  },
 
-    methods: {
-        onchange: function onchange(event) {}
+  methods: {
+    onchange: function onchange(event) {},
+    onClick: function onClick(e) {
+      var _this = this;
+
+      this.POST('https://galaxy.pp.cn/proxy/api-op.content.getArticleDetail', {
+        identity: '9918766512075107655'
+      }, function (res) {
+        _this.Toast('....' + JSON.stringify(res.data));
+      });
     }
+  }
 };
 
 /***/ }),
@@ -4094,7 +4161,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "autoPlay": "true",
       "interval": "5000",
-      "infinite": "false"
+      "infinite": "false",
+      "clipChildren": "false",
+      "pageMargin": "40wx",
+      "marginLeft": "50wx",
+      "marginRight": "50wx"
     },
     on: {
       "change": _vm.onchange
@@ -4107,6 +4178,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "resize": "cover",
         "src": img.src
+      },
+      on: {
+        "click": _vm.onClick
       }
     })])
   }), _c('indicator', {
@@ -5138,7 +5212,31 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_c('text', {
       staticClass: ["indicator"]
-    }, [_vm._v("...")])])], 1) : _vm._e()])
+    }, [_vm._v("...")])])], 1) : _vm._e(), (index === 1) ? _c('list', _vm._l((50), function(index) {
+      return _c('cell', {
+        appendAsTree: true,
+        attrs: {
+          "append": "tree"
+        }
+      }, [_c('div', {
+        staticStyle: {
+          width: "750px",
+          height: "100px",
+          backgroundColor: "cornflowerblue",
+          paddingTop: "20px"
+        }
+      }, [_c('text', [_vm._v(_vm._s(index))])])])
+    })) : _vm._e(), (index === 2) ? _c('html-text', {
+      staticClass: ["main-list"],
+      staticStyle: {
+        backgroundColor: "white",
+        padding: "20px"
+      },
+      attrs: {
+        "htmlText": _vm.formatHtml,
+        "htmlOption": _vm.htmlOption
+      }
+    }) : _vm._e()], 1)
   }))], 1)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
@@ -5147,19 +5245,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: ["confont-two"],
     staticStyle: {
       fontSize: "20wx",
-      color: "coral"
+      color: "coral",
+      paddingTop: "14px"
     }
   }, [_vm._v("")]), _c('text', {
     staticClass: ["confont-two"],
     staticStyle: {
       fontSize: "20wx",
-      color: "cornflowerblue"
+      color: "cornflowerblue",
+      paddingTop: "14px"
     }
   }, [_vm._v("")]), _c('text', {
     staticClass: ["confont-two"],
     staticStyle: {
       fontSize: "20wx",
-      color: "lightcoral"
+      color: "lightcoral",
+      paddingTop: "14px"
     }
   }, [_vm._v("")]), _c('text', {
     staticClass: ["i-slg", "customFont"],
@@ -8106,6 +8207,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 var stream = weex.requireModule('stream');
 var modal = weex.requireModule('modal');
+var domModule = weex.requireModule('dom');
 var eventBus = new Vue();
 exports.default = {
   methods: {
@@ -8123,6 +8225,18 @@ exports.default = {
         type: 'json',
         url: 'http://cdn.zwwill.com/yanxuan/' + api
         // url: 'http://10.242.69.181:8089/yanxuan/' + api
+      }, callback);
+    },
+    POST: function POST(api, body, callback) {
+      return stream.fetch({
+        method: 'POST',
+        type: 'json',
+        headers: {
+          //post json的话 必须设置content-type如此，默认是 application/x-www-form-urlencoded
+          'Content-Type': 'application/json'
+        },
+        body: body,
+        url: api
       }, callback);
     },
     Toast: function Toast(_message, _duration, _callback) {
