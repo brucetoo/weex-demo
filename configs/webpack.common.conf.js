@@ -3,12 +3,13 @@ const fs = require('fs-extra');
 const webpack = require('webpack');
 const config = require('./config');
 const helper = require('./helper');
+const glob = require('glob');
 const vueLoaderConfig = require('./vue-loader.conf');
 const vueWebTemp = helper.rootNode(config.templateDir);
 const hasPluginInstalled = fs.existsSync(helper.rootNode(config.pluginFilePath));
 const isWin = /^win/.test(process.platform);
 const weexEntry = {
-  'index': helper.root('entry.js')//index = rootDir/src/entry.js
+  'index': helper.root('entry.js')
 }
 
 const getEntryFileContent = (source, routerpath) => {
@@ -59,22 +60,22 @@ const getEntryFile = () => {
 const webEntry = getEntryFile();
 
 
-const createLintingRule = () => ({
-  test: /\.(js|vue)$/,
-  loader: 'eslint-loader',
-  enforce: 'pre',
-  include: [helper.rootNode('src'), helper.rootNode('test')],
-  options: {
-    formatter: require('eslint-friendly-formatter'),
-    emitWarning: !config.dev.showEslintErrorsInOverlay
-  }
-})
-const useEslint = config.dev.useEslint ? [createLintingRule()] : []
 
 /**
  * Plugins for webpack configuration.
  */
 const plugins = [
+  /**
+   * Plugin: webpack.DefinePlugin
+   * Description: The DefinePlugin allows you to create global constants which can be configured at compile time. 
+   *
+   * See: https://webpack.js.org/plugins/define-plugin/
+   */
+  new webpack.DefinePlugin({
+    'process.env': {
+      'NODE_ENV': config.dev.env
+    }
+  }),
   /*
    * Plugin: BannerPlugin
    * Description: Adds a banner to the top of each generated chunk.
@@ -113,13 +114,13 @@ const webConfig = {
    */
   module: {
     // webpack 2.0 
-    rules: useEslint.concat([
+    rules: [
       {
         test: /\.js$/,
         use: [{
           loader: 'babel-loader'
         }],
-        exclude: /node_modules(?!(\/|\\).*(weex).*)/
+        exclude: config.excludeModuleReg
       },
       {
         test: /\.vue(\?[^?]+)?$/,
@@ -139,9 +140,10 @@ const webConfig = {
             }]
             
           })
-        }]
+        }],
+        exclude: config.excludeModuleReg
       }
-    ])
+    ]
   },
   /*
    * Add additional plugins to the compiler.
@@ -178,14 +180,16 @@ const weexConfig = {
         test: /\.js$/,
         use: [{
           loader: 'babel-loader'
-        }]
+        }],
+        exclude: config.excludeModuleReg
       },
       {
         test: /\.vue(\?[^?]+)?$/,
         use: [{
           loader: 'weex-loader',
           options: vueLoaderConfig({useVue: false})
-        }]
+        }],
+        exclude: config.excludeModuleReg
       }
     ]
   },

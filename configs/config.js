@@ -11,6 +11,8 @@ const config = {
   // common
   templateDir: '.temp',
   entryFilePath: 'entry.js',
+  // Module exclude from compile process
+  excludeModuleReg: /node_modules(?!(\/|\\).*(weex).*)/,
   dev: {
     // Various Dev Server settings
     contentBase: ROOT,
@@ -25,14 +27,7 @@ const config = {
       aggregateTimeout: 300,
       poll: false
     },
-    // Use Eslint Loader?
-    // If true, your code will be linted during bundling and
-    // linting errors and warnings will be shown in the console.
-    useEslint: true,
-    // If true, eslint errors and warnings will also be shown in the error overlay
-    // in the browser.
-    showEslintErrorsInOverlay: false,
-    /**
+        /**
      * Source Maps
      */
     // https://webpack.js.org/configuration/devtool/#development
@@ -69,9 +64,6 @@ const config = {
         </script>
         `
     }
-  },
-  test: {
-    env: JSON.stringify('test')
   },
   prod: {
     env: JSON.stringify('production'),

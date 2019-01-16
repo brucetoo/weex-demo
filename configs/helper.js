@@ -1,5 +1,5 @@
 // Helper functions
-const path = require('path');//node js 提供的方法
+const path = require('path');
 const ROOT = path.resolve(__dirname, '..');
 
 const root = (args) => {
